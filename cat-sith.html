@@ -1,275 +1,270 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ====================================================================
-       LUDIC ACID · 2025  ✦  Contemporary Circus Portfolio / Press Kit
-       Plain‑vanilla HTML + CSS + JS (no frameworks)
-       Paste this into any *.html file – everything is self‑contained
-  ===================================================================== -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ludic Acid – contemporary circus and puppetry</title>
-  <link rel="icon" href="https://www.ludicacid.com/cat-solid.svg" type="image/svg+xml">
+  <title>Cat Sith – Ludic Acid</title>
+  <link rel="icon" href="favicon.svg">
 
-  <!-- GOOGLE FONT – lightweight, variable -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet">
+  <!-- Core font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Display font -->
+  <style>
+  @font-face{
+    font-family:"Lithops";
+    src:url("assets/fonts/Lithops-Regular.woff") format("woff");
+    font-display:swap;
+  }
+  </style>
 
   <style>
-    /* =============================================================
-       01 – CSS RESET & TOKENS
-    ============================================================= */
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html:focus-within{scroll-behavior:smooth}
-    body{
-      font-family:"Inter",system-ui,-apple-system,sans-serif;
-      line-height:1.5;min-height:100dvh;
-      color:var(--clr-text, #fafafa);
-      background:var(--clr-bg, #0d0d0d);
-      -webkit-font-smoothing:antialiased;overflow-x:hidden;
-    }
-    :root{
-      --clr-accent:#ffd166;
-      --clr-accent-2:#ef476f;
-      --clr-text:#fbfbfb;
-      --clr-muted:#c4c4c4;
-      --section-max:85rem;
-      --gutter:clamp(1rem,3vw,2.5rem);
-    }
+  /* === RESET & TOKENS === */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font:400 1rem/1.6 "Inter",sans-serif;
+    background:#140b0c;color:#f4f4f4;overflow-x:hidden;
+  }
+  a{color:#800080;text-decoration:none}
+  a:hover{text-decoration:underline}
 
-    /* =============================================================
-       02 – GLOBAL UTILS
-    ============================================================= */
-    img,svg{display:block;max-width:100%;height:auto}
-    a{color:inherit;text-decoration:none}
-    .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    section{padding-block:clamp(4rem,10vw,7rem)}
-    .wrapper{max-width:var(--section-max);margin-inline:auto;padding-inline:var(--gutter)}
-    .tag{font-size:.75rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--clr-accent)}
+  /* === NAVBAR === */
+  header{
+    position:fixed;inset:0 0 auto;
+    background:rgba(20,11,12,.75);backdrop-filter:blur(6px);
+    z-index:1000;
+  }
+  .navbar{
+    margin:auto;
+    padding:1rem 1.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between
+  }
 
-    /* =============================================================
-       03 – HEADER NAV
-    ============================================================= */
-    header{position:fixed;inset:0 0 auto;z-index:1000;pointer-events:none}
-    .nav{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:1rem var(--gutter);max-width:var(--section-max);margin-inline:auto;
-      backdrop-filter:blur(6px) saturate(130%);
-      background:hsla(0 0% 0% / .4);
-      border-bottom:1px solid hsla(0 0% 100% / .06);
-      border-radius:0 0 1rem 1rem;
-      transition:background .3s ease;
-      pointer-events:auto;
-    }
-    .nav.scrolled{background:hsla(0 0% 0% / .75);}
-    .logo{height:56px;width:auto}
-    .nav-links{display:flex;gap:clamp(1rem,2vw,2rem);list-style:none;font-weight:500}
-    .nav-links a{position:relative;display:inline-block;padding-block:.25rem}
-    .nav-links a::after{content:"";position:absolute;inset-inline:0;bottom:-2px;height:2px;background:var(--clr-accent);scale:0 1;transform-origin:left;transition:scale .3s ease}
-    .nav-links a:hover::after{scale:1 1}
+  .logo img{height:50px;width:auto;display:block}
+  .nav-row{
+    display:flex;
+    gap:2rem;
+    list-style:none
+  }
+  .nav-row a,.nav-links a{
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    font-weight:600;
+    font-size:.875rem;
+    color:#f4f4f4
+  }
 
-    /* mobile hamburger */
-    .burger{display:none;width:2.25rem;aspect-ratio:1;background:none;border:0;cursor:pointer;position:relative;pointer-events:auto}
-    .burger span,.burger::before,.burger::after{content:"";position:absolute;left:0;width:100%;height:3px;background:#fff;border-radius:2px;transition:transform .4s ease,opacity .4s ease}
-    .burger span{top:50%;translate:0 -50%}
-    .burger::before{top:.5rem}
-    .burger::after{bottom:.5rem}
-    body.menu-open .burger span{opacity:0}
-    body.menu-open .burger::before{transform:translateY(8px) rotate(45deg)}
-    body.menu-open .burger::after{transform:translateY(-8px) rotate(-45deg)}
+  /* burger */
+  .burger{display:none;flex-direction:column;justify-content:space-between;
+    width:24px;height:18px;background:none;border:0;cursor:pointer}
+  .burger span{height:3px;width:100%;background:#f4f4f4;border-radius:2px}
 
-    /* mobile nav panel */
-    @media(max-width:768px){
-      .burger{display:block}
-      .nav-links{position:fixed;inset:0 0 0 auto;width:70%;max-width:18rem;background: f transparent;flex-direction:column;align-items:flex-start;padding:5rem 2rem;transform:translateX(100%);transition:transform .4s ease;pointer-events:auto}
-      body.menu-open .nav-links{transform:none}
-    }
+  /* mobile overlay */
+  .nav-links{
+    display:none;flex-direction:column;gap:2rem;
+    position:fixed;inset:0 0 0 auto;width:70%;max-width:320px;
+    background:rgba(20,11,12,.9);padding:5rem 2rem;z-index:999
+  }
+  .nav-links.show{display:flex}
 
-    /* =============================================================
-       04 – HERO SECTION
-    ============================================================= */
-    .hero{position:relative;min-height:100dvh;display:grid;place-items:center;text-align:center;color:var(--clr-text)}
-    .hero video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;filter:brightness(.45)}
-    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,hsla(0 0% 0% / 0) 60%,hsla(0 0% 0% / .85) 100%);z-index:-1}
-    .hero h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:800;line-height:1.1}
-    .hero p{font-size:clamp(1rem,2vw,1.5rem);max-width:40ch;margin-inline:auto;margin-top:1rem;color:var(--clr-muted)}
-    .btn{display:inline-block;cursor:pointer;margin-top:2rem;padding:.75em 1.75em;font-weight:600;border:2px solid var(--clr-accent);border-radius:100vmax;color:var(--clr-accent);transition:all .3s ease}
-    .btn:hover{background:var(--clr-accent);color:#000}
+  /* === HERO VIDEO – final “no-gap” version === */
+.hero{
+  position:relative;
+  width:100%;
+  height:100vh;
+  overflow:hidden;      /* clip any overscan */
+}
 
-    /* =============================================================
-       05 – SHOW CARDS (grid)
-    ============================================================= */
-    .shows-grid{display:grid;gap:2rem;margin-top:3rem}
-    @media(min-width:600px){.shows-grid{grid-template-columns:repeat(auto-fit,minmax(18rem,1fr))}}
-    .card{position:relative;overflow:hidden;border-radius:1rem;isolation:isolate}
-    .card img{aspect-ratio:4/3;object-fit:cover;width:100%;transition:scale .5s ease}
-    .card:hover img{scale:1.05}
-    .card h3{position:absolute;inset:0;display:grid;place-items:center;background:hsla(0 0% 0% / .55);font-size:1.5rem;font-weight:700;opacity:0;transition:opacity .4s}
-    .card:hover h3{opacity:1}
+.hero video{
+  position:absolute;
+  top:0;                /* stick to every edge */
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;           /* fill width */
+  height:100%;          /* fill height */
+  object-fit:cover;     /* crop as needed */
+  filter:brightness(.5);
+  z-index:-1;
+}
 
-    /* =============================================================
-       06 – TESTIMONIAL CAROUSEL (scroll‑snap)
-    ============================================================= */
-    .carousel{overflow-x:auto;scroll-snap-type:x mandatory;display:flex;gap:clamp(1rem,2vw,2rem);padding-inline:var(--gutter);scrollbar-width:none}
-    .carousel::-webkit-scrollbar{display:none}
-    .testimonial{flex:0 0 100%;scroll-snap-align:center;max-width:28rem;margin-inline:auto;background:#1a1a1a;padding:2rem;border-radius:1rem;display:grid;gap:1rem}
-    .testimonial img{width:64px;height:64px;border-radius:50%;object-fit:cover}
-    .testimonial p{color:var(--clr-muted);font-style:italic}
-    .testimonial cite{font-style:normal;font-weight:600;color:var(--clr-accent)}
+.hero::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 70%,#140b0c);
+  z-index:-1;
+}
 
-    /* =============================================================
-       07 – FOOTER
-    ============================================================= */
-    footer{background:#000;padding:4rem 0;text-align:center;color:var(--clr-muted);font-size:.875rem}
-    .social{display:flex;justify-content:center;gap:1.5rem;margin-top:1.5rem}
-    .social svg{width:24px;height:24px;fill:currentColor;transition:fill .3s}
-    .social a:hover svg{fill:var(--clr-accent-2)}
+  
+  /* === SECTIONS === */
+  section{
+    padding:6rem 1.5rem;
+    margin-inline:auto;
+    text-align: center;
+    
+  }
+  section h2{
+  font-family:"Lithops","Inter",sans-serif;
+  margin:0 auto 1rem;
+  font-size:4rem;
+  color:#800080;
+  letter-spacing:.04em;
+  font-weight: 100;
+  text-transform:uppercase;
+  border-bottom:2px solid currentColor;
+  display:inline-block;
+  padding-bottom:.25rem;
+  }
 
+  section:not(.hero){
+    max-width: 900px;
+    margin:0 auto;
+    padding:6rem 1.5rem
+  }
+
+  /* === PRAISE CAROUSEL === */
+  .carousel{
+    display:flex;
+    gap:1.5rem;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    padding-bottom:1rem
+  }
+  
+  .carousel::-webkit-scrollbar{display:none}
+
+  .testimonial{
+    flex:0 0 80%;scroll-snap-align:center;
+    background:rgba(255,255,255,.05);backdrop-filter:blur(4px);
+    border-radius:1rem;padding:1rem;text-align:center;display:flex;flex-direction:column;align-items:center
+  }
+  .testimonial img{width:80px;height:80px;border-radius:50%;object-fit:cover;margin-bottom:1rem}
+  .testimonial p{font-style:italic;margin-bottom:.5rem}
+  .testimonial cite{font-weight:600;color:#800080;font-size:.875rem}
+
+  /* === RESPONSIVE === */
+  @media(max-width:768px){
+    .nav-row{display:none}
+    .burger{display:flex}
+  }
   </style>
 </head>
 <body>
 
-  <!-- =============================================================
-       NAVBAR
-  ============================================================= -->
-  <header>
-    <nav class="nav" id="main-nav">
-      <a href="#" class="logo-link"><img src="http://www.ludicacid.com/cat_sith_logo_white.png" alt="Ludic Acid" class="logo"></a>
-      <button class="burger" aria-label="Toggle menu"><span></span></button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#shows">Shows</a></li>
-        <li><a href="#press">Press</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <nav class="navbar">
+    <a href="/" class="logo"><img src="assets/images/cat_sith_logo_white.png" alt="Ludic Acid"></a>
 
-  <!-- =============================================================
-       HERO  (autoplay muted loop video background)
-  ============================================================= -->
-  <section class="hero">
-    <video autoplay muted loop playsinline poster="https://www.ludicacid.com/crawick.jpg">
-        <source src="https://www.ludicacid.com/media/background.webm" type="video/webm">
-        <source src="https://www.ludicacid.com/media/thurso.mp4" type="video/mp4">
-        <!-- optional message for ancient browsers -->
-        Your browser doesn’t support the video tag.
-      </video>
-    <div class="wrapper">
-      <h1>We bend reality<br>so you don’t have to.</h1>
-      <p>Immersive puppetry, roaming spectacle and site‑responsive circus from Scotland.</p>
-      <a href="#shows" class="btn">Discover our shows</a>
+    <ul class="nav-row">
+      <li><a href="#about">About</a></li>
+      <li><a href="#praise">Praise</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#info">Info</a></li>
+      <li><a href="#media">Media</a></li>
+    </ul>
+
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-links" id="nav-links">
+      <a href="#about">About</a>
+      <a href="#praise">Praise</a>
+      <a href="#team">Team</a>
+      <a href="#info">Info</a>
+      <a href="#media">Media</a>
     </div>
-  </section>
+  </nav>
+</header>
 
-  <!-- =============================================================
-       ABOUT
-  ============================================================= -->
-  <section id="about">
-    <div class="wrapper">
-      <span class="tag">About us</span>
-      <h2 style="font-size:2.5rem;margin-top:.5rem;max-width:28ch">Ludic Acid is a collective of makers, movers & mischief‑architects.</h2>
-      <p style="margin-top:1.25rem;max-width:60ch;color:var(--clr-muted)">We design large‑scale walk‑about puppets and contemporary circus experiences that dissolve the barrier between performer and public. Founded in 2020, we’ve toured festivals across Europe and the UK, enchanting audiences from toddlers to tire‑kickin’ critics.</p>
-    </div>
-  </section>
+<!-- HERO (background video only) -->
+<section class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="assets/images/background.webm" type="video/webm">
+  </video>
+</section>
 
-  <!-- =============================================================
-       SHOWS – responsive grid cards
-  ============================================================= -->
-  <section id="shows">
-    <div class="wrapper">
-      <span class="tag">Live & roaming</span>
-      <h2 style="font-size:2.5rem;margin-top:.5rem">Current repertoire</h2>
-      <div class="shows-grid">
-        <a href="#" class="card">
-          <img src="https://ludicacid.com/wick.jpg" alt="Cat Sith show still">
-          <h3>Cat Sith</h3>
-        </a>
-        <a href="#" class="card">
-          <img src="https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=900&q=60" alt="Voltige">
-          <h3>Voltige</h3>
-        </a>
-        <a href="#" class="card">
-          <img src="https://images.unsplash.com/photo-1593340645697-d1fbd3f49a49?auto=format&fit=crop&w=900&q=60" alt="The Secret Garden">
-          <h3>The secret garden</h3>
-        </a>
-      </div>
-    </div>
-  </section>
+<!-- ABOUT -->
+<section id="about">
+  <h2>About</h2>
+  <p>
+    *Cat Sith* prowls the liminal space between fact and folklore.  
+    A towering feline marionette, part circus artist, part mythic creature, she roams
+    festivals and town squares with velvet grace, inviting passers-by into fleeting moments
+    of mischief and wonder. Expect hypnotic aerial silk, unexpected audience interaction
+    and an atmosphere thick with smoke and possibility.
+  </p>
+</section>
 
-  <!-- =============================================================
-       TESTIMONIAL CAROUSEL
-  ============================================================= -->
-  <section id="press">
-    <div class="wrapper">
-      <span class="tag">What they’re saying</span>
-      <h2 style="font-size:2.5rem;margin-top:.5rem">Press & praise</h2>
-    </div>
-    <div class="carousel" aria-label="Testimonials carousel">
-      <figure class="testimonial">
-        <img src="https://outdoorartsuk.org/wp-content/uploads/2022/04/David-Image-e1652374224490.jpg" alt="David Doust – Outdoor Arts UK">
-        <blockquote>
-          <p>“Cat Sith is a delightful show – a masterclass in audience engagement.”</p>
-          <cite>David Doust • Outdoor Arts UK</cite>
-        </blockquote>
-      </figure>
-      <figure class="testimonial">
-        <img src="https://i0.wp.com/ashleypeevor.com/wp-content/uploads/2023/07/Ashley-Peevor.png?w=500&ssl=1" alt="Ashley Peevor – DOCA">
-        <blockquote>
-          <p>“A riot of colour, sound and surreal theatricality. Kids and grown‑ups beamed in equal measure.”</p>
-          <cite>Ashley Peevor • Artistic Director, DOCA</cite>
-        </blockquote>
-      </figure>
-      <figure class="testimonial">
-        <img src="https://ludicacid.com/media/faces/connie_treves.jpeg" alt="Connie Treves – Good Chance Theatre">
-        <blockquote>
-          <p>“Your wild cat was universally said to be the best puppet animal Amal has met on the Walk.”</p>
-          <cite>Connie Treves • Good Chance Theatre</cite>
-        </blockquote>
-      </figure>
-    </div>
-  </section>
+<!-- PRAISE -->
+<section id="praise">
+  <h2>Praise</h2>
+  <div class="carousel">
+    <figure class="testimonial">
+      <img src="assets/images/david.jpg" alt="David Doust photo">
+      <p>“A masterclass in audience engagement.”</p>
+      <cite>David Doust • Outdoor Arts UK</cite>
+    </figure>
 
-  <!-- =============================================================
-       CONTACT / FOOTER
-  ============================================================= -->
-  <footer id="contact">
-    <h2 style="font-size:2rem;font-weight:700">Let’s make magic together</h2>
-    <p style="margin-top:.5rem">Booking & enquiries: <a href="mailto:hello@ludicacid.com" style="color:var(--clr-accent-2)">hello@ludicacid.com</a></p>
-    <div class="social" aria-label="Social links">
-      <a href="https://www.instagram.com/ludic_acid" aria-label="Instagram">
-        <svg viewBox="0 0 448 512" role="img"><title>Instagram</title><path d="M224 202.7A53.3 53.3 0 1 0 277.3 256 53.38 53.38 0 0 0 224 202.7Zm124.7-41a54 54 0 0 0-30.7-30.7C293 120 224 120 224 120s-69 0-94 11c-14.6 5.6-25.1 16.1-30.7 30.7C88 155 88 224 88 224s0 69 11 94a54 54 0 0 0 30.7 30.7c25 11 94 11 94 11s69 0 94-11a54 54 0 0 0 30.7-30.7c11-25 11-94 11-94S359.7 155 348.7 161.7ZM224 338a82 82 0 1 1 82-82 82.08 82.08 0 0 1-82 82Zm85.4-148.6a19.2 19.2 0 1 1 19.2-19.2 19.21 19.21 0 0 1-19.2 19.2Z"/></svg>
-      </a>
-      <a href="https://www.facebook.com/ludicacid" aria-label="Facebook">
-        <svg viewBox="0 0 320 512" role="img"><title>Facebook</title><path d="M279.14 288l14.22-92.66h-88.91V138.37c0-25.35 12.42-50.06 52.24-50.06H293V6.26S259.5 0 225.36 0c-73.53 0-121.36 44.74-121.36 126.72V195.3H22.89V288h81.11V512h100.17V288z"/></svg>
-      </a>
-    </div>
-    <p style="margin-top:2rem">© <span id="year"></span> Ludic Acid. All rights reserved.</p>
-  </footer>
+    <figure class="testimonial">
+      <img src="assets/images/ashley.jpg" alt="Ashley Peevor photo">
+      <p>“A riot of colour, sound and surreal theatricality.”</p>
+      <cite>Ashley Peevor • DOCA</cite>
+    </figure>
 
-  <!-- =============================================================
-       JS – tiny helpers (nav behaviour, year)
-  ============================================================= -->
-  <script>
-    const body = document.body;
-    const burger = document.querySelector('.burger');
-    const navLinks = document.querySelector('#nav-links');
+    <figure class="testimonial">
+      <img src="assets/images/connie_placeholder.jpg" alt="Connie Treves placeholder">
+      <p>“Best puppet animal Amal has met on the Walk.”</p>
+      <cite>Connie Treves • Good Chance Theatre</cite>
+    </figure>
+  </div>
+</section>
 
-    burger.addEventListener('click', ()=> body.classList.toggle('menu-open'));
-    navLinks.querySelectorAll('a').forEach(link=>{
-      link.addEventListener('click', ()=> body.classList.remove('menu-open'));
-    });
+<!-- TEAM -->
+<section id="team">
+  <h2>Team</h2>
+  <p>
+    Artistic Director <strong>Jamie Smith</strong> blends contemporary circus with giant
+    puppet engineering, supported by movement director <strong>Shona Keir</strong> and
+    visual dramaturg <strong>Rowan Grey</strong>. Together the collective champions
+    accessible, site–responsive experiences that transform public space into
+    temporary realms of play.
+  </p>
+</section>
 
-    // change header bg on scroll
-    const nav = document.getElementById('main-nav');
-    const io = new IntersectionObserver(entries=>{
-      nav.classList.toggle('scrolled', !entries[0].isIntersecting);
-    });
-    io.observe(document.querySelector('.hero'));
+<!-- PRACTICAL INFO -->
+<section id="info">
+  <h2>Info</h2>
+  <p>
+    <strong>Duration:</strong> 30 min looping<br>
+    <strong>Footprint:</strong> 10 × 10 m flat ground<br>
+    <strong>Touring party:</strong> 5 (no accommodation required for UK dates)<br>
+    <strong>Tech:</strong> Fully self-contained (battery PA)<br>
+    <strong>Contact:</strong> <a href="mailto:hello@ludicacid.com">hello@ludicacid.com</a>
+  </p>
+</section>
 
-    // current year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<!-- MEDIA -->
+<section id="media">
+  <h2>Media</h2>
+  <p>
+    High-resolution press photos and a 60-second sizzle reel will appear here soon.  
+    In the meantime, enquiries for bespoke assets are welcome via the email above.
+  </p>
+</section>
+
+<!-- JS (menu toggle) -->
+<script>
+const burger=document.getElementById("burger");
+const navLinks=document.getElementById("nav-links");
+burger.addEventListener("click",e=>{
+  e.stopPropagation();
+  navLinks.classList.toggle("show");
+});
+document.addEventListener("click",()=>navLinks.classList.remove("show"));
+navLinks.addEventListener("click",e=>e.stopPropagation());
+</script>
 </body>
 </html>
