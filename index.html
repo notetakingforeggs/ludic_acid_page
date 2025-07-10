@@ -10,6 +10,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
+
+    @font-face {
+      font-family: 'Lithops';
+      src: url('assets/fonts/Lithops-Regular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+
     /* GLOBAL RESET */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
@@ -35,8 +45,7 @@
       align-items: center;
       padding: 1rem 1.5rem;
     }
-    .logo { font-size: 1.25rem; font-weight: 700; }
-
+   
     .burger {
       display: flex;
       flex-direction: column;
@@ -59,18 +68,27 @@
 
     /* MENU (SLIDE DOWN) */
     .nav-links {
-      overflow: hidden;
-      max-height: 0;
-      background: #140b0c;
-      transition: max-height 0.3s ease;
-      list-style: none;
-      text-align: left;
-      padding: 0 1.5rem;
-    }
-    .nav-links.show {
-      max-height: 500px;
-      padding: 1rem 1.5rem;
-    }
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: fit-content;
+  background: #140b0c;
+  list-style: none;
+  display: none; /* hidden by default */
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: start;
+  padding: 1rem 1.5rem 1.5rem; /* adjust top padding to align with navbar height if needed */
+  z-index: 996;
+  
+}
+
+.nav-links.show {
+  display: flex;
+}
+
+
+
     .nav-links li { margin: 1rem 0; }
     .nav-links a { font-size: 1.25rem; color: #d2b3ff; }
     .nav-links a:hover { text-decoration: underline; }
@@ -84,13 +102,16 @@
       text-align: center;
       padding-top: 4rem;
     }
-        .home-links h1 a {
-    font-size: clamp(2rem, 8vw, 6rem);
-    color: #800080; /* default visited link purple */
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: filter 0.3s ease;
+    .home-links h1 a {
+      font-family: 'Lithops', sans-serif;
+      font-size: clamp(18rem, 10vw, 6rem);
+      color: #800080;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: filter 0.3s ease;
+      font-weight: 100;
     }
+
 
     .home-links h1 a:hover {
     text-decoration: none; /* remove underline */
@@ -104,7 +125,10 @@
   <!-- NAVBAR -->
   <header>
     <nav class="navbar">
-      <a href="#" class="logo">Ludic Acid</a>
+      <a href="#" class="logo">
+        <img src="assets/images/cat_sith_logo_white.png" alt="Ludic Acid Logo" style="height:45px; width:auto;">
+      </a>
+
       <button class="burger" aria-label="Menu" id="burger">
         <span></span>
         <span></span>
@@ -126,15 +150,35 @@
     <h1><a href="/catsith">CAT SITH</a></h1>
   </main>
 
-  <!-- JS -->
-  <script>
-    const burger = document.getElementById('burger');
-    const navLinks = document.getElementById('nav-links');
+  <footer style="text-align: center; font-size: 0.75rem; color: #888; padding: 2rem 1rem;">
+    Typeface: <a href="https://www.velvetyne.fr/fonts/lithops/" target="_blank" rel="noopener" style="color: #d2b3ff;">Lithops</a> by Anne-Dauphine Borione, licensed under <a href="https://scripts.sil.org/OFL" target="_blank" rel="noopener" style="color: #d2b3ff;">SIL Open Font License v1.1</a>.
+  </footer>
 
-    burger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-      burger.classList.toggle('hidden');
-    });
-  </script>
+
+  <!-- JS -->
+ <script>
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('nav-links');
+
+  burger.addEventListener('click', (e) => {
+    e.stopPropagation(); // prevent triggering document click
+    navLinks.classList.toggle('show');
+    burger.classList.toggle('hidden');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('show')) {
+      navLinks.classList.remove('show');
+      burger.classList.remove('hidden');
+    }
+  });
+
+  // Prevent clicks inside menu from closing it immediately
+  navLinks.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+</script>
+
 </body>
 </html>
