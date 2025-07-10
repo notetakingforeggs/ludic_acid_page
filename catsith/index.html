@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cat Sith – Ludic Acid</title>
+  <link rel="icon" href="../assets/images/cat-solid.svg" type="image/svg+xml">
+
+  <!-- Core font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Display font -->
+  <style>
+  @font-face{
+    font-family:"Lithops";
+    src:url("../assets/fonts/Lithops-Regular.woff") format("woff");
+    font-display:swap;
+  }
+  </style>
+
+  <style>
+  /* === RESET & TOKENS === */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font:400 1rem/1.6 "Inter",sans-serif;
+    background:#140b0c;color:#f4f4f4;overflow-x:hidden;
+  }
+  a{color:#800080;text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* === NAVBAR (edge‑to‑edge with 1 rem inset) === */
+  header{
+    position:fixed;inset:0 0 auto;
+    background:rgba(20,11,12,.75);backdrop-filter:blur(6px);
+    z-index:1000
+  }
+  .navbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1rem;           /* 1 rem all round */
+    max-width:none;margin:0;
+  }
+  .logo img{height:50px;width:auto;display:block}
+  .nav-row{display:flex;gap:1.5rem;list-style:none}
+  .nav-row a,.nav-links a{
+    text-transform:uppercase;letter-spacing:.04em;font-weight:600;font-size:.875rem;color:#f4f4f4
+  }
+
+  /* burger */
+  .burger{display:none;flex-direction:column;justify-content:space-between;
+    width:24px;height:18px;background:none;border:0;cursor:pointer}
+  .burger span{height:3px;width:100%;background:#f4f4f4;border-radius:2px}
+
+  /* mobile overlay */
+  .nav-links{
+    display:none;flex-direction:column;gap:2rem;
+    position:fixed;inset:0 0 0 auto;width:70%;max-width:320px;
+    background:rgba(20,11,12,.9);padding:5rem 2rem;z-index:999
+  }
+  .nav-links.show{display:flex}
+
+  /* === HERO VIDEO === */
+  .hero{
+    position:relative;width:100%;height:100vh;overflow:hidden;
+  }
+  .hero video{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.5);z-index:-1;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,0) 70%,#140b0c);
+    z-index:-1;
+  }
+
+  /* === GENERIC SECTIONS === */
+  .content-section{padding:6rem 1.5rem;}
+  .content-section > h2{
+    font-family:"Lithops","Inter",sans-serif;
+    text-align:center;
+    margin:0 auto 2rem;
+    font-size:4rem;letter-spacing:.04em;text-transform:uppercase;color:#800080;border:0;font-weight: 100;
+  }
+  .section-body{
+    max-width:900px;margin:0 auto;
+    display:grid;gap:1.5rem;text-align:left;
+  }
+  .section-body img{width:100%;height:auto;border-radius:.5rem;display:block;}
+  .section-body figure{margin:0;}
+  .section-body figcaption{font-size:.875rem;opacity:.8;margin-top:.25rem;text-align:center;}
+
+  /* === PRAISE CAROUSEL === */
+.carousel {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+}
+.carousel::-webkit-scrollbar { display: none; }
+
+.testimonial {
+  flex: 0 0 80%;
+  scroll-snap-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.testimonial img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+.testimonial p {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+.testimonial cite {
+  font-weight: 600;
+  color: #800080;
+  font-size: 0.875rem;
+}
+
+
+  /* === RESPONSIVE BREAKPOINTS === */
+  @media(max-width:768px){
+    .nav-row{display:none}
+    .burger{display:flex}
+  }
+
+
+  .hidden { display: none; }               /* utility – hide any element   */
+   /* 1. make the headers look clickable  */
+  .content-section > h2 { cursor: pointer; }
+
+  /* 2. collapse helper
+        – apply `collapsed` to <section>
+        – hide everything except the h2      */
+  .content-section.collapsed > :not(h2) { display: none; }
+
+    .content-section.collapsed {
+    padding-block: 0;       /* was 6 rem top & bottom */
+  }
+  .content-section.collapsed > h2 {
+    margin-bottom: 0;       /* was 2 rem */
+  }
+
+    
+  /* ─────────── FOOTER STYLES ─────────── */
+  footer{
+    background:#140b0c;                  /* same velvety backdrop */
+    padding:2rem 1rem 1rem;
+    margin-top:4rem;                     /* breathing-space above footer */
+  }
+  .footer-logos{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:2.5rem;
+    flex-wrap:wrap;
+    margin-bottom:1rem;
+  }
+  .footer-logos img{
+    height:60px;                         /* tweak as needed */
+    width:auto;
+    filter:grayscale(100%) brightness(0.85) contrast(1.1);
+    opacity:0.8;
+    transition:opacity .2s;
+  }
+  .footer-logos img:hover{ opacity:1; }  /* optional subtle hover */
+  .footer-note{
+    font-size:.75rem;
+    text-align:center;
+    opacity:0.6;
+  }
+  .footer-note a{ color:inherit; }       /* keep link the same muted colour */
+
+  
+
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <a href="/" class="logo"><img src="../assets/images/cat_sith_logo_white.png" alt="Ludic Acid"></a>
+
+    <ul class="nav-row">
+      <li><a href="#about">About</a></li>
+      <li><a href="#praise">Praise</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#info">Info</a></li>
+      <li><a href="#media">Media</a></li>
+    </ul>
+
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-links" id="nav-links">
+      <a href="#about">About</a>
+      <a href="#praise">Praise</a>
+      <a href="#team">Team</a>
+      <a href="#info">Info</a>
+      <a href="#media">Media</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO (background video only) -->
+<section class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="../assets/images/background.webm" type="video/webm">
+  </video>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="content-section">
+  <h2>About</h2>
+  <div class="section-body">
+     <p>
+    <em>Cat Sith</em> is a high-impact street-theatre spectacle that fuses
+    acrobatic puppetry with physical theatre. The show follows Sammy—
+    an ever-hopeful cat-catcher—on a pursuit of a
+    mysterious feline prowling streets and green spaces. What begins as
+    two separate walkabouts soon turns into a mischievous promenade
+    chase, before exploding into a circle-act finale packed with flips,
+    lifts and Lion-Dance-inspired choreography.
+  </p>
+
+  <p>
+    The production premiered in 2021 at SURGE Festival (Glasgow) and has
+    since delighted crowds at Spraoi (Ireland), COP26 with
+    <em>Little Amal</em>, school playgrounds and even aboard a boat—
+    proof of its agile, low-tech touring design. Suitable for all ages,
+    <em>Cat Sith</em> blurs the line between reality and folklore,
+    awakening child-like curiosity in adults and youngsters alike. 
+  </p>
+
+  <p>
+    Ludic Acid’s creative team blends circus acrobatics, puppetry and
+    theatre to craft work that is playful, accessible and easily adapted
+    to site-specific themes or locations—whether that’s a town square,
+    woodland trail or waterfront promenade. 
+    <p>
+  For more information, check out our
+  <a href="../assets/cat-sith-touring-pack.pdf" download>touring pack</a>.
+</p>
+  </p>
+    <figure>
+      <img src="../assets/images/sky-cat.jpeg" alt="About placeholder 1">
+      <!-- <figcaption>Placeholder caption for About image 1</figcaption> -->
+    </figure>
+
+  </div>
+</section>
+
+<!-- PRAISE -->
+<section id="praise" class="content-section">
+  <h2>Praise</h2>
+  
+  <div class="section-body">
+      <div class="carousel-window">
+
+     <div class="carousel">
+
+
+    <figure class="testimonial">
+      <img src="../assets/images/connie_treves.jpeg" alt="connie treves image">
+      <p>“Your wild cat was universally said to be
+the best puppet animal Amal has met on
+the Walk. Big praise considering she has
+met a lot!”</p>
+      <cite>Connie Treves - Good Chance Theatre</cite>
+    </figure>
+
+    <figure class="testimonial">
+      <img src="../assets/images/david-doust.jpg" alt="david doust image">
+      <p>“A masterclass in audience engagement.”</p>
+      <cite>David Doust - Outdoor Arts UK</cite>
+    </figure>
+
+    <figure class="testimonial">
+      <img src="../assets/images/Ashley-Peevor.webp" alt="Ashley peevor headshot">
+      <p>“A riot of colour and surreal theatricality.”</p>
+      <cite>Ashley Peevor - DOCA</cite>
+    </figure>
+
+  </div>
+    <figure>
+      <img src="../assets/images/crawick .jpg" alt="Audience reaction placeholder">
+      <!-- <figcaption>Ecstatic audience under the night sky</figcaption> -->
+    </figure>
+  </div>
+</section>
+
+
+
+
+<section id="team" class="content-section">
+  <h2>Team</h2>
+
+  <div class="section-body team-layout">
+    <!-- Core team bios -->
+    <div class="team-core">
+      <h3>Core Team</h3>
+
+      <p><strong>Jonah Russell</strong> – versatile acrobat and creator, devising and performing with companies such as <em>Cie. Max Calaf</em>, <em>Mimbre</em> and <em>Cirqulation Locale</em>; Worked with Kun Seng Keng UK Lion-Dance team workshopping for <em>TriOperas</em> </p>
+
+      <p><strong>Lizzie Clapham</strong> – circus artist blending acrobatics, clown and physical theatre; has toured with Cirque Bijou, Mimbre and The Invisible Circus after graduating Circomedia. </p>
+
+      <p><strong>Rachel Still</strong> – actor-musician with eight years in youth arts; holds a BA in Acting for Stage & Screen and specialises in children’s theatre.</p>
+    </div>
+
+    <!-- Portrait placeholder -->
+    <figure class="team-photo">
+      <img src="../assets/images/ludicacidcrew.jpg" alt="Core team portrait placeholder">
+      <figcaption>Rachel, Jonah and Lizzie.</figcaption>
+    </figure>
+
+    <!-- Collaborators -->
+    <div class="team-collab">
+      <h3>Collaborators</h3>
+
+      <p><strong>Lucie N’Duhirahe</strong> – award-winning circus performer and outside-eye, co-founder of Collectif & Then. </p>
+
+      <p><strong>Seb Mayer</strong> – puppet designer/fabricator whose outdoor show <em>Don Quixote</em> was praised as “brilliant puppet design” by Mervyn Millar</p>
+
+      <p><strong>Jo May</strong> – puppet maker/puppeteer with credits from Little Angel Theatre to the National.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- INFO -->
+<section id="info" class="content-section">
+  <h2>Info</h2>
+  <div class="section-body">
+    <p><strong>Duration:</strong> 25-30 min </p>
+    <p><strong>Footprint:</strong> Outdoor, initially roving with finale in the round</p>
+    <p><strong>Touring party:</strong> 3</p>
+    <p><strong>Minimum Requirements:</strong>  10 × 10 m flat ground</p>
+    <p><strong>Age Suitability:</strong> All ages</p>
+    <p><strong>Tech:</strong> Fully self‑contained</p>
+    <p><strong>Contact:</strong> <a href="mailto:hello@ludicacid.com">hello@ludicacid.com</a></p>
+    <figure>
+      <img src="../assets/images/cat-car.jpg" alt="Technical setup placeholder">
+      <figcaption>Cast and kit fit in a hatchback</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section id="media" class="content-section">
+  <h2>Media</h2>
+  <div class="section-body">
+    <p>Pending</p>
+  </div>
+</section>
+
+<!-- === JS (menu toggle) === -->
+<script>
+const burger=document.getElementById("burger");
+const navLinks=document.getElementById("nav-links");
+burger.addEventListener("click",e=>{
+  e.stopPropagation();
+  navLinks.classList.toggle("show");
+});
+document.addEventListener("click",()=>navLinks.classList.remove("show"));
+navLinks.addEventListener("click",e=>e.stopPropagation());
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector("#praise .carousel");
+  if (!track) return;
+
+  const card      = track.querySelector(".testimonial");
+  const cardGap   = parseFloat(getComputedStyle(track).gap) || 0;
+  const step      = card.offsetWidth + cardGap;   // distance to scroll each hop
+  let   direction = 1;                            // 1 = right, -1 = left
+
+  function hop() {
+    track.scrollBy({ left: step * direction, behavior: "smooth" });
+
+    // after the smooth scroll finishes (~500 ms), decide if we hit an edge
+    setTimeout(() => {
+      const atEnd   = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+      const atStart = track.scrollLeft <= 0;
+      if (atEnd || atStart) direction *= -1;      // ping-pong back the other way
+    }, 600);                                      // a bit longer than CSS scroll time
+  }
+
+  const timer = setInterval(hop, 3500);           // hop every 3.5 s
+
+  /* — optional: pause when user hovers/focuses — */
+  track.addEventListener("mouseenter", () => clearInterval(timer));
+  track.addEventListener("mouseleave", () => setInterval(hop, 3500));
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  /* ────────────────────────────────────────
+     0.  grab all real content sections
+  ──────────────────────────────────────── */
+  const sections = Array.from(document.querySelectorAll(".content-section"));
+
+  /* ────────────────────────────────────────
+     1.  collapse everything on first load
+  ──────────────────────────────────────── */
+  sections.forEach(sec => {
+  if (sec.id !== "about") sec.classList.add("collapsed");
+});
+
+  /* helper – open one, collapse the rest */
+  function openSection(id) {
+    sections.forEach(sec => {
+      if (sec.id === id) {
+        sec.classList.remove("collapsed");
+        sec.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        sec.classList.add("collapsed");
+      }
+    });
+  }
+
+  /* ────────────────────────────────────────
+     2.  navbar links
+  ──────────────────────────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", e => {
+      const targetId = link.getAttribute("href").slice(1);
+      const target   = document.getElementById(targetId);
+      if (!target) return;                  // skip external anchors
+      e.preventDefault();
+      openSection(targetId);
+
+      /* close burger menu on mobile */
+      if (typeof navLinks !== "undefined")
+        navLinks.classList.remove("show");
+    });
+  });
+
+  /* ────────────────────────────────────────
+     3.  header (h2) clicks
+  ──────────────────────────────────────── */
+  sections.forEach(sec => {
+    const h2 = sec.querySelector("h2");
+    h2.addEventListener("click", () => {
+      /* if closed → open (and close others) */
+      if (sec.classList.contains("collapsed")) {
+        openSection(sec.id);
+      }
+      /* if open → just collapse this one   */
+      else {
+        sec.classList.add("collapsed");
+      }
+    });
+  });
+});
+</script>
+
+<!-- ────────────  FOOTER  ──────────── -->
+<footer>
+  <div class="footer-logos">
+    <img src="../assets/images/logos/CS.png"  alt="Creative Scotland">
+    
+    <img src="../assets/images/logos/surge.avif"              alt="SURGE">
+    <img src="../assets/images/logos/glastonbury.png"   alt="Glastonbury Arts Festival">
+  </div>
+
+  <p class="footer-note">
+    “Lithops” typeface © <a href="https://velvetyne.fr" target="_blank" rel="noopener">Velvetyne Type Foundry</a>
+  </p>
+</footer>
+
+
+</body>
+</html>
