@@ -19,7 +19,6 @@
       font-display: swap;
     }
 
-
     /* GLOBAL RESET */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
@@ -28,6 +27,9 @@
       background: #140b0c;
       color: #f4f4f4;
       overflow-x: hidden;
+      display:flex;               /* enable flex column for footer pin */
+      flex-direction:column;
+      min-height:100vh;
     }
     a { color: inherit; text-decoration: none; }
 
@@ -45,7 +47,7 @@
       align-items: start;
       padding: 1rem 1.5rem;
     }
-   
+
     .burger {
       display: flex;
       flex-direction: column;
@@ -68,26 +70,21 @@
 
     /* MENU (SLIDE DOWN) */
     .nav-links {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: fit-content;
-  background: #140b0c;
-  list-style: none;
-  display: none; /* hidden by default */
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: start;
-  padding: 1rem 1.5rem 1.5rem; /* adjust top padding to align with navbar height if needed */
-  z-index: 996;
-  
-}
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: fit-content;
+      background: #140b0c;
+      list-style: none;
+      display: none; /* hidden by default */
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: start;
+      padding: 1rem 1.5rem 1.5rem; /* align with navbar height if needed */
+      z-index: 996;
+    }
 
-.nav-links.show {
-  display: flex;
-}
-
-
+    .nav-links.show { display: flex; }
 
     .nav-links li { margin: 1rem 0; }
     .nav-links a { font-size: 1.25rem; color: #d2b3ff; }
@@ -95,28 +92,40 @@
 
     /* MAIN CAT SITH BUTTON */
     .home-links {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      text-align: center;
-      padding-top: 4rem;
+      flex:1 0 auto;            /* fill remaining height, allow footer pin */
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding: 0 0.05ch;        /* tight horizontal padding */
     }
     .home-links h1 a {
       font-family: 'Lithops', sans-serif;
-      font-size: clamp(18rem, 10vw, 6rem);
+      font-size: clamp(4rem, 15vw, 18rem); /* desktop scaling */
       color: #800080;
+      display: inline-block;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
       transition: filter 0.3s ease;
       font-weight: 100;
+      line-height: 0.9;
+    }
+    .home-links h1 a span { display:inline-block; padding:0 0.05ch; }
+
+    /* MOBILE TWEAKS */
+    @media (max-width: 600px) {
+      /* offset for fixed header (~64px) plus small margin */
+      .home-links { padding-top: 5rem; }
+
+      /* size adjustments */
+      .home-links h1 a { font-size: 24vw; line-height: 0.85; }
+      .home-links h1 a span:first-child { font-size: 32vw; }
     }
 
+    .home-links h1 a:hover { text-decoration:none; filter: blur(2px) brightness(1.2); }
 
-    .home-links h1 a:hover {
-    text-decoration: none; /* remove underline */
-    filter: blur(2px) brightness(1.2);
-    }
+    /* FOOTER pinned bottom */
+    footer { flex:0 0 auto; text-align:center; font-size:0.75rem; color:#888; padding:2rem 1rem; }
 
   </style>
 </head>
@@ -130,9 +139,7 @@
       </a>
 
       <button class="burger" aria-label="Menu" id="burger">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </nav>
 
@@ -147,38 +154,33 @@
 
   <!-- MAIN CONTENT -->
   <main class="home-links">
-    <h1><a href="/catsith">CAT SITH</a></h1>
+    <h1><a href="/catsith"><span>CAT</span> <span>SITH</span></a></h1>
   </main>
 
-  <footer style="text-align: center; font-size: 0.75rem; color: #888; padding: 2rem 1rem;">
+  <footer>
     Typeface: <a href="https://www.velvetyne.fr/fonts/lithops/" target="_blank" rel="noopener" style="color: #d2b3ff;">Lithops</a> by Anne-Dauphine Borione, licensed under <a href="https://scripts.sil.org/OFL" target="_blank" rel="noopener" style="color: #d2b3ff;">SIL Open Font License v1.1</a>.
   </footer>
 
-
   <!-- JS -->
- <script>
-  const burger = document.getElementById('burger');
-  const navLinks = document.getElementById('nav-links');
+  <script>
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('nav-links');
 
-  burger.addEventListener('click', (e) => {
-    e.stopPropagation(); // prevent triggering document click
-    navLinks.classList.toggle('show');
-    burger.classList.toggle('hidden');
-  });
+    burger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle('show');
+      burger.classList.toggle('hidden');
+    });
 
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (navLinks.classList.contains('show')) {
-      navLinks.classList.remove('show');
-      burger.classList.remove('hidden');
-    }
-  });
+    document.addEventListener('click', () => {
+      if (navLinks.classList.contains('show')) {
+        navLinks.classList.remove('show');
+        burger.classList.remove('hidden');
+      }
+    });
 
-  // Prevent clicks inside menu from closing it immediately
-  navLinks.addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
-</script>
+    navLinks.addEventListener('click', (e) => e.stopPropagation());
+  </script>
 
 </body>
 </html>
