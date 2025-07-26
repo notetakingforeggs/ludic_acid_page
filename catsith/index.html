@@ -215,7 +215,7 @@
   <!-- HERO (background video only) -->
   <section class="hero">
     <video autoplay muted loop playsinline>
-      <source src="../assets/images/background.webm" type="video/webm">
+      <source src="../assets/images/background.webm" data-src-small="../assets/images/background-vertical.webm" type="video/webm">
     </video>
   </section>
 
@@ -463,6 +463,19 @@
     });
   });
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const video = document.getElementById("hero-video");
+      const source = video.querySelector("source");
+      const mobileSrc = source.getAttribute("data-src-small");
+
+      if (window.innerWidth <= 768) {
+        source.setAttribute("src", mobileSrc);
+        video.load(); // Re-load video with new source
+      }
+    });
+  </script>
+
 
   <!-- ────────────  FOOTER  ──────────── -->
   <footer>
