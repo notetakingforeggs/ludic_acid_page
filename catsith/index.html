@@ -60,7 +60,7 @@
 
     /* === HERO VIDEO === */
     .hero{
-      position:relative;width:100%;height:100vh;overflow:hidden;
+      position:relative;width:100%;height:100vh;overflow:hidden; 
     }
     .hero video{
       position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.5);z-index:-1;
@@ -71,9 +71,31 @@
       z-index:-1;
     }
 
+    #hero-section{    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    }
+
+    .hero-text{
+      margin-top: 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-items: start;
+      
+      }
+    .hero-text>h1{
+      font-size: 14rem;
+      margin-top: -6rem;
+      margin-bottom: -6rem;
+    }
+
         /* ─── Scroll cue ─── */
     .scroll-cue{
-      position:absolute;
+      position:relative;
+      margin-top: 2rem;
       bottom:2rem;
       left:50%;
       transform:translateX(-50%);
@@ -105,7 +127,7 @@
 
     /* === GENERIC SECTIONS === */
     .content-section{padding:6rem 1.5rem;}
-    .content-section > h2{
+    .content-section > h2, h1{
       font-family:"Lithops","Inter",sans-serif;
       text-align:center;
       margin:0 auto 2rem;
@@ -126,13 +148,29 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding-bottom: 1rem;
+
+    -webkit-mask-image: linear-gradient(to right,
+                      transparent   0%,
+                      #000          50%,
+                      #000          50%,
+                      transparent 100%);
+    mask-image: linear-gradient(to right,
+                  transparent   2%,
+                  #000          8%,
+                  #000          92%,
+                  transparent 98%);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    
   }
   .carousel::-webkit-scrollbar { display: none; }
+
+
 
   .testimonial {
     flex: 0 0 80%;
     scroll-snap-align: center;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(4px);
     border-radius: 1rem;
     padding: 1rem;
@@ -245,8 +283,8 @@
   </header>
 
 <!-- HERO (background video only) -->
-<section class="hero">
-  <video autoplay muted loop playsinline>
+<section id = hero-section class="hero">
+  <video autoplay muted loop playsinline poster="../assets/images/wick.jpg">
     <!-- ⬇️ mobile-first source -->
     <source src="../assets/images/background-mobile.webm"
             type="video/webm"
@@ -256,7 +294,45 @@
     <source src="../assets/images/background.webm"
             type="video/webm">
   </video>
-  <!-- scroll invitation -->
+
+  <div class="hero-text">
+    <h3><i>Presenting...</i></h3>
+    <h1>CAT SITH</h1>
+    <p><em>/kæt shee/ </em></p>
+  </div>
+ 
+
+  <section id="praise" class="content-section-hero" style="visibility: visible;">
+    <div class="section-body">
+      <div class="carousel-window">
+
+        <div class="carousel">
+
+
+          <figure class="testimonial">
+            <img src="../assets/images/connie_treves.jpeg" alt="connie treves image">
+            <p>“Your wild cat was universally said to be
+      the best puppet animal Amal has met on
+      the Walk. Big praise considering she has
+      met a lot!”</p>
+            <cite>Connie Treves - Good Chance Theatre</cite>
+          </figure>
+
+          <figure class="testimonial">
+            <img src="../assets/images/david-doust.jpg" alt="david doust image">
+            <p>“A masterclass in audience engagement.”</p>
+            <cite>David Doust - Outdoor Arts UK</cite>
+          </figure>
+
+          <figure class="testimonial">
+            <img src="../assets/images/Ashley-Peevor.webp" alt="Ashley peevor headshot">
+            <p>“A riot of colour and surreal theatricality.”</p>
+            <cite>Ashley Peevor - DOCA</cite>
+          </figure>
+        </div>
+      </div>
+    </div>  
+ <!-- scroll invitation -->
   <div class="scroll-cue" id="scroll-cue">
     <span>see more</span>
     <!-- down chevron -->
@@ -264,7 +340,7 @@
       <path d="M12 16l-6-6h12l-6 6z" fill="currentColor"/>
     </svg>
   </div>
-
+  </section>
 </section>
 
   <!-- ABOUT -->
@@ -452,7 +528,7 @@
   </script>
   <script>
   document.addEventListener("DOMContentLoaded", () => {
-    /* ────────────────────────────────────────
+    /* ────────────────────────────────────────hero
       0.  grab all real content sections
     ──────────────────────────────────────── */
     const sections = Array.from(document.querySelectorAll(".content-section"));
