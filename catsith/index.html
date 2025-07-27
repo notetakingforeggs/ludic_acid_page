@@ -48,13 +48,13 @@
     /* burger */
     .burger{display:none;flex-direction:column;justify-content:space-between;
       width:24px;height:18px;background:none;border:0;cursor:pointer}
-    .burger span{height:3px;width:100%;background:#f4f4f4;border-radius:2px}
+    .burger span{height:3px;width:100%;background:#f4f4f4;border-radius:2px;}
 
     /* mobile overlay */
     .nav-links{
-      display:none;flex-direction:column;gap:2rem;
+      display:none;flex-direction:column;gap:2rem; text-align: right; margin-top: 1rem;
       position:fixed;inset:0 0 0 auto;width:70%;max-width:320px;
-      background:rgba(20,11,12,.9);padding:5rem 2rem;z-index:999
+      background:transparent ;padding:5rem 2rem;z-index:999
     }
     .nav-links.show{display:flex}
 
@@ -212,12 +212,19 @@
     </nav>
   </header>
 
-  <!-- HERO (background video only) -->
-  <section class="hero">
-    <video autoplay muted loop playsinline>
-      <source src="../assets/images/background.webm" data-src-small="../assets/images/background-vertical.webm" type="video/webm">
-    </video>
-  </section>
+<!-- HERO (background video only) -->
+<section class="hero">
+  <video autoplay muted loop playsinline>
+    <!-- ⬇️ mobile-first source -->
+    <source src="../assets/images/background-mobile.webm"
+            type="video/webm"
+            media="(max-width: 768px)">
+
+    <!-- ⬇️ default / desktop fallback -->
+    <source src="../assets/images/background.webm"
+            type="video/webm">
+  </video>
+</section>
 
   <!-- ABOUT -->
   <section id="about" class="content-section">
@@ -462,18 +469,6 @@
       });
     });
   });
-  </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const video = document.getElementById("hero-video");
-      const source = video.querySelector("source");
-      const mobileSrc = source.getAttribute("data-src-small");
-
-      if (window.innerWidth <= 768) {
-        source.setAttribute("src", mobileSrc);
-        video.load(); // Re-load video with new source
-      }
-    });
   </script>
 
 
