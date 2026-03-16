@@ -201,6 +201,15 @@
     @media(max-width:768px){
       .nav-row{display:none}
       .burger{display:flex}
+      .hero-text h1{ font-size:4.5rem; margin-top: -2rem; margin-bottom: -2rem; }
+      .hero-text {margin-top: 6rem;}
+      .testimonial p{
+          display: -webkit-box;
+          -webkit-line-clamp: 2;          /* how many lines to keep */
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
     }
 
 
@@ -284,8 +293,7 @@
 
 <!-- HERO (background video only) -->
 <section id = hero-section class="hero">
-  <video autoplay muted loop playsinline poster="../assets/images/wick.jpg">
-    <!-- ⬇️ mobile-first source -->
+<video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="../assets/images/wick.jpg">    
     <source src="../assets/images/background-mobile.webm"
             type="video/webm"
             media="(max-width: 768px)">
