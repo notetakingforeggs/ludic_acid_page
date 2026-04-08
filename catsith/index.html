@@ -60,7 +60,8 @@
 
     /* === HERO VIDEO === */
     .hero{
-      position:relative;width:100%;height:100vh;overflow:hidden; 
+      position:relative;width:100%;height:100vh;height:100svh;overflow:hidden;
+      background:url('../assets/images/wick.jpg') center/cover no-repeat;
     }
     .hero video{
       position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.5);z-index:-1;
@@ -270,7 +271,7 @@
       <a href="/" class="logo"><img src="../assets/images/cat_sith_logo_white.png" alt="Ludic Acid"></a>
 
       <ul class="nav-row">
-        <li><a href="#about">About</a></li>
+        <li><a href="#about">TEST</a></li>
         <li><a href="#praise">Praise</a></li>
         <li><a href="#team">Team</a></li>
         <li><a href="#info">Info</a></li>
@@ -293,14 +294,8 @@
 
 <!-- HERO (background video only) -->
 <section id = hero-section class="hero">
-<video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="../assets/images/wick.jpg">    
-    <source src="../assets/images/background-mobile.webm"
-            type="video/webm"
-            media="(max-width: 768px)">
-
-    <!-- ⬇️ default / desktop fallback -->
-    <source src="../assets/images/background.webm"
-            type="video/webm">
+<video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="../assets/images/wick.jpg">
+    <source src="../assets/images/background.webm" type="video/webm">
   </video>
 
   <div class="hero-text">
@@ -493,6 +488,20 @@
       <p>Pending</p>
     </div>
   </section>
+
+  <!-- swap in mobile video sources before load -->
+  <script>
+  (function(){
+    var video = document.querySelector('.hero video');
+    if (!video) return;
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      video.innerHTML =
+        '<source src="../assets/images/background-mobile.mp4" type="video/mp4">' +
+        '<source src="../assets/images/background-mobile.webm" type="video/webm">';
+      video.load();
+    }
+  })();
+  </script>
 
   <!-- === JS (menu toggle) === -->
   <script>
