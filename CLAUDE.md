@@ -40,4 +40,10 @@ Shared assets live in `assets/`: custom font (`Lithops-Regular.woff`), images, v
 - Dark theme: `#140b0c` background, light text
 - `Lithops-Regular.woff` (local) for headings; Inter (Google Fonts) for body
 - Flexbox and CSS Grid for layout
-- `backdrop-filter: blur()` on the sticky nav header
+- `backdrop-filter: blur()` on the sticky nav heade
+
+## Commit Conventions
+
+- Commmit frequently
+- Do not try and attribute yourself (Claude/Anthropic) in any commit.
+
