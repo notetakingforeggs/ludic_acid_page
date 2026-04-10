@@ -1,185 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ludic Acid – Home</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-
-  <!-- GOOGLE FONT (Inter) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ludic Acid</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/shared.css">
 
   <style>
+  body { display: flex; flex-direction: column; min-height: 100vh; }
 
-    @font-face {
-      font-family: 'Lithops';
-      src: url('assets/fonts/Lithops-Regular.woff') format('woff');
-      font-weight: normal;
-      font-style: normal;	      font-display: swap;
-    }
+  /* === HERO === */
+  .home-hero {
+    height: 100vh;
+    height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 0.05ch;
+    flex-shrink: 0;
+  }
+  .home-hero h1 a {
+    font-family: 'Lithops', sans-serif;
+    font-size: clamp(4rem, 15vw, 18rem);
+    color: #800080;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    transition: filter 0.3s ease;
+    font-weight: 100;
+    line-height: 0.9;
+  }
+  .home-hero h1 a:hover { filter: blur(2px) brightness(1.2); text-decoration: none; }
 
-    /* GLOBAL RESET */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #140b0c;
-      color: #f4f4f4;
-      overflow-x: hidden;
-      display:flex;               /* enable flex column for footer pin */
-      flex-direction:column;
-      min-height:100vh;
-    }
-    a { color: inherit; text-decoration: none; }
+  /* === PEOPLE PREVIEW (in people section) === */
+  .people-preview {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+  .person-preview { display: flex; flex-direction: column; gap: .5rem; }
+  .person-preview img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: .5rem; }
+  .person-preview strong { font-size: .9rem; }
+  .person-preview span { font-size: .8rem; color: #d2b3ff; }
 
-    /* NAVBAR */
-    header {
-      background: rgba(20,11,12,0.95);
-      backdrop-filter: blur(6px);
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-    }
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      padding: 1rem 1.5rem;
-    }
+  /* === PROJECT CARDS (in projects section) === */
+  .project-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: .75rem;
+    padding: 1.25rem;
+    transition: border-color .2s;
+  }
+  .project-card:hover { border-color: rgba(128,0,128,.5); }
+  .project-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: .5rem; }
+  .project-card h3 {
+    font-family: 'Lithops', sans-serif;
+    font-size: 1.5rem;
+    color: #800080;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .project-card p { font-size: .875rem; opacity: .8; }
 
-    .burger {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 24px;
-      height: 18px;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-    .burger span {
-      display: block;
-      height: 3px;
-      width: 100%;
-      background: #f4f4f4;
-      border-radius: 2px;
-    }
+  /* === FOOTER === */
+  footer { flex: 0 0 auto; text-align: center; font-size: .75rem; color: #888; padding: 2rem 1rem; }
 
-    .burger.hidden { display: none; }
-
-    /* MENU (SLIDE DOWN) */
-    .nav-links {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: fit-content;
-      background: #140b0c;
-      list-style: none;
-      display: none; /* hidden by default */
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: start;
-      padding: 1rem 1.5rem 1.5rem; /* align with navbar height if needed */
-      z-index: 996;
-    }
-
-    .nav-links.show { display: flex; }
-
-    .nav-links li { margin: 1rem 0; }
-    .nav-links a { font-size: 1.25rem; color: #d2b3ff; }
-    .nav-links a:hover { text-decoration: underline; }
-
-    /* MAIN CAT SITH BUTTON */
-    .home-links {
-      flex:1 0 auto;            /* fill remaining height, allow footer pin */
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding: 0 0.05ch;        /* tight horizontal padding */
-    }
-    .home-links h1 a {
-      font-family: 'Lithops', sans-serif;
-      font-size: clamp(4rem, 15vw, 18rem); /* desktop scaling */
-      color: #800080;
-      display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      transition: filter 0.3s ease;
-      font-weight: 100;
-      line-height: 0.9;
-    }
-    .home-links h1 a span { display:inline-block; padding:0 0.05ch; }
-
-    /* MOBILE TWEAKS */
-    @media (max-width: 600px) {
-      /* offset for fixed header (~64px) plus small margin */
-      .home-links { padding-top: 5rem; }
-
-      /* size adjustments */
-      .home-links h1 a { font-size: 24vw; line-height: 0.85; }
-      .home-links h1 a span:first-child { font-size: 32vw; }
-    }
-
-    .home-links h1 a:hover { text-decoration:none; filter: blur(2px) brightness(1.2); }
-
-    /* FOOTER pinned bottom */
-    footer { flex:0 0 auto; text-align:center; font-size:0.75rem; color:#888; padding:2rem 1rem; }
-
+  @media (max-width: 600px) {
+    .home-hero { padding-top: 5rem; }
+    .home-hero h1 a { font-size: 24vw; line-height: .85; }
+  }
   </style>
 </head>
-
 <body>
-  <!-- NAVBAR -->
-  <header>
-    <nav class="navbar">
-      <a href="#" class="logo">
-        <img src="assets/images/cat_sith_logo_white.png" alt="Ludic Acid Logo" style="height:45px; width:auto;">
-      </a>
 
-      <button class="burger" aria-label="Menu" id="burger">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
-
-    <!-- SLIDE-DOWN MENU -->
-    <ul class="nav-links" id="nav-links">
+<header>
+  <nav class="navbar">
+    <a href="#" class="logo">
+      <img src="assets/images/cat_sith_logo_white.png" alt="Ludic Acid Logo" style="height:45px">
+    </a>
+    <ul class="nav-row">
       <li><a href="#about">About</a></li>
       <li><a href="#people">People</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-  </header>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="#about">About</a>
+      <a href="#people">People</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
 
-  <!-- MAIN CONTENT -->
-  <main class="home-links">
-    <h1><a href="/catsith"><span>CAT</span> <span>SITH</span></a></h1>
-  </main>
+<div class="home-hero">
+  <h1><a href="/catsith"><span>CAT</span> <span>SITH</span></a></h1>
+</div>
 
-  <footer>
-    Typeface: <a href="https://www.velvetyne.fr/fonts/lithops/" target="_blank" rel="noopener" style="color: #d2b3ff;">Lithops</a> by Anne-Dauphine Borione, licensed under <a href="https://scripts.sil.org/OFL" target="_blank" rel="noopener" style="color: #d2b3ff;">SIL Open Font License v1.1</a>.
-  </footer>
+<main>
+  <!-- ABOUT -->
+  <section id="about" class="content-section">
+    <h2>About</h2>
+    <div class="section-body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+      <figure>
+        <img src="https://picsum.photos/seed/ludicacid/900/500" alt="Ludic Acid in action">
+      </figure>
+    </div>
+  </section>
 
-  <!-- JS -->
-  <script>
-    const burger = document.getElementById('burger');
-    const navLinks = document.getElementById('nav-links');
+  <!-- PEOPLE -->
+  <section id="people" class="content-section">
+    <h2>People</h2>
+    <div class="section-body">
+      <div class="people-preview">
+        <div class="person-preview">
+          <img src="https://picsum.photos/seed/jonah/400/400" alt="Jonah Russell">
+          <strong>Jonah Russell</strong>
+          <span>Acrobat · Creator</span>
+        </div>
+        <div class="person-preview">
+          <img src="https://picsum.photos/seed/lizzie/400/400" alt="Lizzie Clapham">
+          <strong>Lizzie Clapham</strong>
+          <span>Circus Artist</span>
+        </div>
+        <div class="person-preview">
+          <img src="https://picsum.photos/seed/rachel/400/400" alt="Rachel Still">
+          <strong>Rachel Still</strong>
+          <span>Actor · Musician</span>
+        </div>
+      </div>
+      <p><a href="/people">Meet the full team →</a></p>
+    </div>
+  </section>
 
-    burger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      navLinks.classList.toggle('show');
-      burger.classList.toggle('hidden');
-    });
+  <!-- PROJECTS -->
+  <section id="projects" class="content-section">
+    <h2>Projects</h2>
+    <div class="section-body">
+      <div class="project-grid">
+        <div class="project-card">
+          <img src="assets/images/sky-cat.jpeg" alt="Cat Sith">
+          <h3>Cat Sith</h3>
+          <p>A high-impact street theatre spectacle fusing acrobatic puppetry with physical theatre. Touring since 2021.</p>
+          <a href="/catsith">Learn more →</a>
+        </div>
+        <div class="project-card">
+          <img src="https://picsum.photos/seed/project2/600/338" alt="Future project">
+          <h3>Lorem Ipsum</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Coming soon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    document.addEventListener('click', () => {
-      if (navLinks.classList.contains('show')) {
-        navLinks.classList.remove('show');
-        burger.classList.remove('hidden');
+  <!-- CONTACT -->
+  <section id="contact" class="content-section">
+    <h2>Contact</h2>
+    <div class="section-body">
+      <p>For touring enquiries, booking and press:</p>
+      <p><a href="mailto:hello@ludicacid.com">hello@ludicacid.com</a></p>
+      <p><a href="#">Instagram</a></p>
+      <p><a href="#">Facebook</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Typeface: <a href="https://www.velvetyne.fr/fonts/lithops/" target="_blank" rel="noopener" style="color:#d2b3ff;">Lithops</a> by Anne-Dauphine Borione, licensed under <a href="https://scripts.sil.org/OFL" target="_blank" rel="noopener" style="color:#d2b3ff;">SIL Open Font License v1.1</a>.
+</footer>
+
+<script src="assets/shared.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var sections = Array.from(document.querySelectorAll('.content-section'));
+
+  sections.forEach(function (sec) {
+    if (sec.id !== 'about') sec.classList.add('collapsed');
+  });
+
+  function openSection(id) {
+    sections.forEach(function (sec) {
+      if (sec.id === id) {
+        sec.classList.remove('collapsed');
+        sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        sec.classList.add('collapsed');
       }
     });
+  }
 
-    navLinks.addEventListener('click', (e) => e.stopPropagation());
-  </script>
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var targetId = link.getAttribute('href').slice(1);
+      var target   = document.getElementById(targetId);
+      if (!target) return;
+      e.preventDefault();
+      openSection(targetId);
+      var nl = document.getElementById('nav-links');
+      if (nl) nl.classList.remove('show');
+    });
+  });
+
+  sections.forEach(function (sec) {
+    var h2 = sec.querySelector('h2');
+    h2.addEventListener('click', function () {
+      if (sec.classList.contains('collapsed')) {
+        openSection(sec.id);
+      } else {
+        sec.classList.add('collapsed');
+      }
+    });
+  });
+});
+</script>
 
 </body>
 </html>

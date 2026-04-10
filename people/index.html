@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>People – Ludic Acid</title>
+  <link rel="icon" href="../assets/images/cat-solid.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/shared.css">
+
+  <style>
+  body { display: flex; flex-direction: column; min-height: 100vh; }
+  main { flex: 1 0 auto; padding-top: 5rem; }
+
+  /* Page heading */
+  .page-hero {
+    padding: 4rem 1.5rem 2rem;
+    text-align: center;
+  }
+  .page-hero h1 {
+    font-family: 'Lithops', 'Inter', sans-serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    color: #800080;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-weight: 100;
+  }
+
+  /* Section label */
+  .people-section { padding: 2rem 1.5rem 4rem; max-width: 960px; margin: 0 auto; }
+  .people-section h2 {
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: #d2b3ff;
+    margin-bottom: 2rem;
+    opacity: .8;
+  }
+
+  /* Grid */
+  .people-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  /* Card */
+  .person-card { display: flex; flex-direction: column; gap: .6rem; }
+  .person-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: .5rem;
+    display: block;
+    filter: grayscale(15%);
+    transition: filter .3s;
+  }
+  .person-card:hover img { filter: grayscale(0%); }
+  .person-card h3 {
+    font-family: 'Lithops', 'Inter', sans-serif;
+    font-size: 1.4rem;
+    color: #800080;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin-top: .25rem;
+  }
+  .person-card .role {
+    font-size: .8rem;
+    color: #d2b3ff;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+  }
+  .person-card p { font-size: .875rem; opacity: .75; line-height: 1.6; }
+  .person-card a.portfolio-link {
+    display: inline-block;
+    margin-top: .25rem;
+    font-size: .8rem;
+    color: #d2b3ff;
+    border-bottom: 1px solid rgba(210,179,255,.3);
+    padding-bottom: 2px;
+    transition: color .2s, border-color .2s;
+    text-decoration: none;
+  }
+  .person-card a.portfolio-link:hover { color: #f4f4f4; border-color: #f4f4f4; text-decoration: none; }
+
+  footer { flex: 0 0 auto; padding: 2rem 1rem; text-align: center; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <a href="/" class="logo">
+      <img src="../assets/images/cat_sith_logo_white.png" alt="Ludic Acid">
+    </a>
+    <ul class="nav-row">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#projects">Projects</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="/">Home</a>
+      <a href="/#about">About</a>
+      <a href="/#projects">Projects</a>
+      <a href="/#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="page-hero">
+    <h1>People</h1>
+  </div>
+
+  <!-- Core team -->
+  <section class="people-section">
+    <h2>Core Team</h2>
+    <div class="people-grid">
+
+      <div class="person-card">
+        <img src="https://picsum.photos/seed/jonah/600/600" alt="Jonah Russell">
+        <h3>Jonah Russell</h3>
+        <span class="role">Acrobat · Creator · Performer</span>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim.</p>
+        <a href="/jonah/" class="portfolio-link">Portfolio →</a>
+      </div>
+
+      <div class="person-card">
+        <img src="https://picsum.photos/seed/lizzie/600/600" alt="Lizzie Clapham">
+        <h3>Lizzie Clapham</h3>
+        <span class="role">Circus Artist · Performer</span>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris.</p>
+        <a href="#" class="portfolio-link">Portfolio →</a>
+      </div>
+
+      <div class="person-card">
+        <img src="https://picsum.photos/seed/rachel/600/600" alt="Rachel Still">
+        <h3>Rachel Still</h3>
+        <span class="role">Actor · Musician</span>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.</p>
+        <a href="#" class="portfolio-link">Portfolio →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Collaborators -->
+  <section class="people-section">
+    <h2>Collaborators</h2>
+    <div class="people-grid">
+
+      <div class="person-card">
+        <img src="https://picsum.photos/seed/lucie/600/600" alt="Lucie N'Duhirahe">
+        <h3>Lucie N'Duhirahe</h3>
+        <span class="role">Circus Performer · Outside Eye</span>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+      </div>
+
+      <div class="person-card">
+        <img src="https://picsum.photos/seed/sebmayer/600/600" alt="Seb Mayer">
+        <h3>Seb Mayer</h3>
+        <span class="role">Puppet Designer · Fabricator</span>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.</p>
+        <a href="https://www.sebmayer.com/" class="portfolio-link" target="_blank" rel="noopener">Website →</a>
+      </div>
+
+      <div class="person-card">
+        <img src="https://picsum.photos/seed/joanne/600/600" alt="Jo May">
+        <h3>Jo May</h3>
+        <span class="role">Puppet Maker · Puppeteer</span>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p class="footer-note">
+    "Lithops" typeface © <a href="https://velvetyne.fr" target="_blank" rel="noopener">Velvetyne Type Foundry</a>
+  </p>
+</footer>
+
+<script src="../assets/shared.js"></script>
+</body>
+</html>
