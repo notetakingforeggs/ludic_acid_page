@@ -40,15 +40,10 @@ sections.forEach((section) => {
   if (section.id !== "about") section.classList.add("collapsed");
 });
 
-function setSectionState(section, isOpen) {
-  section.classList.toggle("collapsed", !isOpen);
-  section.querySelector(".section-toggle")?.setAttribute("aria-expanded", String(isOpen));
-}
-
 function openSection(id) {
   sections.forEach((section) => {
     const opening = section.id === id;
-    setSectionState(section, opening);
+    section.classList.toggle("collapsed", !opening);
     if (opening) section.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 }
@@ -63,12 +58,12 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 });
 
 sections.forEach((section) => {
-  const toggle = section.querySelector(".section-toggle");
-  if (!toggle) return;
+  const heading = section.querySelector("h2");
+  if (!heading) return;
 
-  toggle.addEventListener("click", () => {
+  heading.addEventListener("click", () => {
     if (section.classList.contains("collapsed")) openSection(section.id);
-    else setSectionState(section, false);
+    else section.classList.add("collapsed");
   });
 });
 
