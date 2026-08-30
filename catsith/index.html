@@ -142,6 +142,47 @@
     .section-body figure{margin:0;}
     .section-body figcaption{font-size:.875rem;opacity:.8;margin-top:.25rem;text-align:center;}
 
+    /* === EDITORIAL IMAGE/TEXT LAYOUTS === */
+    .editorial-split{
+      max-width:1100px;
+      grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr);
+      align-items:stretch;
+      gap:clamp(2rem,5vw,5rem);
+    }
+    .editorial-copy{display:grid;align-content:center;gap:1.5rem;}
+    .editorial-split > figure{min-height:32rem;}
+    .editorial-split > figure img{height:100%;object-fit:cover;}
+    .editorial-split--reverse > figure{order:-1;}
+    .team-layout{
+      max-width:1100px;
+      grid-template-columns:minmax(0,1fr) minmax(260px,.8fr) minmax(0,1fr);
+      align-items:center;
+      gap:clamp(2rem,4vw,4rem);
+    }
+    .team-core,.team-collab{display:grid;gap:1rem;}
+    .team-photo img{aspect-ratio:3/4;object-fit:cover;}
+
+    /* === HERO TESTIMONIAL === */
+    .hero-testimonial{
+      position:relative;
+      display:grid;
+      grid-template-columns:72px minmax(0,1fr);
+      align-items:center;
+      gap:1.25rem;
+      width:min(680px,calc(100vw - 3rem));
+      padding:1.25rem 1.5rem;
+      border-block:2px solid #800080;
+      background:rgba(20,11,12,.72);
+      backdrop-filter:blur(8px);
+    }
+    .hero-testimonial img{
+      width:72px;height:72px;object-fit:cover;border-radius:50%;
+      border:2px solid #800080;
+    }
+    .hero-testimonial blockquote{display:grid;gap:.4rem;}
+    .hero-testimonial p{font-size:clamp(.95rem,1.8vw,1.2rem);font-style:italic;line-height:1.35;}
+    .hero-testimonial figcaption{font-size:.78rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#d2b3ff;}
+
     /* === PRAISE CAROUSEL === */
   .carousel {
     display: flex;
@@ -210,13 +251,34 @@
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
+      .editorial-split,.team-layout{grid-template-columns:1fr;}
+      .editorial-split > figure{min-height:0;}
+      .editorial-split > figure img{height:auto;}
+      .editorial-split--reverse > figure{order:0;}
+      .hero-testimonial{grid-template-columns:54px minmax(0,1fr);padding:1rem;gap:.85rem;}
+      .hero-testimonial img{width:54px;height:54px;}
 
     }
 
 
     .hidden { display: none; }               /* utility – hide any element   */
-    /* 1. make the headers look clickable  */
-    .content-section > h2 { cursor: pointer; }
+    .section-toggle{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:.35em;
+      width:100%;
+      border:0;
+      background:none;
+      color:inherit;
+      font:inherit;
+      letter-spacing:inherit;
+      text-transform:inherit;
+      cursor:pointer;
+    }
+    .section-toggle::after{content:"−";font-family:"Inter",sans-serif;font-size:.55em;font-weight:400;}
+    .section-toggle[aria-expanded="false"]::after{content:"+";}
+    .section-toggle:focus-visible{outline:2px solid #d2b3ff;outline-offset:.2rem;}
 
     /* 2. collapse helper
           – apply `collapsed` to <section>
@@ -301,40 +363,17 @@
   <div class="hero-text">
     <h3><i>Presenting...</i></h3>
     <h1>CAT SITH</h1>
-    <p><em>/kæt shee/ </em></p>
   </div>
  
 
   <section id="hero-praise" class="content-section-hero">
-    <div class="section-body">
-      <div class="carousel-window">
-
-        <div class="carousel">
-
-
-          <figure class="testimonial">
-            <img src="https://assets.ludicacid.com/images/connie_treves.jpeg" alt="connie treves image">
-            <p>“Your wild cat was universally said to be
-      the best puppet animal Amal has met on
-      the Walk. Big praise considering she has
-      met a lot!”</p>
-            <cite>Connie Treves - Good Chance Theatre</cite>
-          </figure>
-
-          <figure class="testimonial">
-            <img src="https://assets.ludicacid.com/images/david-doust.jpg" alt="david doust image">
-            <p>“A masterclass in audience engagement.”</p>
-            <cite>David Doust - Outdoor Arts UK</cite>
-          </figure>
-
-          <figure class="testimonial">
-            <img src="https://assets.ludicacid.com/images/Ashley-Peevor.webp" alt="Ashley peevor headshot">
-            <p>“A riot of colour and surreal theatricality.”</p>
-            <cite>Ashley Peevor - DOCA</cite>
-          </figure>
-        </div>
-      </div>
-    </div>  
+    <figure class="hero-testimonial">
+      <img src="https://assets.ludicacid.com/images/connie_treves.jpeg" alt="Connie Treves">
+      <blockquote>
+        <p>“Your wild cat was universally said to be the best puppet animal Amal has met on the Walk. Big praise considering she has met a lot!”</p>
+        <figcaption>Connie Treves — Good Chance Theatre</figcaption>
+      </blockquote>
+    </figure>
  <!-- scroll invitation -->
   <div class="scroll-cue" id="scroll-cue">
     <span>see more</span>
@@ -348,8 +387,9 @@
 
   <!-- ABOUT -->
   <section id="about" class="content-section">
-    <h2>About</h2>
-    <div class="section-body">
+    <h2><button class="section-toggle" type="button" aria-expanded="true" aria-controls="about-content">About</button></h2>
+    <div class="section-body editorial-split" id="about-content">
+      <div class="editorial-copy">
       <p>
       <em>Cat Sith</em> is a high-impact street-theatre spectacle that fuses
       acrobatic puppetry with physical theatre. The show follows Sammy—
@@ -378,6 +418,7 @@
     For more information, check out our
     <a href="https://assets.ludicacid.com/cat-sith-touring-pack.pdf" download>touring pack</a>.
     </p>
+      </div>
       <figure>
         <img src="https://assets.ludicacid.com/images/sky-cat.jpeg" alt="About placeholder 1">
         <!-- <figcaption>Placeholder caption for About image 1</figcaption> -->
@@ -388,9 +429,9 @@
 
   <!-- PRAISE -->
   <section id="praise" class="content-section">
-    <h2>Praise</h2>
+    <h2><button class="section-toggle" type="button" aria-expanded="false" aria-controls="praise-content">Praise</button></h2>
     
-    <div class="section-body">
+    <div class="section-body" id="praise-content">
         <div class="carousel-window">
 
       <div class="carousel">
@@ -430,9 +471,9 @@
 
 
   <section id="team" class="content-section">
-    <h2>Team</h2>
+    <h2><button class="section-toggle" type="button" aria-expanded="false" aria-controls="team-content">Team</button></h2>
 
-    <div class="section-body team-layout">
+    <div class="section-body team-layout" id="team-content">
       <!-- Core team bios -->
       <div class="team-core">
         <h3>Core Team</h3>
@@ -466,8 +507,9 @@
 
   <!-- INFO -->
   <section id="info" class="content-section">
-    <h2>Info</h2>
-    <div class="section-body">
+    <h2><button class="section-toggle" type="button" aria-expanded="false" aria-controls="info-content">Info</button></h2>
+    <div class="section-body editorial-split editorial-split--reverse" id="info-content">
+      <div class="editorial-copy">
       <p><strong>Duration:</strong> 25-30 min </p>
       <p><strong>Footprint:</strong> Outdoor, initially roving with finale in the round</p>
       <p><strong>Touring party:</strong> 3</p>
@@ -475,6 +517,7 @@
       <p><strong>Age Suitability:</strong> All ages</p>
       <p><strong>Tech:</strong> Fully self‑contained</p>
       <p><strong>Contact:</strong> <a href="mailto:hello@ludicacid.com">hello@ludicacid.com</a></p>
+      </div>
       <figure>
         <img src="https://assets.ludicacid.com/images/cat-car.jpg" alt="Technical setup placeholder">
         <figcaption>Cast and kit fit in a hatchback</figcaption>
@@ -484,8 +527,8 @@
 
   <!-- MEDIA -->
   <section id="media" class="content-section">
-    <h2>Media</h2>
-    <div class="section-body">
+    <h2><button class="section-toggle" type="button" aria-expanded="false" aria-controls="media-content">Media</button></h2>
+    <div class="section-body" id="media-content">
       <p>Pending</p>
     </div>
   </section>
