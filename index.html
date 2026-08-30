@@ -7,7 +7,8 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
   <!-- GOOGLE FONT (Inter) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
 
   <style>
 
@@ -137,13 +138,13 @@
         <img src="https://assets.ludicacid.com/images/cat_sith_logo_white.png" alt="Ludic Acid Logo" style="height:45px; width:auto;">
       </a>
 
-      <button class="burger" aria-label="Menu" id="burger">
+      <button class="burger" aria-label="Menu" id="burger" data-menu-button aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
     </nav>
 
     <!-- SLIDE-DOWN MENU -->
-    <ul class="nav-links" id="nav-links">
+    <ul class="nav-links" id="nav-links" data-menu>
       <li><a href="#about">About</a></li>
       <li><a href="#people">People</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -160,26 +161,7 @@
     Typeface: <a href="https://www.velvetyne.fr/fonts/lithops/" target="_blank" rel="noopener" style="color: #d2b3ff;">Lithops</a> by Anne-Dauphine Borione, licensed under <a href="https://scripts.sil.org/OFL" target="_blank" rel="noopener" style="color: #d2b3ff;">SIL Open Font License v1.1</a>.
   </footer>
 
-  <!-- JS -->
-  <script>
-    const burger = document.getElementById('burger');
-    const navLinks = document.getElementById('nav-links');
-
-    burger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      navLinks.classList.toggle('show');
-      burger.classList.toggle('hidden');
-    });
-
-    document.addEventListener('click', () => {
-      if (navLinks.classList.contains('show')) {
-        navLinks.classList.remove('show');
-        burger.classList.remove('hidden');
-      }
-    });
-
-    navLinks.addEventListener('click', (e) => e.stopPropagation());
-  </script>
+  <script src="assets/js/site.js"></script>
 
 </body>
 </html>

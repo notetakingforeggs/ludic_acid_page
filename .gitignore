@@ -1,2 +1,5 @@
 .DS_Store
-assets/images/background-mobile.mp4
+
+# Large media is served from assets.ludicacid.com, not from Git.
+assets/**/*.mp4
+assets/**/*.webm

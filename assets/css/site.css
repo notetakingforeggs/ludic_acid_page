@@ -1,0 +1,113 @@
+@font-face {
+  font-family: "Lithops";
+  src: url("https://assets.ludicacid.com/fonts/Lithops-Regular.woff") format("woff");
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font: 400 1rem/1.6 "Inter", sans-serif;
+  background: #140b0c;
+  color: #f4f4f4;
+  overflow-x: hidden;
+}
+
+a {
+  color: #800080;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  background: rgba(20, 11, 12, 0.75);
+  backdrop-filter: blur(6px);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.logo img {
+  display: block;
+  width: auto;
+  height: 50px;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.burger span {
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  background: #f4f4f4;
+}
+
+.nav-row {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-row a,
+.nav-links a {
+  color: #f4f4f4;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  position: fixed;
+  inset: 0 0 0 auto;
+  z-index: 999;
+  display: none;
+  width: 70%;
+  max-width: 320px;
+  padding: 5rem 2rem;
+  flex-direction: column;
+  gap: 2rem;
+  background: #140b0c;
+  text-align: right;
+}
+
+.nav-links.show {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .nav-row {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+}

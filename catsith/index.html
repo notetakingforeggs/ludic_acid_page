@@ -7,7 +7,8 @@
     <link rel="icon" href="https://assets.ludicacid.com/images/cat-solid.svg" type="image/svg+xml">
 
     <!-- Core font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/site.css">
 
     <!-- Display font -->
     <style>
@@ -127,7 +128,7 @@
 
     /* === GENERIC SECTIONS === */
     .content-section{padding:6rem 1.5rem;}
-    .content-section > h2, h1{
+    .content-section > h2, .hero-text > h1{
       font-family:"Lithops","Inter",sans-serif;
       text-align:center;
       margin:0 auto 2rem;
@@ -270,18 +271,18 @@
       <a href="/" class="logo"><img src="https://assets.ludicacid.com/images/cat_sith_logo_white.png" alt="Ludic Acid"></a>
 
       <ul class="nav-row">
-        <li><a href="#about">Toastinggg</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#praise">Praise</a></li>
         <li><a href="#team">Team</a></li>
         <li><a href="#info">Info</a></li>
         <li><a href="#media">Media</a></li>
       </ul>
 
-      <button class="burger" id="burger" aria-label="Menu">
+      <button class="burger" id="burger" data-menu-button aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
 
-      <div class="nav-links" id="nav-links">
+      <div class="nav-links" id="nav-links" data-menu>
         <a href="#about">About</a>
         <a href="#praise">Praise</a>
         <a href="#team">Team</a>
@@ -304,7 +305,7 @@
   </div>
  
 
-  <section id="praise" class="content-section-hero" style="visibility: visible;">
+  <section id="hero-praise" class="content-section-hero">
     <div class="section-body">
       <div class="carousel-window">
 
@@ -371,11 +372,11 @@
       Ludic Acid’s creative team blends circus acrobatics, puppetry and
       theatre to craft work that is playful, accessible and easily adapted
       to site-specific themes or locations—whether that’s a town square,
-      woodland trail or greenfield site. 
-      <p>
+      woodland trail or greenfield site.
+    </p>
+    <p>
     For more information, check out our
     <a href="https://assets.ludicacid.com/cat-sith-touring-pack.pdf" download>touring pack</a>.
-  </p>
     </p>
       <figure>
         <img src="https://assets.ludicacid.com/images/sky-cat.jpeg" alt="About placeholder 1">
@@ -422,6 +423,7 @@
         <!-- <figcaption>Ecstatic audience under the night sky</figcaption> -->
       </figure>
     </div>
+    </div>
   </section>
 
 
@@ -439,7 +441,7 @@
 
         <p><strong>Lizzie Clapham</strong> – circus artist blending acrobatics, clown and physical theatre; has toured with Cirque Bijou, Mimbre and The Invisible Circus after graduating Circomedia. </p>
 
-        <p><strong>Rachel Still</strong> – actor-musician with eight years in youth arts; holds a BA in Acting for Stage & Screen and specialises in children’s theatre.</p>
+        <p><strong>Rachel Still</strong> – actor-musician with eight years in youth arts; holds a BA in Acting for Stage &amp; Screen and specialises in children’s theatre.</p>
       </div>
 
       <!-- Portrait placeholder -->
@@ -452,7 +454,7 @@
       <div class="team-collab">
         <h3>Collaborators</h3>
 
-        <p><strong>Lucie N’Duhirahe</strong> – award-winning circus performer and outside-eye, co-founder of Collectif & Then. </p>
+        <p><strong>Lucie N’Duhirahe</strong> – award-winning circus performer and outside-eye, co-founder of Collectif &amp; Then. </p>
 
         <p><strong>Seb Mayer</strong> – puppet designer/fabricator whose outdoor show <em>Don Quixote</em> was praised as “brilliant puppet design” by Mervyn Millar</p>
 
@@ -488,128 +490,8 @@
     </div>
   </section>
 
-  <!-- swap in mobile video sources before load -->
-  <script>
-  (function(){
-    var video = document.querySelector('.hero video');
-    if (!video) return;
-    if (window.matchMedia('(max-width: 768px)').matches) {
-      video.innerHTML =
-        '<source src="https://assets.ludicacid.com/images/background-mobile.mp4" type="video/mp4">' +
-        '<source src="https://assets.ludicacid.com/images/background-mobile.webm" type="video/webm">';
-      video.load();
-    }
-  })();
-  </script>
-
-  <!-- === JS (menu toggle) === -->
-  <script>
-  const burger=document.getElementById("burger");
-  const navLinks=document.getElementById("nav-links");
-  burger.addEventListener("click",e=>{
-    e.stopPropagation();
-    navLinks.classList.toggle("show");
-  });
-  document.addEventListener("click",()=>navLinks.classList.remove("show"));
-  navLinks.addEventListener("click",e=>e.stopPropagation());
-  </script>
-
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const track = document.querySelector("#praise .carousel");
-    if (!track) return;
-
-    const card      = track.querySelector(".testimonial");
-    const cardGap   = parseFloat(getComputedStyle(track).gap) || 0;
-    const step      = card.offsetWidth + cardGap;   // distance to scroll each hop
-    let   direction = 1;                            // 1 = right, -1 = left
-
-    function hop() {
-      track.scrollBy({ left: step * direction, behavior: "smooth" });
-
-      // after the smooth scroll finishes (~500 ms), decide if we hit an edge
-      setTimeout(() => {
-        const atEnd   = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
-        const atStart = track.scrollLeft <= 0;
-        if (atEnd || atStart) direction *= -1;      // ping-pong back the other way
-      }, 600);                                      // a bit longer than CSS scroll time
-    }
-
-    const timer = setInterval(hop, 3500);           // hop every 3.5 s
-
-    /* — optional: pause when user hovers/focuses — */
-    track.addEventListener("mouseenter", () => clearInterval(timer));
-    track.addEventListener("mouseleave", () => setInterval(hop, 3500));
-  });
-  </script>
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    /* ────────────────────────────────────────hero
-      0.  grab all real content sections
-    ──────────────────────────────────────── */
-    const sections = Array.from(document.querySelectorAll(".content-section"));
-
-    /* ────────────────────────────────────────
-      1.  collapse everything on first load
-    ──────────────────────────────────────── */
-    sections.forEach(sec => {
-    if (sec.id !== "about") sec.classList.add("collapsed");
-  });
-
-    /* helper – open one, collapse the rest */
-    function openSection(id) {
-      sections.forEach(sec => {
-        if (sec.id === id) {
-          sec.classList.remove("collapsed");
-          sec.scrollIntoView({ behavior: "smooth", block: "start" });
-        } else {
-          sec.classList.add("collapsed");
-        }
-      });
-    }
-
-    /* ────────────────────────────────────────
-      2.  navbar links
-    ──────────────────────────────────────── */
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener("click", e => {
-        const targetId = link.getAttribute("href").slice(1);
-        const target   = document.getElementById(targetId);
-        if (!target) return;                  // skip external anchors
-        e.preventDefault();
-        openSection(targetId);
-
-        /* close burger menu on mobile */
-        if (typeof navLinks !== "undefined")
-          navLinks.classList.remove("show");
-      });
-    });
-
-    /* ────────────────────────────────────────
-      3.  header (h2) clicks
-    ──────────────────────────────────────── */
-    sections.forEach(sec => {
-      const h2 = sec.querySelector("h2");
-      h2.addEventListener("click", () => {
-        /* if closed → open (and close others) */
-        if (sec.classList.contains("collapsed")) {
-          openSection(sec.id);
-        }
-        /* if open → just collapse this one   */
-        else {
-          sec.classList.add("collapsed");
-        }
-      });
-    });
-  });
-  </script>
-
-  <script>
-  document.getElementById("scroll-cue")?.addEventListener("click", () => {
-    document.getElementById("about")
-            .scrollIntoView({ behavior:"smooth", block:"start" });
-  });
-  </script>
+  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/catsith.js"></script>
 
 
   <!-- ────────────  FOOTER  ──────────── -->
