@@ -8,9 +8,7 @@ if (heroVideo && window.matchMedia("(max-width: 768px)").matches) {
   heroVideo.load();
 }
 
-const carousel = document.querySelector("#praise .carousel");
-
-if (carousel) {
+document.querySelectorAll(".carousel").forEach((carousel) => {
   let direction = 1;
   let timer;
 
@@ -34,7 +32,7 @@ if (carousel) {
   startCarousel();
   carousel.addEventListener("mouseenter", () => window.clearInterval(timer));
   carousel.addEventListener("mouseleave", startCarousel);
-}
+});
 
 const sections = Array.from(document.querySelectorAll(".content-section"));
 
