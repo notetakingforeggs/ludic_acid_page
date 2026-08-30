@@ -8,9 +8,7 @@ if (heroVideo && window.matchMedia("(max-width: 768px)").matches) {
   heroVideo.load();
 }
 
-const carousel = document.querySelector("#praise .carousel");
-
-if (carousel) {
+document.querySelectorAll(".carousel").forEach((carousel) => {
   let direction = 1;
   let timer;
 
@@ -34,7 +32,7 @@ if (carousel) {
   startCarousel();
   carousel.addEventListener("mouseenter", () => window.clearInterval(timer));
   carousel.addEventListener("mouseleave", startCarousel);
-}
+});
 
 const sections = Array.from(document.querySelectorAll(".content-section"));
 
@@ -42,10 +40,15 @@ sections.forEach((section) => {
   if (section.id !== "about") section.classList.add("collapsed");
 });
 
+function setSectionState(section, isOpen) {
+  section.classList.toggle("collapsed", !isOpen);
+  section.querySelector(".section-toggle")?.setAttribute("aria-expanded", String(isOpen));
+}
+
 function openSection(id) {
   sections.forEach((section) => {
     const opening = section.id === id;
-    section.classList.toggle("collapsed", !opening);
+    setSectionState(section, opening);
     if (opening) section.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 }
@@ -60,12 +63,12 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 });
 
 sections.forEach((section) => {
-  const heading = section.querySelector("h2");
-  if (!heading) return;
+  const toggle = section.querySelector(".section-toggle");
+  if (!toggle) return;
 
-  heading.addEventListener("click", () => {
+  toggle.addEventListener("click", () => {
     if (section.classList.contains("collapsed")) openSection(section.id);
-    else section.classList.add("collapsed");
+    else setSectionState(section, false);
   });
 });
 
