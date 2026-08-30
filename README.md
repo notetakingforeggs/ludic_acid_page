@@ -5,11 +5,13 @@ A dependency-free static website built with plain HTML, CSS, and JavaScript.
 ## Structure
 
 - `index.html` — homepage and project links
+- `about/index.html` — minimal About desktop and notes viewer
 - `catsith/index.html` — Cat Sith production page
 - `newprojectmedia/index.html` — supporting media page
 - `assets/css/site.css` — shared navigation, typography, and base styles
 - `assets/js/site.js` — shared menu behaviour
 - `assets/js/catsith.js` — Cat Sith page interactions
+- `notes.md` — working notes displayed from the About page
 
 Large videos are served from `assets.ludicacid.com` and must not be committed to
 this repository. Images, the local font, and the touring pack remain under

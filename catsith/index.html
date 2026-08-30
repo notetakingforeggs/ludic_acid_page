@@ -150,8 +150,8 @@
       gap:clamp(2rem,5vw,5rem);
     }
     .editorial-copy{display:grid;align-content:center;gap:1.5rem;}
-    .info-layout > figure{min-height:32rem;order:-1;}
-    .info-layout > figure img{height:100%;object-fit:cover;}
+    .info-layout > figure{order:-1;align-self:center;}
+    .info-layout > figure img{height:auto;object-fit:contain;}
 
     /* The hero uses the same card language as the Praise carousel. */
     .hero-single-testimonial{
@@ -229,7 +229,7 @@
           overflow: hidden;
         }
       .info-layout{grid-template-columns:1fr;}
-      .info-layout > figure{min-height:0;order:0;}
+      .info-layout > figure{order:0;}
       .info-layout > figure img{height:auto;}
 
     }
