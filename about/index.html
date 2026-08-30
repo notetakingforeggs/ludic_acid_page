@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Ludic Acid</title>
+  <link rel="stylesheet" href="../assets/css/about.css">
+</head>
+<body>
+  <main class="desktop" aria-label="About Ludic Acid">
+    <a class="file" id="notes-file" href="../notes.md">
+      <span class="file-icon" aria-hidden="true">
+        <span class="file-lines"></span>
+      </span>
+      <span class="file-name">notes.md</span>
+    </a>
+
+    <aside class="notes-window" id="notes-window" popover aria-labelledby="notes-title">
+      <header class="window-bar">
+        <span id="notes-title">notes.md - Notepad</span>
+        <button type="button" aria-label="Close notes" popovertarget="notes-window" popovertargetaction="hide">×</button>
+      </header>
+      <pre id="notes-content">Opening notes.md...</pre>
+      <a class="raw-link" href="../notes.md">open raw file</a>
+    </aside>
+  </main>
+
+  <script src="../assets/js/about.js"></script>
+</body>
+</html>
