@@ -5,6 +5,12 @@ if (burger && navLinks) {
   function closeMenu() {
     navLinks.classList.remove("show");
     burger.setAttribute("aria-expanded", "false");
+    navLinks.querySelectorAll("[data-submenu-button]").forEach((button) => {
+      button.setAttribute("aria-expanded", "false");
+    });
+    navLinks.querySelectorAll("[data-submenu]").forEach((submenu) => {
+      submenu.hidden = true;
+    });
   }
 
   burger.addEventListener("click", (event) => {

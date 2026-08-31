@@ -97,22 +97,38 @@
     .nav-links.show { display: flex; }
 
     .nav-links li { margin: 1rem 0; }
-    .nav-links a { font-size: 1.25rem; color: #d2b3ff; }
+    .nav-links a,
+    .nav-links button { font-size: 1.25rem; color: #d2b3ff; }
     .nav-links a:hover { text-decoration: underline; }
+    .projects-menu { display:flex; flex-direction:column; align-items:flex-end; }
+    .projects-toggle { border:0; background:none; font:inherit; cursor:pointer; }
+    .projects-toggle::after { content:" +"; }
+    .projects-toggle[aria-expanded="true"]::after { content:" −"; }
+    .project-submenu {
+      display:flex; flex-direction:column; align-items:flex-end; gap:.65rem;
+      padding-top:.75rem; list-style:none;
+    }
+    .project-submenu[hidden] { display:none; }
+    .project-submenu li { margin:0; }
+    .project-submenu a { font-size:.9rem; color:#aaa; }
 
-    /* MAIN PROJECT LINKS */
-    .home-links {
+    /* PROJECT CAROUSEL */
+    .project-carousel {
       flex:1 0 auto;            /* fill remaining height, allow footer pin */
       display:flex;
       flex-direction:column;
       justify-content:center;
       align-items:center;
       text-align:center;
-      gap:clamp(.5rem, 2vh, 2rem);
       padding: 6rem 0.5rem 2rem;
     }
-    .home-links h1 { width: 100%; }
-    .home-links h1 a {
+    .project-stage { position:relative; width:100%; min-height:clamp(12rem, 28vw, 24rem); }
+    .project-slide {
+      position:absolute; inset:0; display:flex; align-items:center; width:100%;
+      opacity:0; pointer-events:none; transition:opacity .9s ease;
+    }
+    .project-slide.is-active { opacity:1; pointer-events:auto; }
+    .project-slide a {
       font-family: 'Lithops', sans-serif;
       width: 100%;
       font-size: clamp(4rem, 15vw, 18rem);
@@ -126,15 +142,15 @@
       font-weight: 100;
       line-height: 0.9;
     }
-    .home-links h1 a span { display:inline-block; padding:0 0.05ch; }
-    .home-links .cat-sith-link { justify-content: center; }
-    .home-links .cat-sith-link span { padding: 0; }
-    .home-links .second-sight-link {
+    .project-slide a span { display:inline-block; padding:0 0.05ch; }
+    .project-slide .cat-sith-link { justify-content:center; gap:.18em; }
+    .project-slide .cat-sith-link span { padding:0; }
+    .project-slide .second-sight-link {
       font-family: 'Typefesse', 'Lithops', sans-serif;
       font-size: clamp(3rem, 11vw, 13rem);
       text-transform: none;
     }
-    .home-links .raft-link {
+    .project-slide .raft-link {
       font-family: 'Flor de Ruina', 'Lithops', sans-serif;
       display: block;
       padding-left: 0.55em;
@@ -142,20 +158,30 @@
       text-align: center;
       text-transform: lowercase;
     }
+    .carousel-controls { display:flex; align-items:center; justify-content:center; gap:.75rem; min-height:2rem; }
+    .carousel-controls button { border:0; background:none; color:#888; cursor:pointer; }
+    .carousel-arrow { padding:.25rem; font-size:1rem; }
+    .carousel-dot { width:.45rem; height:.45rem; padding:0; border-radius:50%; background:#555 !important; }
+    .carousel-dot[aria-current="true"] { background:#d2b3ff !important; }
+    .carousel-controls button:hover,
+    .carousel-controls button:focus-visible { color:#d2b3ff; }
 
     /* MOBILE TWEAKS */
     @media (max-width: 600px) {
       /* offset for fixed header (~64px) plus small margin */
-      .home-links { padding-top: 5rem; }
+      .project-carousel { padding-top:5rem; }
+      .project-stage { min-height:45vw; }
 
       /* size adjustments */
-      .home-links h1 a { font-size: 24vw; line-height: 0.85; }
-      .home-links .cat-sith-link span:first-child { font-size: 32vw; }
-      .home-links .second-sight-link { font-size: 17vw; }
-      .home-links .raft-link { font-size: 24vw; }
+      .project-slide a { font-size:24vw; line-height:.85; }
+      .project-slide .cat-sith-link span:first-child { font-size:32vw; }
+      .project-slide .second-sight-link { font-size:17vw; }
+      .project-slide .raft-link { font-size:24vw; }
     }
 
-    .home-links h1 a:hover { text-decoration:none; filter: blur(2px) brightness(1.2); }
+    .project-slide a:hover { text-decoration:none; filter:blur(2px) brightness(1.2); }
+
+    @media (prefers-reduced-motion: reduce) { .project-slide { transition:none; } }
 
     /* FOOTER pinned bottom */
     footer { flex:0 0 auto; text-align:center; font-size:0.75rem; color:#888; padding:2rem 1rem; }
@@ -178,6 +204,14 @@
 
     <!-- SLIDE-DOWN MENU -->
     <ul class="nav-links" id="nav-links" data-menu>
+      <li class="projects-menu">
+        <button class="projects-toggle" type="button" data-submenu-button aria-expanded="false" aria-controls="project-submenu">Projects</button>
+        <ul class="project-submenu" id="project-submenu" data-submenu hidden>
+          <li><a href="/catsith/">Cat Sith</a></li>
+          <li><a href="/second-sight/">Second Sight</a></li>
+          <li><a href="/raft/">Raft</a></li>
+        </ul>
+      </li>
       <li><a href="/about/">About</a></li>
       <li><a href="#people">People</a></li>
       <li><a href="mailto:jonah@ludicacid.com">Contact</a></li>
@@ -185,10 +219,19 @@
   </header>
 
   <!-- MAIN CONTENT -->
-  <main class="home-links">
-    <h1><a class="second-sight-link" href="/second-sight/"><span>Second</span> <span>Sight</span></a></h1>
-    <h1><a class="cat-sith-link" href="/catsith/"><span>CAT</span> <span>SITH</span></a></h1>
-    <h1><a class="raft-link" href="/raft/"><span>raft</span></a></h1>
+  <main class="project-carousel" data-project-carousel aria-label="Projects">
+    <div class="project-stage" aria-live="off">
+      <h1 class="project-slide is-active" data-project-slide><a class="cat-sith-link" href="/catsith/"><span>CAT</span> <span>SITH</span></a></h1>
+      <h1 class="project-slide" data-project-slide aria-hidden="true"><a class="second-sight-link" href="/second-sight/" tabindex="-1"><span>Second</span> <span>Sight</span></a></h1>
+      <h1 class="project-slide" data-project-slide aria-hidden="true"><a class="raft-link" href="/raft/" tabindex="-1"><span>raft</span></a></h1>
+    </div>
+    <div class="carousel-controls" aria-label="Choose project">
+      <button class="carousel-arrow" type="button" data-carousel-previous aria-label="Previous project">←</button>
+      <button class="carousel-dot" type="button" data-carousel-dot="0" aria-label="Show Cat Sith" aria-current="true"></button>
+      <button class="carousel-dot" type="button" data-carousel-dot="1" aria-label="Show Second Sight" aria-current="false"></button>
+      <button class="carousel-dot" type="button" data-carousel-dot="2" aria-label="Show Raft" aria-current="false"></button>
+      <button class="carousel-arrow" type="button" data-carousel-next aria-label="Next project">→</button>
+    </div>
   </main>
 
   <footer>
@@ -196,6 +239,7 @@
   </footer>
 
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/home.js"></script>
 
 </body>
 </html>
