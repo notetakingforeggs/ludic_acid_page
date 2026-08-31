@@ -18,6 +18,16 @@
       font-weight: normal;
       font-style: normal;	      font-display: swap;
     }
+    @font-face {
+      font-family: 'Typefesse';
+      src: url('assets/fonts/Typefesse_Claire-Obscure.woff2') format('woff2');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Flor de Ruina';
+      src: url('assets/fonts/FlorDeRuina-Flor.woff2') format('woff2');
+      font-display: swap;
+    }
 
     /* GLOBAL RESET */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -90,18 +100,20 @@
     .nav-links a { font-size: 1.25rem; color: #d2b3ff; }
     .nav-links a:hover { text-decoration: underline; }
 
-    /* MAIN CAT SITH BUTTON */
+    /* MAIN PROJECT LINKS */
     .home-links {
       flex:1 0 auto;            /* fill remaining height, allow footer pin */
       display:flex;
+      flex-direction:column;
       justify-content:center;
       align-items:center;
       text-align:center;
-      padding: 0 0.05ch;        /* tight horizontal padding */
+      gap:clamp(.5rem, 2vh, 2rem);
+      padding: 6rem 1rem 2rem;
     }
     .home-links h1 a {
       font-family: 'Lithops', sans-serif;
-      font-size: clamp(4rem, 15vw, 18rem); /* desktop scaling */
+      font-size: clamp(2.5rem, 8vw, 9rem);
       color: #800080;
       display: inline-block;
       text-transform: uppercase;
@@ -111,6 +123,14 @@
       line-height: 0.9;
     }
     .home-links h1 a span { display:inline-block; padding:0 0.05ch; }
+    .home-links .second-sight-link {
+      font-family: 'Typefesse', 'Lithops', sans-serif;
+      text-transform: none;
+    }
+    .home-links .raft-link {
+      font-family: 'Flor de Ruina', 'Lithops', sans-serif;
+      text-transform: lowercase;
+    }
 
     /* MOBILE TWEAKS */
     @media (max-width: 600px) {
@@ -118,8 +138,7 @@
       .home-links { padding-top: 5rem; }
 
       /* size adjustments */
-      .home-links h1 a { font-size: 24vw; line-height: 0.85; }
-      .home-links h1 a span:first-child { font-size: 32vw; }
+      .home-links h1 a { font-size: 12vw; line-height: 0.9; }
     }
 
     .home-links h1 a:hover { text-decoration:none; filter: blur(2px) brightness(1.2); }
@@ -153,11 +172,13 @@
 
   <!-- MAIN CONTENT -->
   <main class="home-links">
-    <h1><a href="/catsith"><span>CAT</span> <span>SITH</span></a></h1>
+    <h1><a class="second-sight-link" href="/second-sight/"><span>Second</span> <span>Sight</span></a></h1>
+    <h1><a href="/catsith/"><span>CAT</span> <span>SITH</span></a></h1>
+    <h1><a class="raft-link" href="/raft/"><span>raft</span></a></h1>
   </main>
 
   <footer>
-    Typeface: <a href="https://www.velvetyne.fr/fonts/lithops/" target="_blank" rel="noopener" style="color: #d2b3ff;">Lithops</a> by Anne-Dauphine Borione, licensed under <a href="https://scripts.sil.org/OFL" target="_blank" rel="noopener" style="color: #d2b3ff;">SIL Open Font License v1.1</a>.
+    Typefaces: <a href="https://www.velvetyne.fr/fonts/lithops/" target="_blank" rel="noopener" style="color: #d2b3ff;">Lithops</a> by Anne-Dauphine Borione; <a href="https://velvetyne.fr/fonts/typefesse/" target="_blank" rel="noopener" style="color: #d2b3ff;">Typefesse</a> by Océane Juvin; <a href="https://velvetyne.fr/fonts/flor-de-ruina/" target="_blank" rel="noopener" style="color: #d2b3ff;">Flor de Ruina</a> by Felipe Sanzana. Published by Velvetyne Type Foundry under the <a href="https://scripts.sil.org/OFL" target="_blank" rel="noopener" style="color: #d2b3ff;">SIL Open Font License v1.1</a>.
   </footer>
 
   <script src="assets/js/site.js"></script>

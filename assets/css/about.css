@@ -17,9 +17,7 @@ body {
 .desktop {
   min-height: 100vh;
   padding: clamp(2rem, 7vw, 6rem);
-  background:
-    radial-gradient(circle at 75% 20%, rgba(128, 0, 128, 0.22), transparent 32rem),
-    #140b0c;
+  background: #140b0c;
 }
 
 .file {
@@ -86,56 +84,71 @@ body {
 
 .notes-window {
   position: fixed;
-  inset: 50% auto auto 50%;
-  width: min(560px, calc(100vw - 2rem));
-  max-height: min(430px, calc(100vh - 2rem));
+  inset: clamp(2rem, 7vw, 6rem) auto auto calc(clamp(2rem, 7vw, 6rem) + 7rem);
+  width: min(480px, calc(100vw - clamp(11rem, 19vw, 14rem)));
+  max-height: min(430px, calc(100vh - 4rem));
   margin: 0;
-  padding: 3px;
-  transform: translate(-50%, -50%);
+  padding: 1rem;
   overflow: auto;
-  border: 2px outset #c0c0c0;
-  background: #d4d0c8;
-  color: #140b0c;
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(244, 244, 244, 0.28);
+  border-radius: 0.6rem;
+  background: #211719;
+  color: #f4f4f4;
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.4);
   font-family: "Courier New", Courier, monospace;
 }
 
+.notes-window::before {
+  content: "";
+  position: fixed;
+  top: calc(clamp(2rem, 7vw, 6rem) + 1.5rem);
+  left: calc(clamp(2rem, 7vw, 6rem) + 6.55rem);
+  width: 0.8rem;
+  height: 0.8rem;
+  border-bottom: 1px solid rgba(244, 244, 244, 0.28);
+  border-left: 1px solid rgba(244, 244, 244, 0.28);
+  background: #211719;
+  transform: rotate(45deg);
+}
+
 .notes-window::backdrop {
-  background: rgba(20, 11, 12, 0.55);
+  background: transparent;
 }
 
 .window-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.2rem 0.3rem 0.2rem 0.45rem;
-  background: linear-gradient(90deg, #3d0065, #800080);
-  color: #fff;
-  font: bold 0.78rem Tahoma, sans-serif;
+  padding: 0 0 0.75rem;
+  border-bottom: 1px solid rgba(244, 244, 244, 0.14);
+  color: #f4f4f4;
+  font: 600 0.72rem/1.2 "Courier New", Courier, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .window-bar button {
-  width: 22px;
-  height: 20px;
+  width: 1.5rem;
+  height: 1.5rem;
   padding: 0;
-  border: 2px outset #e5e5e5;
-  background: #d4d0c8;
-  color: #140b0c;
-  font: bold 15px/14px Arial, sans-serif;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #f4f4f4;
+  font: 18px/1 sans-serif;
   cursor: pointer;
 }
 
-.window-bar button:active {
-  border-style: inset;
-}
+.window-bar button:hover { background: rgba(255, 255, 255, 0.1); }
 
 .notes-window pre {
-  min-height: 180px;
-  margin: 3px 0;
-  padding: 1rem;
+  min-height: 120px;
+  margin: 0;
+  padding: 1rem 0;
   overflow: auto;
-  border: 2px inset #eee;
-  background: #fffdf3;
+  border: 0;
+  background: transparent;
+  color: inherit;
   white-space: pre-wrap;
   font: 0.9rem/1.55 "Courier New", Courier, monospace;
 }
@@ -143,6 +156,23 @@ body {
 .raw-link {
   display: inline-block;
   padding: 0.15rem 0.35rem;
-  color: #3d0065;
+  color: #d2b3ff;
   font-size: 0.72rem;
+}
+
+@media (max-width: 680px) {
+  .notes-window {
+    inset: 9rem 1rem auto;
+    width: auto;
+    max-height: calc(100vh - 10rem);
+  }
+
+  .notes-window::before {
+    top: 8.6rem;
+    left: calc(clamp(2rem, 7vw, 6rem) + 2.1rem);
+    border-top: 1px solid rgba(244, 244, 244, 0.28);
+    border-right: 1px solid rgba(244, 244, 244, 0.28);
+    border-bottom: 0;
+    border-left: 0;
+  }
 }
