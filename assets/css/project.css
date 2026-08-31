@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "Lithops";
+  src: url("https://assets.ludicacid.com/fonts/Lithops-Regular.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Typefesse";
+  src: url("../fonts/Typefesse_Claire-Obscure.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Flor de Ruina";
+  src: url("../fonts/FlorDeRuina-Flor.woff2") format("woff2");
+  font-display: swap;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font: 400 1rem/1.6 "Inter", sans-serif; background: #140b0c; color: #f4f4f4; }
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  background: rgba(20, 11, 12, .75);
+  backdrop-filter: blur(6px);
+}
+.navbar { display: flex; align-items: center; justify-content: space-between; padding: 1rem; }
+.logo img { display: block; width: auto; height: 50px; }
+.nav-row { display: flex; gap: 1.5rem; list-style: none; }
+.nav-row a { font-weight: 600; font-size: .875rem; letter-spacing: .04em; text-transform: uppercase; }
+
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 6rem 1.5rem 2rem;
+  background: radial-gradient(circle at center, #32152f 0, #140b0c 65%);
+}
+.hero h1, .content-section h2 {
+  font-family: "Lithops", "Inter", sans-serif;
+  color: #800080;
+  font-weight: 100;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.hero h1 { font-size: clamp(4rem, 14vw, 14rem); line-height: .9; }
+.second-sight-page .hero h1,
+.second-sight-page .content-section h2 { font-family: "Typefesse", "Lithops", sans-serif; }
+.raft-page .hero h1,
+.raft-page .content-section h2 {
+  font-family: "Flor de Ruina", "Lithops", sans-serif;
+  text-transform: lowercase;
+}
+.hero p { margin-top: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: .12em; }
+
+.content-section { min-height: 55vh; padding: 6rem 1.5rem; display: grid; align-content: center; }
+.content-section:nth-of-type(odd) { background: rgba(255, 255, 255, .025); }
+.content-section h2 { margin-bottom: 2rem; font-size: clamp(3rem, 7vw, 5rem); }
+.section-body { width: min(900px, 100%); margin: 0 auto; text-align: center; }
+.section-body p { font-size: 1.25rem; }
+
+footer { padding: 2rem 1rem; text-align: center; font-size: .75rem; opacity: .6; }
+footer a { text-decoration: underline; }
+
+@media (max-width: 700px) {
+  .nav-row { gap: .75rem; }
+  .nav-row a { font-size: .7rem; }
+  .logo img { height: 42px; }
+}
