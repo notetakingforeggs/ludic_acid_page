@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">A Love Letter to Ayr image placeholder</title>
+  <desc id="desc">Geometric placeholder for a future A Love Letter to Ayr production photograph.</desc>
+  <rect width="1200" height="900" fill="#292033"/>
+  <path d="m-80 810 500-740 250 170-500 740Z" fill="#800080" opacity=".38"/>
+  <path d="m490 900 500-740 250 170-385 570Z" fill="#d2b3ff" opacity=".14"/>
+  <path d="M95 95h1010v710H95Z" fill="none" stroke="#d2b3ff" stroke-opacity=".42" stroke-width="3"/>
+  <text x="600" y="415" fill="#f4f4f4" font-family="Arial, sans-serif" font-size="58" text-anchor="middle" letter-spacing="5">A LOVE LETTER TO AYR</text>
+  <text x="600" y="485" fill="#d2b3ff" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" letter-spacing="5">PRODUCTION IMAGE PLACEHOLDER</text>
+</svg>

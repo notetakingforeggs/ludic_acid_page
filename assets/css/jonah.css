@@ -156,46 +156,34 @@ main {
 }
 
 .performance-image {
-  display: grid;
+  position: relative;
   aspect-ratio: 4 / 3;
-  place-items: center;
-  padding: 1.5rem;
-  text-align: center;
+  margin: 0;
 }
 
-.performance-image,
 .reel-placeholder {
   color: rgba(244, 244, 244, 0.65);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
-.performance-image span {
-  align-self: end;
-  font-family: "Lithops", sans-serif;
-  font-size: clamp(2.2rem, 11vw, 4.5rem);
-  line-height: 0.85;
+.performance-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.performance-image small {
-  align-self: start;
-  margin-top: 0.75rem;
+.performance-image figcaption {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.65rem;
+  padding: 0.3rem 0.45rem;
+  background: rgba(20, 11, 12, 0.82);
+  color: #d2b3ff;
   font-size: 0.6rem;
-}
-
-.image-love-letter {
-  background-color: #292033;
-  background-image: linear-gradient(25deg, transparent 35%, rgba(128, 0, 128, 0.34) 35% 65%, transparent 65%);
-}
-
-.image-dip {
-  background-color: #18272a;
-  background-image: radial-gradient(circle at 60% 40%, rgba(210, 179, 255, 0.22) 0 18%, transparent 18.5%);
-}
-
-.image-wondrous {
-  background-color: #35231d;
-  background-image: linear-gradient(115deg, transparent 45%, rgba(210, 179, 255, 0.2) 45.2% 45.8%, transparent 46%);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .performance-copy h3 {
@@ -214,6 +202,32 @@ main {
   margin-top: 1rem;
   color: #9b9295;
   font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.reviews {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.reviews blockquote {
+  padding-left: 1rem;
+  border-left: 2px solid #800080;
+}
+
+.reviews blockquote p {
+  color: #f4f4f4;
+  font-size: 1.05rem;
+}
+
+.reviews cite {
+  display: block;
+  margin-top: 0.2rem;
+  color: #9b9295;
+  font-size: 0.72rem;
+  font-style: normal;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }

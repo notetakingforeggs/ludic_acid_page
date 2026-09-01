@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Wondrous Strange image placeholder</title>
+  <desc id="desc">Angular brown and purple placeholder for a future Wondrous Strange production photograph.</desc>
+  <rect width="1200" height="900" fill="#35231d"/>
+  <path d="M170 900 560 0h130L300 900Zm520 0L980 230h145L835 900Z" fill="#d2b3ff" opacity=".17"/>
+  <path d="M95 95h1010v710H95Z" fill="none" stroke="#d2b3ff" stroke-opacity=".42" stroke-width="3"/>
+  <text x="600" y="415" fill="#f4f4f4" font-family="Arial, sans-serif" font-size="63" text-anchor="middle" letter-spacing="6">WONDROUS STRANGE</text>
+  <text x="600" y="485" fill="#d2b3ff" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" letter-spacing="5">PRODUCTION IMAGE PLACEHOLDER</text>
+</svg>
