@@ -6,6 +6,8 @@ A dependency-free static website built with plain HTML, CSS, and JavaScript.
 
 - `index.html` — homepage and project links
 - `about/index.html` — minimal About desktop and notes viewer
+- `people/index.html` — core team and external collaborator links
+- `jonah/index.html` — responsive Jonah Russell profile and selected CV
 - `catsith/index.html` — Cat Sith production page
 - `newprojectmedia/index.html` — supporting media page
 - `assets/css/site.css` — shared navigation, typography, and base styles

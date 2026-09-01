@@ -1,0 +1,164 @@
+body {
+  min-height: 100vh;
+}
+
+main {
+  width: min(1180px, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: 9rem 0 6rem;
+}
+
+.people-section {
+  border-top: 1px solid rgba(244, 244, 244, 0.25);
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1rem 0 3rem;
+}
+
+.eyebrow {
+  color: #b49abc;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1,
+.collaborators h2 {
+  font-family: "Lithops", sans-serif;
+  font-weight: 400;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(4.5rem, 12vw, 10rem);
+}
+
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+}
+
+.portrait-placeholder {
+  display: grid;
+  aspect-ratio: 4 / 5;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(244, 244, 244, 0.2);
+  background:
+    linear-gradient(135deg, transparent 49.8%, rgba(210, 179, 255, 0.22) 50%, transparent 50.2%),
+    linear-gradient(45deg, #211619, #35213b);
+}
+
+.portrait-placeholder span {
+  color: rgba(244, 244, 244, 0.75);
+  font-family: "Lithops", sans-serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 400;
+}
+
+.person-card h2 {
+  padding-top: 0.9rem;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 400;
+}
+
+.person-link {
+  display: block;
+  color: #f4f4f4;
+}
+
+.person-link h2 {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.person-link:hover {
+  color: #d2b3ff;
+  text-decoration: none;
+}
+
+.person-link .portrait-placeholder {
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.person-link:hover .portrait-placeholder {
+  border-color: #d2b3ff;
+  transform: translateY(-0.2rem);
+}
+
+.collaborators {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem 2.5rem;
+  margin-top: clamp(6rem, 14vw, 11rem);
+  padding-top: 1rem;
+  border-top: 1px solid rgba(244, 244, 244, 0.25);
+}
+
+.collaborators .eyebrow {
+  grid-column: 1 / -1;
+}
+
+.collaborators h2 {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+}
+
+.collaborator-links {
+  border-top: 1px solid rgba(244, 244, 244, 0.25);
+}
+
+.collaborator-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(244, 244, 244, 0.25);
+  color: #f4f4f4;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+}
+
+.collaborator-links a:hover {
+  color: #d2b3ff;
+  text-decoration: none;
+}
+
+.external-mark {
+  transition: transform 180ms ease;
+}
+
+.collaborator-links a:hover .external-mark {
+  transform: translate(0.2rem, -0.2rem);
+}
+
+@media (max-width: 700px) {
+  main {
+    width: min(100% - 2rem, 42rem);
+    padding-top: 7rem;
+  }
+
+  .section-heading {
+    display: block;
+    padding-bottom: 2rem;
+  }
+
+  .section-heading h1 {
+    margin-top: 0.75rem;
+  }
+
+  .people-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .collaborators {
+    grid-template-columns: 1fr;
+  }
+}

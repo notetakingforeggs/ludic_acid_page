@@ -1,0 +1,265 @@
+body {
+  min-height: 100vh;
+}
+
+main,
+footer {
+  width: min(100% - 2rem, 1180px);
+  margin-inline: auto;
+}
+
+main {
+  padding-top: 6.75rem;
+}
+
+.eyebrow {
+  color: #b49abc;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.profile-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 5rem;
+}
+
+.portrait-placeholder,
+.feature-image,
+.reel-placeholder {
+  overflow: hidden;
+  border: 1px solid rgba(244, 244, 244, 0.2);
+  background:
+    linear-gradient(135deg, transparent 49.8%, rgba(210, 179, 255, 0.2) 50%, transparent 50.2%),
+    linear-gradient(45deg, #211619, #422347);
+}
+
+.profile-portrait {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  place-items: center;
+}
+
+.profile-portrait span {
+  color: rgba(244, 244, 244, 0.7);
+  font-family: "Lithops", sans-serif;
+  font-size: clamp(6rem, 32vw, 11rem);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 2.5rem;
+  color: #f4f4f4;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.profile-intro h1,
+.section-label h2,
+.reel h2 {
+  font-family: "Lithops", sans-serif;
+  font-weight: 400;
+  line-height: 0.82;
+  text-transform: uppercase;
+}
+
+.profile-intro h1 {
+  max-width: 100%;
+  margin: 0.8rem 0 1.5rem;
+  font-size: clamp(4.5rem, 23vw, 8rem);
+  overflow-wrap: anywhere;
+}
+
+.standfirst {
+  max-width: 35rem;
+  font-size: clamp(1.15rem, 4.8vw, 1.5rem);
+  line-height: 1.4;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin-top: 2rem;
+}
+
+.contact-links a {
+  color: #d2b3ff;
+  overflow-wrap: anywhere;
+}
+
+.specialisms,
+.work-section,
+.reel,
+.education {
+  padding: 4rem 0;
+  border-top: 1px solid rgba(244, 244, 244, 0.25);
+}
+
+.specialisms ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  list-style: none;
+}
+
+.specialisms li {
+  padding: 0.55rem 0.8rem;
+  border: 1px solid rgba(210, 179, 255, 0.38);
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.section-label h2,
+.reel h2 {
+  margin: 0.8rem 0 2.5rem;
+  font-size: clamp(3rem, 15vw, 6rem);
+}
+
+.work-list {
+  border-top: 1px solid rgba(244, 244, 244, 0.25);
+}
+
+.work-list article {
+  padding: 1.5rem 0 2rem;
+  border-bottom: 1px solid rgba(244, 244, 244, 0.25);
+}
+
+.work-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #d2b3ff;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.work-meta time {
+  flex: 0 0 auto;
+  color: #9b9295;
+}
+
+.work-list h3 {
+  margin: 1rem 0 0.45rem;
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+
+.work-list p {
+  max-width: 42rem;
+  color: #c8c2c3;
+}
+
+.compact p {
+  margin-top: 0.8rem;
+}
+
+.feature-image {
+  display: grid;
+  min-height: 70svh;
+  margin: 2rem 0 5rem;
+  place-items: center;
+  text-align: center;
+}
+
+.feature-image div,
+.reel-placeholder {
+  display: grid;
+  gap: 0.3rem;
+  place-items: center;
+  color: rgba(244, 244, 244, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.feature-image small {
+  font-size: 0.6rem;
+}
+
+.reel-placeholder {
+  min-height: 56vw;
+  padding: 2rem;
+}
+
+.play {
+  display: grid;
+  width: 4rem;
+  height: 4rem;
+  padding-left: 0.2rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  place-items: center;
+  font-size: 1.2rem;
+}
+
+.education p:last-child {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 0 3rem;
+  border-top: 1px solid rgba(244, 244, 244, 0.25);
+  color: #9b9295;
+  font-size: 0.8rem;
+}
+
+footer a {
+  color: #d2b3ff;
+  font-size: 1.1rem;
+}
+
+@media (min-width: 760px) {
+  main,
+  footer {
+    width: min(100% - 4rem, 1180px);
+  }
+
+  main {
+    padding-top: 9rem;
+  }
+
+  .profile-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: end;
+    gap: clamp(2rem, 6vw, 6rem);
+    padding-bottom: 8rem;
+  }
+
+  .profile-intro h1 {
+    font-size: clamp(6rem, 11vw, 10rem);
+  }
+
+  .work-section {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    padding: 7rem 0;
+  }
+
+  .section-label h2 {
+    font-size: clamp(3.5rem, 6vw, 6rem);
+  }
+
+  .reel-placeholder {
+    min-height: 38rem;
+  }
+
+  footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
