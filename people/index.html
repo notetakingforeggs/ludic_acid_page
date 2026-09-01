@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The people who make and collaborate with Ludic Acid.">
+  <title>People — Ludic Acid</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/people.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="/" class="logo" aria-label="Ludic Acid home">
+        <img src="https://assets.ludicacid.com/images/cat_sith_logo_white.png" alt="">
+      </a>
+
+      <ul class="nav-row">
+        <li><a href="/about/">About</a></li>
+        <li><a href="/people/" aria-current="page">People</a></li>
+        <li><a href="mailto:jonah@ludicacid.com">Contact</a></li>
+      </ul>
+
+      <button class="burger" type="button" aria-label="Menu" data-menu-button aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <ul class="nav-links" id="nav-links" data-menu>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/people/" aria-current="page">People</a></li>
+      <li><a href="mailto:jonah@ludicacid.com">Contact</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <section class="people-section" aria-labelledby="people-title">
+      <div class="section-heading">
+        <p class="eyebrow">Ludic Acid</p>
+        <h1 id="people-title">People</h1>
+      </div>
+
+      <div class="people-grid">
+        <article class="person-card">
+          <a class="person-link" href="/jonah/" aria-label="Read Jonah Russell's profile">
+            <div class="portrait-placeholder" role="img" aria-label="Headshot of Jonah Russell coming soon">
+              <span>JR</span>
+            </div>
+            <h2>Jonah Russell <span aria-hidden="true">↗</span></h2>
+          </a>
+        </article>
+
+        <article class="person-card">
+          <div class="portrait-placeholder" role="img" aria-label="Headshot of Lizzie Clapham coming soon">
+            <span>LC</span>
+          </div>
+          <h2>Lizzie Clapham</h2>
+        </article>
+
+        <article class="person-card">
+          <div class="portrait-placeholder" role="img" aria-label="Headshot of Rachel Still coming soon">
+            <span>RS</span>
+          </div>
+          <h2>Rachel Still</h2>
+        </article>
+      </div>
+    </section>
+
+    <section class="collaborators" aria-labelledby="collaborators-title">
+      <p class="eyebrow">Along the way</p>
+      <h2 id="collaborators-title">Collaborators</h2>
+      <div class="collaborator-links">
+        <a href="https://cargocollective.com/collectifandthen" target="_blank" rel="noopener noreferrer">
+          <span>Lucie Maisha N’Duhirahe</span>
+          <span class="external-mark" aria-hidden="true">↗</span>
+        </a>
+        <a href="https://www.sebmayer.com/" target="_blank" rel="noopener noreferrer">
+          <span>Seb Mayer</span>
+          <span class="external-mark" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

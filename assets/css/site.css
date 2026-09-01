@@ -12,6 +12,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -19,6 +20,14 @@ body {
   background: #140b0c;
   color: #f4f4f4;
   overflow-x: hidden;
+  min-width: 0;
+}
+
+img,
+svg,
+video,
+iframe {
+  max-width: 100%;
 }
 
 a {
@@ -43,6 +52,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+  width: 100%;
 }
 
 .logo img {
@@ -96,6 +106,7 @@ header {
   gap: 2rem;
   background: #140b0c;
   text-align: right;
+  overflow-y: auto;
 }
 
 .nav-links.show {
@@ -103,11 +114,34 @@ header {
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    align-items: center;
+    padding: 0.75rem 1rem;
+  }
+
+  .logo {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .logo img {
+    height: 42px;
+  }
+
   .nav-row {
     display: none;
   }
 
   .burger {
     display: flex;
+    flex: 0 0 24px;
+    margin-left: auto;
+    position: relative;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    width: min(82vw, 320px);
+    padding: 5.5rem 1.25rem 2rem;
   }
 }

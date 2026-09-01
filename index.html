@@ -32,6 +32,7 @@
     /* GLOBAL RESET */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
+    html { overflow-x: clip; }
     body {
       font-family: 'Inter', sans-serif;
       background: #140b0c;
@@ -54,12 +55,12 @@
     .navbar {
       display: flex;
       justify-content: space-between;
-      align-items: start;
+      align-items: center;
       padding: 1rem 1.5rem;
     }
 
     .burger {
-      display: flex;
+      display: none;
       flex-direction: column;
       justify-content: space-between;
       width: 24px;
@@ -77,6 +78,19 @@
     }
 
     .burger.hidden { display: none; }
+
+    .nav-row {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-row a {
+      color: #f4f4f4;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
 
     /* MENU (SLIDE DOWN) */
     .nav-links {
@@ -141,6 +155,8 @@
       transition: filter 0.3s ease;
       font-weight: 100;
       line-height: 0.9;
+      min-width: 0;
+      max-width: 100%;
     }
     .project-slide a span { display:inline-block; padding:0 0.05ch; }
     .project-slide .cat-sith-link { justify-content:center; gap:.18em; }
@@ -169,7 +185,12 @@
     /* MOBILE TWEAKS */
     @media (max-width: 600px) {
       /* offset for fixed header (~64px) plus small margin */
-      .project-carousel { padding-top:5rem; }
+      .navbar { padding: 0.75rem 1rem; }
+      .logo img { height: 42px !important; }
+      .nav-row { display: none; }
+      .burger { display: flex; flex: 0 0 24px; margin-left: auto; position: relative; z-index: 1001; }
+      .nav-links { width: min(82vw, 320px); padding: 5.5rem 1.25rem 2rem; }
+      .project-carousel { padding: 5rem 1rem 2rem; overflow: hidden; }
       .project-stage { min-height:min(60vh, 30rem); }
 
       /* Let two-word titles use the screen vertically as well as horizontally. */
@@ -180,12 +201,19 @@
         gap:0;
         font-size:34vw;
         line-height:.72;
+        overflow-wrap:anywhere;
       }
       .project-slide a span { display:block; width:100%; padding:0; }
       .project-slide .cat-sith-link { gap:0; }
       .project-slide .cat-sith-link span:first-child { font-size:inherit; }
       .project-slide .second-sight-link { font-size:29vw; line-height:.78; }
-      .project-slide .raft-link { font-size:24vw; }
+      .project-slide .raft-link {
+        width: auto;
+        padding-left: 0;
+        font-size: 24vw;
+        letter-spacing: 0.22em;
+        text-indent: 0.22em;
+      }
     }
 
     .project-slide a:hover { text-decoration:none; filter:blur(2px) brightness(1.2); }
@@ -206,7 +234,13 @@
         <img src="https://assets.ludicacid.com/images/cat_sith_logo_white.png" alt="Ludic Acid Logo" style="height:45px; width:auto;">
       </a>
 
-      <button class="burger" aria-label="Menu" id="burger" data-menu-button aria-expanded="false" aria-controls="nav-links">
+      <ul class="nav-row">
+        <li><a href="/about/">About</a></li>
+        <li><a href="/people/">People</a></li>
+        <li><a href="mailto:jonah@ludicacid.com">Contact</a></li>
+      </ul>
+
+      <button class="burger" type="button" aria-label="Menu" id="burger" data-menu-button aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
     </nav>
@@ -222,7 +256,7 @@
         </ul>
       </li>
       <li><a href="/about/">About</a></li>
-      <li><a href="#people">People</a></li>
+      <li><a href="/people/">People</a></li>
       <li><a href="mailto:jonah@ludicacid.com">Contact</a></li>
     </ul>
   </header>
