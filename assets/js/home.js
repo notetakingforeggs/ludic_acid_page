@@ -7,19 +7,32 @@ if (carousel) {
   let activeIndex = 0;
   let rotation;
   let pointerInside = false;
-  let focusInside = false;
+  let changeTimer;
+  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)");
+  const fadeDuration = 900;
+  const blankInterval = 180;
 
   function showSlide(index) {
-    activeIndex = (index + slides.length) % slides.length;
+    const nextIndex = (index + slides.length) % slides.length;
+    if (nextIndex === activeIndex) return;
+
+    window.clearTimeout(changeTimer);
     slides.forEach((slide, slideIndex) => {
-      const isActive = slideIndex === activeIndex;
-      slide.classList.toggle("is-active", isActive);
-      slide.setAttribute("aria-hidden", String(!isActive));
-      slide.querySelector("a").tabIndex = isActive ? 0 : -1;
+      slide.classList.remove("is-active");
+      slide.setAttribute("aria-hidden", "true");
+      slide.querySelector("a").tabIndex = -1;
     });
-    dots.forEach((dot, dotIndex) => {
-      dot.setAttribute("aria-current", String(dotIndex === activeIndex));
-    });
+
+    changeTimer = window.setTimeout(() => {
+      activeIndex = nextIndex;
+      const nextSlide = slides[activeIndex];
+      nextSlide.classList.add("is-active");
+      nextSlide.setAttribute("aria-hidden", "false");
+      nextSlide.querySelector("a").tabIndex = 0;
+      dots.forEach((dot, dotIndex) => {
+        dot.setAttribute("aria-current", String(dotIndex === activeIndex));
+      });
+    }, reducedMotion.matches ? 0 : fadeDuration + blankInterval);
   }
 
   function stopRotation() {
@@ -28,7 +41,7 @@ if (carousel) {
 
   function startRotation() {
     stopRotation();
-    if (!reducedMotion.matches && !document.hidden && !pointerInside && !focusInside) {
+    if (!reducedMotion.matches && !document.hidden && !pointerInside) {
       rotation = window.setInterval(() => showSlide(activeIndex + 1), 5000);
     }
   }
@@ -47,20 +60,14 @@ if (carousel) {
   }));
 
   carousel.addEventListener("pointerenter", () => {
-    pointerInside = true;
-    stopRotation();
+    if (canHover.matches) {
+      pointerInside = true;
+      stopRotation();
+    }
   });
   carousel.addEventListener("pointerleave", () => {
-    pointerInside = false;
-    startRotation();
-  });
-  carousel.addEventListener("focusin", () => {
-    focusInside = true;
-    stopRotation();
-  });
-  carousel.addEventListener("focusout", (event) => {
-    if (!carousel.contains(event.relatedTarget)) {
-      focusInside = false;
+    if (canHover.matches) {
+      pointerInside = false;
       startRotation();
     }
   });
