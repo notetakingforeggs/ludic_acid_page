@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Tell Me image placeholder</title>
+  <desc id="desc">Purple abstract placeholder for a future Tell Me production photograph.</desc>
+  <rect width="1200" height="900" fill="#211619"/>
+  <circle cx="760" cy="380" r="290" fill="#512854"/>
+  <path d="M0 790 530 250l670 540v110H0Z" fill="#140b0c" opacity=".72"/>
+  <path d="M95 95h1010v710H95Z" fill="none" stroke="#d2b3ff" stroke-opacity=".42" stroke-width="3"/>
+  <text x="600" y="435" fill="#f4f4f4" font-family="Arial, sans-serif" font-size="72" text-anchor="middle" letter-spacing="8">TELL ME</text>
+  <text x="600" y="495" fill="#d2b3ff" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" letter-spacing="5">PRODUCTION IMAGE PLACEHOLDER</text>
+</svg>
