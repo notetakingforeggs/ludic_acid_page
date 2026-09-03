@@ -37,10 +37,12 @@ main {
 }
 
 .profile-portrait {
+  position: relative;
   width: 100%;
   max-height: calc(100svh - 6rem);
   margin: 0;
-  aspect-ratio: 4 / 5;
+  /* The source is 1279 × 1600; this frame excludes its bottom quarter. */
+  aspect-ratio: 1279 / 1200;
   overflow: hidden;
   border: 1px solid rgba(244, 244, 244, 0.2);
 }
@@ -51,6 +53,18 @@ main {
   height: 100%;
   object-fit: cover;
   object-position: center top;
+}
+
+.profile-portrait figcaption {
+  position: absolute;
+  right: 0.65rem;
+  bottom: 0.55rem;
+  padding: 0.25rem 0.4rem;
+  background: rgba(13, 8, 9, 0.72);
+  color: rgba(244, 244, 244, 0.72);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .back-link {
