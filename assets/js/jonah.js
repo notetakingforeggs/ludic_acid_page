@@ -9,6 +9,17 @@ document.querySelectorAll("[data-media-carousel]").forEach((carousel) => {
 
   if (slides.length < 2 || !previous || !next) return;
 
+  const dots = slides.map(() => {
+    const dot = document.createElement("i");
+    dot.className = "carousel-dot-indicator";
+    dot.setAttribute("aria-hidden", "true");
+    return dot;
+  });
+  if (status) {
+    status.textContent = "";
+    dots.forEach((dot) => status.append(dot));
+  }
+
   function showSlide(index) {
     current = (index + slides.length) % slides.length;
     slides.forEach((slide, slideIndex) => {
@@ -16,7 +27,7 @@ document.querySelectorAll("[data-media-carousel]").forEach((carousel) => {
       slide.classList.toggle("is-active", isActive);
       slide.setAttribute("aria-hidden", String(!isActive));
     });
-    if (status) status.textContent = `${current + 1} / ${slides.length}`;
+    dots.forEach((dot, dotIndex) => dot.classList.toggle("is-active", dotIndex === current));
   }
 
   function stopAutoplay() {
@@ -52,4 +63,5 @@ document.querySelectorAll("[data-media-carousel]").forEach((carousel) => {
     startAutoplay();
   }, { passive: true });
   startAutoplay();
+  showSlide(0);
 });
