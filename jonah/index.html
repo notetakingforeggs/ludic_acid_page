@@ -37,9 +37,9 @@
 
   <main>
     <section class="profile-hero" aria-labelledby="profile-title">
-      <div class="portrait-placeholder profile-portrait" role="img" aria-label="Portrait of Jonah Russell coming soon">
-        <span>JR</span>
-      </div>
+      <figure class="profile-portrait">
+        <img src="https://assets.ludicacid.com/images/headshot.jpeg" alt="Jonah Russell" fetchpriority="high">
+      </figure>
       <div class="profile-intro">
         <a class="back-link" href="/people/">← All people</a>
         <p class="eyebrow">Co-founder · Co-creator · Performer</p>
@@ -66,48 +66,36 @@
     </section>
 
     <section class="project-gallery-section" aria-labelledby="project-gallery-title">
-      <div class="section-label">
-        <p class="eyebrow">Ludic Acid projects</p>
-        <h2 id="project-gallery-title">Selected images</h2>
+      <div class="project-gallery-copy">
+        <p class="eyebrow">Founder · Co-creator · Performer</p>
+        <h2 id="project-gallery-title">Ludic Acid</h2>
+        <p>Artist-led collaborative circus and puppetry, making performance around acrobatic bodies.</p>
+        <nav class="project-gallery-links" aria-label="Ludic Acid projects">
+          <a href="/raft/">Raft ↗</a>
+          <a href="/catsith/">Cat Sith ↗</a>
+          <a href="/second-sight/">Second Sight ↗</a>
+        </nav>
       </div>
-      <div class="project-galleries">
-        <article>
-          <div class="gallery-heading">
-            <h3>Second Sight</h3>
-            <a href="/second-sight/">View project ↗</a>
-          </div>
-          <div class="performance-image media-carousel" data-media-carousel aria-label="Second Sight image carousel">
-            <div class="carousel-frame">
-              <figure class="media-slide is-active" data-media-slide>
-                <img src="https://assets.ludicacid.com/images/circish/negtall.jpeg" alt="Second Sight hand-to-hand acrobatics" loading="lazy">
-                <figcaption>Second Sight</figcaption>
-              </figure>
-              <figure class="media-slide" data-media-slide hidden>
-                <img src="https://assets.ludicacid.com/images/circish/feet.JPG" alt="Detail from the Second Sight creation process" loading="lazy">
-                <figcaption>Second Sight</figcaption>
-              </figure>
-              <figure class="media-slide" data-media-slide hidden>
-                <img src="https://assets.ludicacid.com/images/circish/jonah%2BH/0M8A3026.jpg" alt="Jonah Russell performing hand-to-hand acrobatics in Second Sight" loading="lazy">
-                <figcaption>Second Sight</figcaption>
-              </figure>
-            </div>
-            <div class="media-controls">
-              <button type="button" data-media-previous aria-label="Previous Second Sight image">←</button>
-              <span data-media-status aria-live="polite">1 / 3</span>
-              <button type="button" data-media-next aria-label="Next Second Sight image">→</button>
-            </div>
-          </div>
-        </article>
-        <article>
-          <div class="gallery-heading">
-            <h3>Raft</h3>
-            <a href="/raft/">View project ↗</a>
-          </div>
-          <figure class="performance-image">
+      <div class="performance-image media-carousel" data-media-carousel aria-label="Selected Ludic Acid projects">
+        <div class="carousel-frame">
+          <figure class="media-slide is-active" data-media-slide aria-hidden="false">
             <img src="https://assets.ludicacid.com/images/circish/raftianvisits.jpg" alt="Raft, built from reclaimed estate-agent signs, on a London canal" loading="lazy">
-            <figcaption>Raft visits another DIY watercraft</figcaption>
+            <figcaption>Raft</figcaption>
           </figure>
-        </article>
+          <figure class="media-slide" data-media-slide aria-hidden="true">
+            <img src="https://assets.ludicacid.com/images/sky-cat.jpeg" alt="Cat Sith acrobatic puppet outdoors" loading="lazy">
+            <figcaption>Cat Sith</figcaption>
+          </figure>
+          <figure class="media-slide" data-media-slide aria-hidden="true">
+            <img src="https://assets.ludicacid.com/images/circish/jonah%2BH/0M8A3026.jpg" alt="Jonah Russell performing hand-to-hand acrobatics in Second Sight" loading="lazy">
+            <figcaption>Second Sight</figcaption>
+          </figure>
+          <div class="media-controls">
+            <button type="button" data-media-previous aria-label="Previous project image">‹</button>
+            <span data-media-status aria-live="polite">1 / 3</span>
+            <button type="button" data-media-next aria-label="Next project image">›</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -121,23 +109,23 @@
         <article class="performance-item">
           <div class="performance-image media-carousel" data-media-carousel aria-label="Tell Me image carousel">
             <div class="carousel-frame">
-              <figure class="media-slide is-active" data-media-slide>
+              <figure class="media-slide is-active" data-media-slide aria-hidden="false">
                 <img src="https://assets.ludicacid.com/images/circish/tell%20me/IMG_1281.JPG" alt="Jonah Russell performing in Tell Me" loading="lazy">
                 <figcaption>Tell Me</figcaption>
               </figure>
-              <figure class="media-slide" data-media-slide hidden>
+              <figure class="media-slide" data-media-slide aria-hidden="true">
                 <img src="https://assets.ludicacid.com/images/circish/tell%20me/Sadiq%2010.jpg" alt="Tell Me by Sadiq Ali Company" loading="lazy">
                 <figcaption>Tell Me</figcaption>
               </figure>
-              <figure class="media-slide" data-media-slide hidden>
+              <figure class="media-slide" data-media-slide aria-hidden="true">
                 <img src="https://assets.ludicacid.com/images/circish/tell%20me/IMG_1285.JPG" alt="Acrobatic performance in Tell Me" loading="lazy">
                 <figcaption>Tell Me</figcaption>
               </figure>
             </div>
             <div class="media-controls">
-              <button type="button" data-media-previous aria-label="Previous Tell Me image">←</button>
+              <button type="button" data-media-previous aria-label="Previous Tell Me image">‹</button>
               <span data-media-status aria-live="polite">1 / 3</span>
-              <button type="button" data-media-next aria-label="Next Tell Me image">→</button>
+              <button type="button" data-media-next aria-label="Next Tell Me image">›</button>
             </div>
           </div>
           <div class="performance-copy">
