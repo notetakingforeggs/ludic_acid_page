@@ -261,9 +261,18 @@ main {
   object-fit: cover;
 }
 
-.media-slide img.tell-me-portrait-crop {
-  object-fit: cover;
-  transform: scale(1.25);
+.tell-me-crop-window {
+  width: 60%;
+  height: 100%;
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+.media-slide .tell-me-crop-window img {
+  width: 166.6667%;
+  max-width: none;
+  object-fit: contain;
+  transform: translateX(-20%);
 }
 
 .media-slide figcaption {
