@@ -102,7 +102,8 @@ main {
 .project-gallery-section,
 .work-section,
 .reel,
-.education {
+.education,
+.other-work {
   padding: 4rem 0;
   border-top: 1px solid rgba(244, 244, 244, 0.25);
 }
@@ -124,7 +125,8 @@ main {
 
 .section-label h2,
 .project-gallery-section h2,
-.reel h2 {
+.reel h2,
+.other-work h2 {
   margin: 0.8rem 0 2.5rem;
   font-size: clamp(3rem, 15vw, 6rem);
 }
@@ -382,6 +384,27 @@ main {
 .education p:last-child {
   margin-top: 1.5rem;
   font-size: 1.2rem;
+}
+
+.other-work h2 {
+  font-family: "Lithops", sans-serif;
+  font-weight: 400;
+  line-height: 0.82;
+  text-transform: uppercase;
+}
+
+.other-work .media-carousel {
+  margin-inline: auto;
+}
+
+.cv-link {
+  display: block;
+  width: fit-content;
+  margin: 1.25rem auto 0;
+  color: #d2b3ff;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 footer {
