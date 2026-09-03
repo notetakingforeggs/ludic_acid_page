@@ -247,6 +247,11 @@ main {
   object-fit: cover;
 }
 
+.media-slide img.tell-me-portrait-crop {
+  object-fit: cover;
+  transform: scale(1.25);
+}
+
 .media-slide figcaption {
   position: absolute;
   right: 0.75rem;
