@@ -484,20 +484,23 @@ footer a {
   }
 }
 
-/* Fixed media system: every image occupies the same bounded crop. */
+/* Keep gallery media compact and consistent without cropping the photographs. */
 .performance-image,
 .media-carousel,
 .carousel-frame {
   width: 100%;
-  max-width: 100%;
 }
 
-.performance-image,
+.performance-image {
+  max-width: 30rem;
+  justify-self: center;
+}
+
 .carousel-frame {
   aspect-ratio: 4 / 3;
   height: auto;
   min-height: 0;
-  max-height: calc(100svh - 7rem);
+  max-width: 30rem;
   overflow: hidden;
   background: #0d0809;
 }
@@ -508,7 +511,7 @@ footer a {
   height: 100%;
   max-width: 100%;
   max-height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .media-carousel {
@@ -543,15 +546,11 @@ footer a {
 }
 
 @media (min-width: 760px) {
-  .project-gallery-section,
-  .performance-item {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .project-gallery-section {
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
   }
 
-  .performance-image,
-  .carousel-frame,
-  .performance-item .carousel-frame {
-    height: auto;
-    max-height: calc(100svh - 8rem);
+  .performance-item {
+    grid-template-columns: minmax(18rem, 0.85fr) minmax(0, 1.15fr);
   }
 }

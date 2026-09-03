@@ -1,13 +1,30 @@
 document.querySelectorAll("[data-media-carousel]").forEach((carousel) => {
   const slides = Array.from(carousel.querySelectorAll("[data-media-slide]"));
-  const previous = carousel.querySelector("[data-media-previous]");
-  const next = carousel.querySelector("[data-media-next]");
-  const status = carousel.querySelector("[data-media-status]");
+  let previous = carousel.querySelector("[data-media-previous]");
+  let next = carousel.querySelector("[data-media-next]");
+  let status = carousel.querySelector("[data-media-status]");
   let current = 0;
   let autoplay;
   let touchStartX = 0;
 
-  if (slides.length < 2 || !previous || !next) return;
+  if (slides.length < 2) {
+    carousel.classList.add("is-single-slide");
+    return;
+  }
+
+  if (!previous || !next) {
+    const controls = document.createElement("div");
+    controls.className = "media-controls";
+    controls.innerHTML = `
+      <button type="button" data-media-previous aria-label="Previous image">‹</button>
+      <span data-media-status aria-live="polite"></span>
+      <button type="button" data-media-next aria-label="Next image">›</button>
+    `;
+    carousel.append(controls);
+    previous = controls.querySelector("[data-media-previous]");
+    next = controls.querySelector("[data-media-next]");
+    status = controls.querySelector("[data-media-status]");
+  }
 
   const dots = slides.map(() => {
     const dot = document.createElement("i");
