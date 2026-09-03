@@ -63,6 +63,9 @@ header {
 .content-section h2 { margin-bottom: 2rem; font-size: clamp(3rem, 7vw, 5rem); }
 .section-body { width: min(900px, 100%); margin: 0 auto; text-align: center; }
 .section-body p { font-size: 1.25rem; }
+.section-body p + p { margin-top: 1.5rem; }
+.section-body .project-links { font-size: 1rem; }
+.project-links a { color: #d2b3ff; }
 
 footer { padding: 2rem 1rem; text-align: center; font-size: .75rem; opacity: .6; }
 footer a { text-decoration: underline; }
