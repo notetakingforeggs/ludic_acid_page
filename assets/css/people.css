@@ -63,6 +63,14 @@ h1 {
   font-weight: 400;
 }
 
+.portrait-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
 .person-card h2 {
   padding-top: 0.9rem;
   font-size: clamp(1rem, 2vw, 1.35rem);
