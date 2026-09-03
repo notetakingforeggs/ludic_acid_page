@@ -28,8 +28,7 @@ main {
 }
 
 .portrait-placeholder,
-.performance-image,
-.reel-placeholder {
+.performance-image {
   overflow: hidden;
   border: 1px solid rgba(244, 244, 244, 0.2);
   background:
@@ -64,8 +63,7 @@ main {
 }
 
 .profile-intro h1,
-.section-label h2,
-.reel h2 {
+.section-label h2 {
   font-family: "Lithops", sans-serif;
   font-weight: 400;
   line-height: 0.82;
@@ -101,7 +99,6 @@ main {
 .specialisms,
 .project-gallery-section,
 .work-section,
-.reel,
 .education,
 .other-work {
   padding: 4rem 0;
@@ -125,7 +122,6 @@ main {
 
 .section-label h2,
 .project-gallery-section h2,
-.reel h2,
 .other-work h2 {
   margin: 0.8rem 0 2.5rem;
   font-size: clamp(3rem, 15vw, 6rem);
@@ -198,12 +194,6 @@ main {
   overflow: visible;
   border: 0;
   background: none;
-}
-
-.reel-placeholder {
-  color: rgba(244, 244, 244, 0.65);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 
 .performance-image img {
@@ -339,6 +329,15 @@ main {
   text-transform: uppercase;
 }
 
+.work-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #d2b3ff;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .reviews {
   display: grid;
   gap: 0.75rem;
@@ -365,22 +364,6 @@ main {
   text-transform: uppercase;
 }
 
-.reel-placeholder {
-  min-height: 56vw;
-  padding: 2rem;
-}
-
-.play {
-  display: grid;
-  width: 4rem;
-  height: 4rem;
-  padding-left: 0.2rem;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  place-items: center;
-  font-size: 1.2rem;
-}
-
 .education p:last-child {
   margin-top: 1.5rem;
   font-size: 1.2rem;
@@ -395,6 +378,10 @@ main {
 
 .other-work .media-carousel {
   margin-inline: auto;
+}
+
+.other-work .media-controls button {
+  opacity: 1;
 }
 
 .cv-link {
@@ -482,10 +469,6 @@ footer a {
   .performance-item:nth-child(even) .performance-copy {
     grid-column: 1;
     grid-row: 1;
-  }
-
-  .reel-placeholder {
-    min-height: 38rem;
   }
 
   footer {
