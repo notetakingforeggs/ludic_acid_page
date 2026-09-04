@@ -262,17 +262,18 @@ main {
 }
 
 .tell-me-crop-window {
-  width: 60%;
+  width: 50%;
   height: 100%;
   margin-inline: auto;
   overflow: hidden;
 }
 
 .media-slide .tell-me-crop-window img {
-  width: 166.6667%;
+  width: 200%;
   max-width: none;
   object-fit: contain;
-  transform: translateX(-20%);
+  object-position: center center;
+  transform: translateX(-25%);
 }
 
 .media-slide figcaption {
