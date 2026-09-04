@@ -1,84 +1,22 @@
 document.querySelectorAll("[data-media-carousel]").forEach((carousel) => {
   const slides = Array.from(carousel.querySelectorAll("[data-media-slide]"));
-  let previous = carousel.querySelector("[data-media-previous]");
-  let next = carousel.querySelector("[data-media-next]");
-  let status = carousel.querySelector("[data-media-status]");
+  const previous = carousel.querySelector("[data-media-previous]");
+  const next = carousel.querySelector("[data-media-next]");
+  const status = carousel.querySelector("[data-media-status]");
   let current = 0;
-  let autoplay;
-  let touchStartX = 0;
 
-  if (slides.length < 2) {
-    carousel.classList.add("is-single-slide");
-    return;
-  }
-
-  if (!previous || !next) {
-    const controls = document.createElement("div");
-    controls.className = "media-controls";
-    controls.innerHTML = `
-      <button type="button" data-media-previous aria-label="Previous image">‹</button>
-      <span data-media-status aria-live="polite"></span>
-      <button type="button" data-media-next aria-label="Next image">›</button>
-    `;
-    carousel.append(controls);
-    previous = controls.querySelector("[data-media-previous]");
-    next = controls.querySelector("[data-media-next]");
-    status = controls.querySelector("[data-media-status]");
-  }
-
-  const dots = slides.map(() => {
-    const dot = document.createElement("i");
-    dot.className = "carousel-dot-indicator";
-    dot.setAttribute("aria-hidden", "true");
-    return dot;
-  });
-  if (status) {
-    status.textContent = "";
-    dots.forEach((dot) => status.append(dot));
-  }
+  if (slides.length < 2 || !previous || !next) return;
 
   function showSlide(index) {
     current = (index + slides.length) % slides.length;
     slides.forEach((slide, slideIndex) => {
       const isActive = slideIndex === current;
+      slide.hidden = !isActive;
       slide.classList.toggle("is-active", isActive);
-      slide.setAttribute("aria-hidden", String(!isActive));
     });
-    dots.forEach((dot, dotIndex) => dot.classList.toggle("is-active", dotIndex === current));
+    if (status) status.textContent = `${current + 1} / ${slides.length}`;
   }
 
-  function stopAutoplay() {
-    window.clearInterval(autoplay);
-  }
-
-  function startAutoplay() {
-    stopAutoplay();
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      autoplay = window.setInterval(() => showSlide(current + 1), 5000);
-    }
-  }
-
-  previous.addEventListener("click", () => {
-    showSlide(current - 1);
-    startAutoplay();
-  });
-  next.addEventListener("click", () => {
-    showSlide(current + 1);
-    startAutoplay();
-  });
-  carousel.addEventListener("mouseenter", stopAutoplay);
-  carousel.addEventListener("mouseleave", startAutoplay);
-  carousel.addEventListener("focusin", stopAutoplay);
-  carousel.addEventListener("focusout", startAutoplay);
-  carousel.addEventListener("touchstart", (event) => {
-    touchStartX = event.changedTouches[0].clientX;
-    stopAutoplay();
-  }, { passive: true });
-  carousel.addEventListener("touchend", (event) => {
-    const distance = event.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(distance) > 45) showSlide(current + (distance < 0 ? 1 : -1));
-    startAutoplay();
-  }, { passive: true });
-  startAutoplay();
-  showSlide(0);
+  previous.addEventListener("click", () => showSlide(current - 1));
+  next.addEventListener("click", () => showSlide(current + 1));
 });
