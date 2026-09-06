@@ -29,9 +29,12 @@ python3 -m http.server 8000
 
 The project page uses `assets/css/second-sight.css` and
 `assets/js/second-sight.js`. Its hero rotates the four images in the order listed
-in `second-sight/index.html`; `fwd.jpg` is the team photograph. The two Media
-placeholders have HTML comments marking where to add the YouTube iframe and the
-hosted video element when their URLs are ready.
+in `second-sight/index.html`: feet, 0M8A3026, negtall, fhd-5. The second and
+fourth images fit without vertical cropping and fade into black at the sides.
+`fwd.jpg` is the team photograph. Media embeds YouTube video `4wDHJncDc10`
+and `/images/second-sight/sharing.mp4` from the asset server.
+
+The page-specific `second-sight/favicon.svg` adapts the [Lucide eye icon](https://github.com/lucide-icons/lucide/blob/main/icons/eye.svg) with a white eye, thin black outline and solid black pupil. Its license is in `second-sight/favicon-LICENSE.txt`.
 
 Supporter logos are saved locally from their official sites:
 
