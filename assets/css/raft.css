@@ -95,7 +95,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 .discussion-gallery-track { display: grid; grid-auto-flow: column; grid-auto-columns: max-content; align-items: center; gap: 1rem; width: 100%; min-width: 0; overflow-x: auto; padding: .5rem 1rem; scroll-padding-inline: 1rem; scroll-snap-type: x mandatory; overscroll-behavior-inline: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; -webkit-mask-image: linear-gradient(to right, transparent, #000 1rem, #000 calc(100% - 1rem), transparent); mask-image: linear-gradient(to right, transparent, #000 1rem, #000 calc(100% - 1rem), transparent); }
 .discussion-gallery-track::-webkit-scrollbar { display: none; }
 .discussion-gallery-track figure { width: 280px; margin: 0; scroll-snap-align: start; }
-.discussion-gallery-track figure:nth-child(-n + 3) { width: 520px; }
+.discussion-gallery-track figure.discussion-card-wide { width: 520px; }
 .discussion-gallery-track a { display: flex; justify-content: center; width: 100%; }
 .discussion-gallery-track img { display: block; width: auto; max-width: 100%; height: auto; object-fit: contain; border: 1px solid #ffffff24; border-radius: .45rem; background: #fff; }
 .raft-page .section-body .discussion-links-label { margin: .5rem 0 0; color: #c6b9c2; font-size: .8rem; }
@@ -114,5 +114,5 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
   .press-archive { grid-template-columns: 1fr; }
   .discussion-gallery-track { gap: .75rem; }
   .discussion-gallery-track figure { width: min(70vw, 280px); }
-  .discussion-gallery-track figure:nth-child(-n + 3) { width: calc(100vw - 4.5rem); }
+  .discussion-gallery-track figure.discussion-card-wide { width: calc(100vw - 4.5rem); }
 }
