@@ -24,3 +24,19 @@ Run locally with any static file server, for example:
 ```sh
 python3 -m http.server 8000
 ```
+
+## Second Sight
+
+The project page uses `assets/css/second-sight.css` and
+`assets/js/second-sight.js`. Its hero rotates the four images in the order listed
+in `second-sight/index.html`; `fwd.jpg` is the team photograph. The two Media
+placeholders have HTML comments marking where to add the YouTube iframe and the
+hosted video element when their URLs are ready.
+
+Supporter logos are saved locally from their official sites:
+
+- The Work Room: https://theworkroom.org.uk/assets/logos/theworkroom.png
+- Kelburn Garden Party (undated wordmark): https://www.kelburngardenparty.com/wp-content/uploads/2026/05/sticky-nav-logo.svg
+
+The Neverending Glen link points to https://www.neverendingglen.com/.
+The About copy draws on the [Work Room residency announcement](https://theworkroom.org.uk/events/residency-sharing-with-jonah-russell-choreography-theatrical-acrobatics-an-xxxl-jumper).

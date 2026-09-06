@@ -3,21 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Second Sight – Ludic Acid</title>
+  <meta name="description" content="Second Sight (working title): an early-stage work in progress by Jonah Russell and H Barton, exploring acrobatics, movement and a shared oversized hoodie.">
+  <title>Second Sight (working title) – Ludic Acid</title>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/site.css">
   <link rel="stylesheet" href="../assets/css/project.css">
+  <link rel="stylesheet" href="../assets/css/second-sight.css">
 </head>
 <body class="second-sight-page">
   <header>
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main navigation">
       <a href="/" class="logo" aria-label="Ludic Acid home"><img src="https://assets.ludicacid.com/images/cat/cat_sith_logo_white.png" alt="Ludic Acid"></a>
       <ul class="nav-row">
         <li><a href="#about">About</a></li>
+        <li><a href="#media">Media</a></li>
         <li><a href="#team">Team</a></li>
         <li><a href="#info">Info</a></li>
-        <li><a href="#media">Media</a></li>
       </ul>
       <button class="burger" type="button" aria-label="Menu" data-menu-button aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
@@ -25,19 +27,129 @@
     </nav>
     <ul class="nav-links" id="nav-links" data-menu>
       <li><a href="#about">About</a></li>
+      <li><a href="#media">Media</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#info">Info</a></li>
-      <li><a href="#media">Media</a></li>
       <li><a href="/people/">People</a></li>
     </ul>
   </header>
   <main>
-    <section class="hero"><div><h1>Second Sight</h1><p>Pending</p></div></section>
-    <section id="about" class="content-section"><div><h2>About</h2><div class="section-body"><p>Pending</p></div></div></section>
-    <section id="team" class="content-section"><div><h2>Team</h2><div class="section-body"><p>Pending</p></div></div></section>
-    <section id="info" class="content-section"><div><h2>Info</h2><div class="section-body"><p>Pending</p></div></div></section>
-    <section id="media" class="content-section"><div><h2>Media</h2><div class="section-body"><p>Pending</p></div></div></section>
+    <section class="hero" aria-labelledby="project-title" aria-roledescription="carousel">
+      <div class="hero-images" aria-hidden="true">
+        <img class="hero-image is-active" src="https://assets.ludicacid.com/images/second-sight/feet.JPG" alt="" fetchpriority="high">
+        <img class="hero-image" src="https://assets.ludicacid.com/images/second-sight/negtall.jpeg" alt="" decoding="async">
+        <img class="hero-image" src="https://assets.ludicacid.com/images/second-sight/fhd-5.jpg" alt="" decoding="async">
+        <img class="hero-image" src="https://assets.ludicacid.com/images/second-sight/0M8A3026.jpg" alt="" decoding="async">
+      </div>
+      <div class="hero-text">
+        <p class="project-status">Early-stage work in progress</p>
+        <h1 id="project-title">Second<br>Sight</h1>
+        <p class="working-title">Working title</p>
+        <p class="hero-credit">Jonah Russell &amp; H Barton</p>
+      </div>
+      <div class="hero-bottom">
+        <a class="scroll-cue" href="#about">Discover the work <span aria-hidden="true">↓</span></a>
+        <div class="carousel-controls" hidden aria-label="Background images">
+          <button type="button" data-previous aria-label="Previous background image">←</button>
+          <span data-slide-count aria-live="off">01 / 04</span>
+          <button type="button" data-next aria-label="Next background image">→</button>
+          <button type="button" data-pause aria-label="Pause background slideshow">Pause</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="content-section">
+      <h2><button type="button" class="section-toggle" aria-expanded="true" aria-controls="about-body">About</button></h2>
+      <div id="about-body" class="section-body">
+        <p class="section-kicker">Two bodies. One oversized hoodie.</p>
+        <p>Where does one person end and the other begin? Second Sight is an emerging collaboration between Jonah Russell and H Barton, bringing hand-to-hand acrobatics into the strange, shared space of a single oversized hoodie.</p>
+        <p>We’re playing with balance, tangled limbs and the moments when two people start to look like something else entirely. Somewhere between dance, acrobatics and a creature finding its feet.</p>
+        <p class="development-note">This is an early-stage work in progress, and Second Sight is a working title. These images offer a glimpse into an ongoing process; the form, story and performance are still taking shape.</p>
+        <p class="project-links"><a href="https://theworkroom.org.uk/events/residency-sharing-with-jonah-russell-choreography-theatrical-acrobatics-an-xxxl-jumper">From the studio: our Work Room residency sharing ↗</a></p>
+      </div>
+    </section>
+
+    <section id="media" class="content-section">
+      <h2><button type="button" class="section-toggle" aria-expanded="true" aria-controls="media-body">Media</button></h2>
+      <div id="media-body" class="section-body">
+        <p class="section-kicker">Fragments from a work in progress</p>
+        <div class="media-grid">
+          <figure>
+            <!-- Replace this placeholder with the YouTube iframe when the video URL is ready. -->
+            <div class="video-placeholder" aria-label="YouTube video coming soon">
+              <span class="play-mark" aria-hidden="true">▷</span>
+              <span>YouTube film</span><small>Coming soon</small>
+            </div>
+            <figcaption>A first look at Second Sight.</figcaption>
+          </figure>
+          <figure>
+            <!-- Replace this placeholder with a video element and the uploaded assets.ludicacid.com source. -->
+            <div class="video-placeholder" aria-label="Rehearsal video coming soon">
+              <span class="play-mark" aria-hidden="true">▷</span>
+              <span>From the rehearsal room</span><small>Coming soon</small>
+            </div>
+            <figcaption>Experiments, sketches and moments along the way.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="content-section">
+      <h2><button type="button" class="section-toggle" aria-expanded="true" aria-controls="team-body">Team</button></h2>
+      <div id="team-body" class="section-body team-layout">
+        <div class="team-copy">
+          <p class="section-kicker">Created &amp; performed by</p>
+          <article id="jonah-russell">
+            <h3><a href="/jonah/">Jonah Russell ↗</a></h3>
+            <p>Acrobat, performer and maker. Jonah’s work moves between circus, physical theatre and the possibilities of making things together.</p>
+          </article>
+          <article id="h-barton">
+            <h3>H Barton</h3>
+            <p>Co-creator and performer, developing Second Sight with Jonah through hand-to-hand acrobatics and shared movement.</p>
+            <p class="draft-copy"><small>Biography to come.</small></p>
+          </article>
+        </div>
+        <figure>
+          <img src="https://assets.ludicacid.com/images/second-sight/fwd.jpg" alt="Jonah and H sharing an oversized black hoodie, one face appearing over the other's shoulder" loading="lazy" width="567" height="850">
+          <figcaption>Jonah &amp; H. Two people, one silhouette.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="info" class="content-section">
+      <h2><button type="button" class="section-toggle" aria-expanded="true" aria-controls="info-body">Info</button></h2>
+      <div id="info-body" class="section-body info-layout">
+        <div>
+          <p class="section-kicker">Still taking shape</p>
+          <dl class="project-facts">
+            <div><dt>Stage</dt><dd>Early research &amp; development</dd></div>
+            <div><dt>Title</dt><dd>Second Sight — working title</dd></div>
+            <div><dt>Performers</dt><dd>Jonah Russell &amp; H Barton</dd></div>
+            <div><dt>Duration &amp; format</dt><dd>In development</dd></div>
+            <div><dt>Technical details</dt><dd>To follow as the work develops</dd></div>
+          </dl>
+        </div>
+        <div class="info-copy">
+          <p>Interested in the next stage? Get in touch about development time, a conversation or a future sharing.</p>
+          <p><a href="mailto:jonah@ludicacid.com">jonah@ludicacid.com ↗</a></p>
+          <p class="draft-copy">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <p class="support-label">With support from</p>
+    <div class="footer-logos">
+      <a href="https://theworkroom.org.uk/" class="work-room-logo"><img src="../assets/images/logos/the-work-room.png" alt="The Work Room" loading="lazy" width="1200" height="1200"></a>
+      <div class="glen-supporter">
+        <a href="https://www.neverendingglen.com/">The Neverending Glen</a>
+        <a href="https://www.kelburngardenparty.com/"><img src="../assets/images/logos/kelburn-garden-party.svg" alt="Kelburn Garden Party" loading="lazy" width="500" height="42"></a>
+      </div>
+    </div>
+    <p class="footer-note">“Typefesse” typeface · <a href="https://velvetyne.fr/">Velvetyne Type Foundry</a></p>
+  </footer>
   <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/second-sight.js"></script>
 </body>
 </html>
