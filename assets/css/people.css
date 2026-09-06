@@ -170,3 +170,12 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+
+.second-sight-people { margin-top: clamp(5rem, 10vw, 9rem); }
+.second-sight-people .section-heading h2 { font-family: "Lithops", sans-serif; font-weight: 400; font-size: clamp(3rem, 7vw, 6rem); line-height: 1; }
+.second-sight-people .people-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 780px; }
+.person-role { margin-top: .5rem; color: #b49abc; font-size: .85rem; }
+@media (max-width: 700px) {
+  .second-sight-people .people-grid { grid-template-columns: 1fr; }
+  .second-sight-people .section-heading h2 { margin-top: .75rem; }
+}
