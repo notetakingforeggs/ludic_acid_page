@@ -43,3 +43,29 @@ Supporter logos are saved locally from their official sites:
 
 The Neverending Glen link points to https://www.neverendingglen.com/.
 The About copy draws on the [Work Room residency announcement](https://theworkroom.org.uk/events/residency-sharing-with-jonah-russell-choreography-theatrical-acrobatics-an-xxxl-jumper).
+
+## Raft
+
+`raft/index.html`, `assets/css/raft.css` and `assets/js/raft.js` provide the
+Second Sight-style gallery and folding About / Press / Team sections, retaining
+Raft's Flor de Ruina font. The gallery uses the server's
+`/images/raft/raftuse/1.jpg` through `9.jpg`, then `99.jpg`, in numeric order.
+`/images/raft/standardraftpoem.jpg` is appended as a fully contained final slide
+and repeated in Press. The file currently contains a newspaper diary clipping;
+it is labelled as a clipping rather than a transcribed poem. The title overlay
+is hidden on this slide and its autoplay interval is extended to 20 seconds.
+
+About and Team are intentionally lorem ipsum. The Press section has marked
+HTML insertion points for a London Boaters screenshot carousel and the letter
+before claim. These are placeholders until the material is supplied.
+
+Press research, checked 6 September 2026:
+
+- [Evening Standard, 5 February 2018](https://www.standard.co.uk/news/london/pair-forced-out-of-floating-wendy-house-with-a-roof-made-out-of-foxtons-for-sale-signs-a3757936.html): report by Barney Davis and Jonathan Prynn.
+- [Makery, 6 March 2018](https://www.makery.info/en/2018/03/06/artistes-a-leau-histoire-dembarcations-pirates/): Rob La Frenais's article opens with the raft and identifies its author as an independent curator. This is a likely match for the remembered curator post. The French edition is linked alongside it.
+- [Property Industry Eye, 6 February 2018](https://propertyindustryeye.com/floating-house-made-from-estate-agents-for-sale-boards-torn-down/): Neil Gerrard's follow-up, drawing on the Standard report.
+
+Broader searches for Foxtons / raft / floating Wendy house / Regent's Canal,
+and searches within ianVisits, did not establish additional distinct coverage.
+The contemporary reports attribute construction to Max Bloom and Stephen Watt;
+these reported names have not been used to fill in the project's team credits.
