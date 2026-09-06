@@ -59,9 +59,10 @@ is hidden on this slide and its autoplay interval is extended to 20 seconds.
 
 About and Team are intentionally lorem ipsum. Press includes a horizontally
 scrolling gallery of the 21 discussion screenshots in
-`/images/raft/raftscreenshots/`; it shows multiple uncropped cards on wider
-screens and one swipeable card at a time on mobile. The letter before claim
-remains a placeholder until the material is supplied.
+`/images/raft/raftscreenshots/`; it shows multiple compact, uncropped cards on
+wider screens and a smaller swipeable card with the next card visible on
+mobile. The letter before claim remains a placeholder until the material is
+supplied.
 
 Press research, checked 6 September 2026:
 
