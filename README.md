@@ -50,6 +50,8 @@ The About copy draws on the [Work Room residency announcement](https://theworkro
 Second Sight-style gallery and folding About / Press / Team sections, retaining
 Raft's Flor de Ruina font. The gallery uses the server's
 `/images/raft/raftuse/1.jpg` through `9.jpg`, then `99.jpg`, in numeric order.
+Slide 8 uses the portrait `8b.jpg` source at mobile widths and retains the
+landscape `8.jpg` source on wider screens.
 `/images/raft/standardraftpoem.jpg` is appended as a fully contained final slide
 and repeated in Press. The file currently contains a newspaper diary clipping;
 it is labelled as a clipping rather than a transcribed poem. The title overlay
