@@ -1,5 +1,5 @@
 /* Raft uses the same full-screen gallery and folding sections as Second Sight. */
-.raft-page { --accent: #ded8a3; }
+.raft-page { --accent: #a9c9df; }
 .raft-page a { color: inherit; }
 .raft-page .hero {
   position: relative;
@@ -92,8 +92,10 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 .discussion-gallery-controls button { color: inherit; background: #140b0c80; border: 1px solid #ffffff40; border-radius: 2rem; min-width: 44px; min-height: 44px; padding: .5rem .75rem; cursor: pointer; }
 .discussion-gallery-controls button:hover { border-color: var(--accent); }
 .discussion-gallery-controls button:disabled { opacity: .35; cursor: default; }
-.discussion-gallery-track { display: grid; grid-auto-flow: column; grid-auto-columns: 280px; align-items: start; gap: 1rem; width: 100%; min-width: 0; overflow-x: auto; padding: .25rem 0 1.25rem; scroll-snap-type: x mandatory; overscroll-behavior-inline: contain; -webkit-overflow-scrolling: touch; scrollbar-color: var(--accent) #ffffff12; }
+.discussion-gallery-track { display: grid; grid-auto-flow: column; grid-auto-columns: max-content; align-items: center; gap: 1rem; width: 100%; min-width: 0; overflow-x: auto; padding: .5rem 1rem; scroll-padding-inline: 1rem; scroll-snap-type: x mandatory; overscroll-behavior-inline: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; -webkit-mask-image: linear-gradient(to right, transparent, #000 1rem, #000 calc(100% - 1rem), transparent); mask-image: linear-gradient(to right, transparent, #000 1rem, #000 calc(100% - 1rem), transparent); }
+.discussion-gallery-track::-webkit-scrollbar { display: none; }
 .discussion-gallery-track figure { width: 280px; margin: 0; scroll-snap-align: start; }
+.discussion-gallery-track figure:nth-child(-n + 3) { width: 520px; }
 .discussion-gallery-track a { display: flex; justify-content: center; width: 100%; }
 .discussion-gallery-track img { display: block; width: auto; max-width: 100%; height: auto; object-fit: contain; border: 1px solid #ffffff24; border-radius: .45rem; background: #fff; }
 .raft-page .section-body .discussion-links-label { margin: .5rem 0 0; color: #c6b9c2; font-size: .8rem; }
@@ -110,6 +112,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
   .hero-bottom { flex-wrap: wrap; }
   .document-link { order: 3; width: 100%; text-align: center; }
   .press-archive { grid-template-columns: 1fr; }
-  .discussion-gallery-track { grid-auto-columns: min(78vw, 280px); gap: .75rem; }
-  .discussion-gallery-track figure { width: min(78vw, 280px); }
+  .discussion-gallery-track { gap: .75rem; }
+  .discussion-gallery-track figure { width: min(70vw, 280px); }
+  .discussion-gallery-track figure:nth-child(-n + 3) { width: calc(100vw - 4.5rem); }
 }
