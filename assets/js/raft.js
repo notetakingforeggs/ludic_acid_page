@@ -67,11 +67,33 @@ if (location.hash) openSection(location.hash.slice(1));
 const discussionGallery = document.querySelector('[data-discussion-gallery]');
 if (discussionGallery) {
   const track = discussionGallery.querySelector('[data-discussion-track]');
+  const cards = [...track.querySelectorAll('figure')];
+  const previous = discussionGallery.querySelector('[data-discussion-previous]');
+  const next = discussionGallery.querySelector('[data-discussion-next]');
+  const count = discussionGallery.querySelector('[data-discussion-count]');
+  let galleryFrame;
+  const updateGalleryControls = () => {
+    const trackLeft = track.getBoundingClientRect().left;
+    const current = cards.reduce((closest, card, index) => (
+      Math.abs(card.getBoundingClientRect().left - trackLeft) < closest.distance
+        ? { index, distance: Math.abs(card.getBoundingClientRect().left - trackLeft) }
+        : closest
+    ), { index: 0, distance: Infinity }).index;
+    count.textContent = `${String(current + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
+    previous.disabled = track.scrollLeft <= 1;
+    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+  };
   const scrollGallery = direction => {
-    const card = track.querySelector('figure');
+    const card = cards[0];
     const gap = parseFloat(getComputedStyle(track).gap) || 0;
     track.scrollBy({ left: direction * ((card?.getBoundingClientRect().width || track.clientWidth) + gap), behavior: reducedMotion.matches ? 'auto' : 'smooth' });
   };
-  discussionGallery.querySelector('[data-discussion-previous]').addEventListener('click', () => scrollGallery(-1));
-  discussionGallery.querySelector('[data-discussion-next]').addEventListener('click', () => scrollGallery(1));
+  previous.addEventListener('click', () => scrollGallery(-1));
+  next.addEventListener('click', () => scrollGallery(1));
+  track.addEventListener('scroll', () => {
+    window.cancelAnimationFrame(galleryFrame);
+    galleryFrame = window.requestAnimationFrame(updateGalleryControls);
+  }, { passive: true });
+  window.addEventListener('resize', updateGalleryControls);
+  updateGalleryControls();
 }

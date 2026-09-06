@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/site.css">
   <link rel="stylesheet" href="../assets/css/project.css">
-  <link rel="stylesheet" href="../assets/css/raft.css">
+  <link rel="stylesheet" href="../assets/css/raft.css?v=2">
 </head>
 <body class="raft-page">
   <header>
@@ -116,8 +116,9 @@
           <div class="discussion-gallery" data-discussion-gallery>
             <div class="discussion-gallery-header">
               <p class="discussion-gallery-hint">Swipe or scroll through the conversation</p>
-              <div class="discussion-gallery-controls" aria-label="Screenshot gallery controls">
+              <div class="carousel-controls discussion-gallery-controls" aria-label="Screenshot gallery controls">
                 <button type="button" data-discussion-previous aria-label="Previous screenshots">←</button>
+                <span data-discussion-count aria-live="polite">01 / 21</span>
                 <button type="button" data-discussion-next aria-label="Next screenshots">→</button>
               </div>
             </div>
@@ -190,6 +191,6 @@
   </main>
   <footer><p>“Flor de Ruina” typeface · <a href="https://velvetyne.fr/">Velvetyne Type Foundry</a></p></footer>
   <script src="../assets/js/site.js"></script>
-  <script src="../assets/js/raft.js"></script>
+  <script src="../assets/js/raft.js?v=2"></script>
 </body>
 </html>

@@ -87,15 +87,14 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 .discussion-gallery { margin: 1.5rem calc(50% - 50vw) 2rem; }
 .discussion-gallery-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0 max(1.5rem, calc((100vw - 980px) / 2)) .75rem; }
 .raft-page .section-body .discussion-gallery-hint { margin: 0; color: #c6b9c2; font-size: .8rem; }
-.discussion-gallery-controls { display: flex; gap: .5rem; }
-.discussion-gallery-controls button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #ffffff40; border-radius: 50%; color: inherit; background: #ffffff08; cursor: pointer; }
+.discussion-gallery-controls { display: flex; flex: 0 0 auto; gap: .5rem; }
+.discussion-gallery-controls button { color: inherit; background: #140b0c80; border: 1px solid #ffffff40; border-radius: 2rem; min-width: 44px; min-height: 44px; padding: .5rem .75rem; cursor: pointer; }
 .discussion-gallery-controls button:hover { border-color: var(--accent); }
-.discussion-gallery-track { display: flex; align-items: flex-start; gap: 1rem; overflow-x: auto; padding: .25rem max(1.5rem, calc((100vw - 980px) / 2)) 1.25rem; scroll-padding-inline: max(1.5rem, calc((100vw - 980px) / 2)); scroll-snap-type: x proximity; overscroll-behavior-inline: contain; -webkit-overflow-scrolling: touch; scrollbar-color: var(--accent) #ffffff12; }
-.discussion-gallery-track figure { flex: 0 0 clamp(300px, 39vw, 560px); margin: 0; scroll-snap-align: start; }
-.discussion-gallery-track figure:nth-child(3n + 2) { flex-basis: clamp(280px, 34vw, 480px); }
-.discussion-gallery-track figure:nth-child(4n) { flex-basis: clamp(320px, 43vw, 610px); }
-.discussion-gallery-track a { display: block; }
-.discussion-gallery-track img { width: 100%; height: auto; object-fit: contain; border: 1px solid #ffffff24; border-radius: .45rem; background: #fff; }
+.discussion-gallery-controls button:disabled { opacity: .35; cursor: default; }
+.discussion-gallery-track { display: grid; grid-auto-flow: column; grid-auto-columns: 280px; align-items: start; gap: 1rem; width: 100%; min-width: 0; overflow-x: auto; padding: .25rem max(1.5rem, calc((100vw - 980px) / 2)) 1.25rem; scroll-padding-inline: max(1.5rem, calc((100vw - 980px) / 2)); scroll-snap-type: x mandatory; overscroll-behavior-inline: contain; -webkit-overflow-scrolling: touch; scrollbar-color: var(--accent) #ffffff12; }
+.discussion-gallery-track figure { width: 280px; margin: 0; scroll-snap-align: start; }
+.discussion-gallery-track a { display: flex; justify-content: center; width: 100%; }
+.discussion-gallery-track img { display: block; width: auto; max-width: 100%; height: auto; object-fit: contain; border: 1px solid #ffffff24; border-radius: .45rem; background: #fff; }
 .raft-page .section-body .discussion-links-label { margin: .5rem 0 0; color: #c6b9c2; font-size: .8rem; }
 .people-chat-links { margin-top: 0; }
 .letter-placeholder p:last-child { color: #c6b9c2; }
@@ -107,9 +106,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
   .press-archive { grid-template-columns: 1fr; }
   .discussion-gallery { margin-inline: -1.25rem; }
   .discussion-gallery-header { padding-inline: 1.25rem; }
-  .discussion-gallery-controls { display: none; }
-  .discussion-gallery-track { gap: .75rem; padding-inline: 1.25rem; scroll-padding-inline: 1.25rem; scroll-snap-type: x mandatory; }
-  .discussion-gallery-track figure,
-  .discussion-gallery-track figure:nth-child(3n + 2),
-  .discussion-gallery-track figure:nth-child(4n) { flex-basis: calc(100vw - 3.25rem); }
+  .discussion-gallery-track { grid-auto-columns: min(78vw, 280px); gap: .75rem; padding-inline: 1.25rem; scroll-padding-inline: 1.25rem; }
+  .discussion-gallery-track figure { width: min(78vw, 280px); }
 }
