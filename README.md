@@ -59,7 +59,7 @@ is hidden on this slide and its autoplay interval is extended to 20 seconds.
 
 Discourse is a separate folding section, linked in both navigation menus. It
 includes compact links to the original posts and a horizontally scrolling
-gallery of the 21 discussion screenshots in
+gallery of the 20 discussion screenshots in
 `/images/raft/raftscreenshots/`; it shows multiple compact, uncropped cards on
 wider screens and a smaller swipeable card with the next card visible on
 mobile. The letter before claim remains a placeholder until the material is
