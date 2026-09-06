@@ -72,12 +72,16 @@ if (discussionGallery) {
   const next = discussionGallery.querySelector('[data-discussion-next]');
   const count = discussionGallery.querySelector('[data-discussion-count]');
   let galleryFrame;
+  const cardPositions = () => {
+    const left = track.getBoundingClientRect().left;
+    const padding = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+    return cards.map(card => card.getBoundingClientRect().left - left + track.scrollLeft - padding);
+  };
   const updateGalleryControls = () => {
     if (!track.clientWidth) return;
-    const trackLeft = track.getBoundingClientRect().left;
-    const current = cards.reduce((closest, card, index) => (
-      Math.abs(card.getBoundingClientRect().left - trackLeft) < closest.distance
-        ? { index, distance: Math.abs(card.getBoundingClientRect().left - trackLeft) }
+    const current = cardPositions().reduce((closest, position, index) => (
+      Math.abs(position - track.scrollLeft) < closest.distance
+        ? { index, distance: Math.abs(position - track.scrollLeft) }
         : closest
     ), { index: 0, distance: Infinity }).index;
     count.textContent = `${String(current + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
@@ -85,9 +89,11 @@ if (discussionGallery) {
     next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
   };
   const scrollGallery = direction => {
-    const card = cards[0];
-    const gap = parseFloat(getComputedStyle(track).gap) || 0;
-    track.scrollBy({ left: direction * ((card?.getBoundingClientRect().width || track.clientWidth) + gap), behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+    const positions = cardPositions();
+    const target = direction > 0
+      ? positions.find(position => position > track.scrollLeft + 1) ?? track.scrollWidth
+      : positions.reverse().find(position => position < track.scrollLeft - 1) ?? 0;
+    track.scrollTo({ left: target, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
   };
   previous.addEventListener('click', () => scrollGallery(-1));
   next.addEventListener('click', () => scrollGallery(1));
