@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Second Sight (working title): an early-stage work in progress by Jonah Russell and H Barton, exploring acrobatics, movement and a shared oversized hoodie.">
   <title>Second Sight (working title) – Ludic Acid</title>
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/site.css">
   <link rel="stylesheet" href="../assets/css/project.css">
@@ -36,10 +36,10 @@
   <main>
     <section class="hero" aria-labelledby="project-title" aria-roledescription="carousel">
       <div class="hero-images" aria-hidden="true">
-        <img class="hero-image is-active" src="https://assets.ludicacid.com/images/second-sight/feet.JPG" alt="" fetchpriority="high">
-        <img class="hero-image" src="https://assets.ludicacid.com/images/second-sight/negtall.jpeg" alt="" decoding="async">
-        <img class="hero-image" src="https://assets.ludicacid.com/images/second-sight/fhd-5.jpg" alt="" decoding="async">
-        <img class="hero-image" src="https://assets.ludicacid.com/images/second-sight/0M8A3026.jpg" alt="" decoding="async">
+        <div class="hero-image is-active"><img src="https://assets.ludicacid.com/images/second-sight/feet.JPG" alt="" fetchpriority="high"></div>
+        <div class="hero-image hero-image-contained"><img src="https://assets.ludicacid.com/images/second-sight/0M8A3026.jpg" alt="" decoding="async"></div>
+        <div class="hero-image hero-image-negtall"><img src="https://assets.ludicacid.com/images/second-sight/negtall.jpeg" alt="" decoding="async"></div>
+        <div class="hero-image hero-image-contained"><img src="https://assets.ludicacid.com/images/second-sight/fhd-5.jpg" alt="" decoding="async"></div>
       </div>
       <div class="hero-text">
         <p class="project-status">Early-stage work in progress</p>
@@ -48,7 +48,7 @@
         <p class="hero-credit">Jonah Russell &amp; H Barton</p>
       </div>
       <div class="hero-bottom">
-        <a class="scroll-cue" href="#about">Discover the work <span aria-hidden="true">↓</span></a>
+        <a class="scroll-cue" href="#about" aria-label="About Second Sight"><span aria-hidden="true">↓</span></a>
         <div class="carousel-controls" hidden aria-label="Background images">
           <button type="button" data-previous aria-label="Previous background image">←</button>
           <span data-slide-count aria-live="off">01 / 04</span>
@@ -75,19 +75,14 @@
         <p class="section-kicker">Fragments from a work in progress</p>
         <div class="media-grid">
           <figure>
-            <!-- Replace this placeholder with the YouTube iframe when the video URL is ready. -->
-            <div class="video-placeholder" aria-label="YouTube video coming soon">
-              <span class="play-mark" aria-hidden="true">▷</span>
-              <span>YouTube film</span><small>Coming soon</small>
-            </div>
+            <iframe src="https://www.youtube-nocookie.com/embed/4wDHJncDc10" title="Second Sight — a first look" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <figcaption>A first look at Second Sight.</figcaption>
           </figure>
           <figure>
-            <!-- Replace this placeholder with a video element and the uploaded assets.ludicacid.com source. -->
-            <div class="video-placeholder" aria-label="Rehearsal video coming soon">
-              <span class="play-mark" aria-hidden="true">▷</span>
-              <span>From the rehearsal room</span><small>Coming soon</small>
-            </div>
+            <video controls playsinline preload="none" poster="https://assets.ludicacid.com/images/second-sight/fwd.jpg" aria-label="Second Sight — work-in-progress sharing">
+              <source src="https://assets.ludicacid.com/images/second-sight/sharing.mp4" type="video/mp4">
+              <a href="https://assets.ludicacid.com/images/second-sight/sharing.mp4">Watch the Second Sight sharing</a>
+            </video>
             <figcaption>Experiments, sketches and moments along the way.</figcaption>
           </figure>
         </div>
