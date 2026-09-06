@@ -73,6 +73,7 @@ if (discussionGallery) {
   const count = discussionGallery.querySelector('[data-discussion-count]');
   let galleryFrame;
   const updateGalleryControls = () => {
+    if (!track.clientWidth) return;
     const trackLeft = track.getBoundingClientRect().left;
     const current = cards.reduce((closest, card, index) => (
       Math.abs(card.getBoundingClientRect().left - trackLeft) < closest.distance
@@ -95,5 +96,6 @@ if (discussionGallery) {
     galleryFrame = window.requestAnimationFrame(updateGalleryControls);
   }, { passive: true });
   window.addEventListener('resize', updateGalleryControls);
+  new ResizeObserver(updateGalleryControls).observe(track);
   updateGalleryControls();
 }

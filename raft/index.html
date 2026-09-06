@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/site.css">
   <link rel="stylesheet" href="../assets/css/project.css">
-  <link rel="stylesheet" href="../assets/css/raft.css?v=2">
+  <link rel="stylesheet" href="../assets/css/raft.css?v=3">
 </head>
 <body class="raft-page">
   <header>
@@ -18,6 +18,7 @@
       <ul class="nav-row">
         <li><a href="#about">About</a></li>
         <li><a href="#press">Press</a></li>
+        <li><a href="#discourse">Discourse</a></li>
         <li><a href="#team">Team</a></li>
       </ul>
       <button class="burger" type="button" aria-label="Menu" data-menu-button aria-expanded="false" aria-controls="nav-links">
@@ -27,6 +28,7 @@
     <ul class="nav-links" id="nav-links" data-menu>
       <li><a href="#about">About</a></li>
       <li><a href="#press">Press</a></li>
+        <li><a href="#discourse">Discourse</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="/people/">People</a></li>
     </ul>
@@ -82,12 +84,6 @@
         <p class="section-kicker">In print &amp; online</p>
         <ul class="press-list">
           <li>
-            <div class="press-meta"><span>The Negotiator</span><time datetime="2018-02-09">2018</time></div>
-            <h3><a href="https://thenegotiator.co.uk/news/foxtons-floating-house-canal-london/" target="_blank" rel="noopener noreferrer">Foxtons floating house on canal in London <span aria-hidden="true">↗</span></a></h3>
-            <p class="byline">The Negotiator</p>
-            <p>Property-focused report on the raft removal and demolition.</p>
-          </li>
-          <li>
             <div class="press-meta"><span>Evening Standard</span><time datetime="2018-02-05">5 February 2018</time></div>
             <h3><a href="https://www.standard.co.uk/news/london/pair-forced-out-of-floating-wendy-house-with-a-roof-made-out-of-foxtons-for-sale-signs-a3757936.html" target="_blank" rel="noopener noreferrer"><s>Pair ‘forced out’ of floating wendy house with roof made out of Foxtons For Sale signs</s> "Worthy of the Tate Modern" <span aria-hidden="true">↗</span></a></h3>
             <p class="byline">Barney Davis &amp; Jonathan Prynn</p>
@@ -101,17 +97,46 @@
             <p>Independent curator Rob La Frenais opens this survey of artists’ boats and floating experiments with the raft. Thx mysterious internet stranger</p>
             <p class="edition-link"><a href="https://www.makery.info/2018/03/06/artistes-a-leau-histoire-dembarcations-pirates/" lang="fr" hreflang="fr" target="_blank" rel="noopener noreferrer">Lire l’article en français ↗</a></p>
           </li>
-          <li>
+          <li class="press-brief">
             <div class="press-meta"><span>Property Industry Eye</span><time datetime="2018-02-06">6 February 2018</time></div>
             <h3><a href="https://propertyindustryeye.com/floating-house-made-from-estate-agents-for-sale-boards-torn-down/" target="_blank" rel="noopener noreferrer">Floating house made from Foxtons boards is submerged by authorities <span aria-hidden="true">↗</span></a></h3>
             <p class="byline">Neil Gerrard</p>
-            <p>Property-industry coverage following the Standard report, including a longer response from Foxtons about the use of its boards.</p>
+            <p>Follow-up coverage, including Foxtons’ response.</p>
+          </li>
+          <li class="press-brief">
+            <div class="press-meta"><span>The Negotiator</span><time datetime="2018-02-09">2018</time></div>
+            <h3><a href="https://thenegotiator.co.uk/news/foxtons-floating-house-canal-london/" target="_blank" rel="noopener noreferrer">Foxtons floating house on canal in London <span aria-hidden="true">↗</span></a></h3>
+            <p>A report on the raft’s demolition.</p>
           </li>
         </ul>
 
-        <section class="archive-placeholder people-chatting" aria-labelledby="people-chatting-title">
-          <p class="section-kicker">People talking online</p>
-          <h3 id="people-chatting-title">People chatting on the internet</h3>
+        <div class="press-archive" id="raft-poem">
+          <div>
+            <p class="section-kicker">From the archive</p>
+            <h3>A newspaper clipping</h3>
+            <!-- <p>The clipping saved alongside the raft photographs.</p> -->
+            <p><a href="https://assets.ludicacid.com/images/raft/standardraftpoem.jpg" target="_blank" rel="noopener noreferrer">Open full-size image ↗</a></p>
+          </div>
+          <figure>
+            <a href="https://assets.ludicacid.com/images/raft/standardraftpoem.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open the newspaper clipping at full size">
+              <img src="https://assets.ludicacid.com/images/raft/standardraftpoem.jpg" alt="Evening Standard news-diary clipping, including a brief item about the raft’s removal" loading="lazy" width="1536" height="2048">
+            </a>
+            <!-- <figcaption>From the raft archive · Evening Standard.</figcaption> -->
+          </figure>
+        </div>
+
+        <section class="archive-placeholder letter-placeholder" aria-labelledby="letter-title">
+          <p class="section-kicker">Correspondence</p>
+          <h3 id="letter-title">Letter before claim</h3>
+          <!-- Add the supplied letter/document here when available. -->
+          <p>Document to come. I forget how it happened but someone sent a letter before claim to the CRT on behalf of the raft?</p>
+        </section>
+      </div>
+    </section>
+
+    <section id="discourse" class="content-section">
+      <h2><button type="button" class="section-toggle" aria-expanded="true" aria-controls="discourse-body">Discourse</button></h2>
+      <div id="discourse-body" class="section-body">
           <p>There was some discourse on various forums and social media. Some people hated it (mostly boaters); others loved it.</p>
           <div class="discussion-gallery" data-discussion-gallery>
             <div class="discussion-gallery-header">
@@ -147,37 +172,14 @@
             </div>
           </div>
           <p class="discussion-links-label">Original posts and threads</p>
-          <ul class="press-list people-chat-links">
-            <li><a href="https://www.facebook.com/groups/73933281285/posts/10154998282316286/" target="_blank" rel="noopener noreferrer">Facebook group post</a></li>
-            <li><a href="https://www.reddit.com/r/london/comments/7tf4ab/cozy_1bd_flat_water_views_625pw/?captcha=1" target="_blank" rel="noopener noreferrer">Reddit</a></li>
-            <li><a href="https://www.facebook.com/photo.php?fbid=10155675842959024&amp;id=635484023&amp;set=gm.10155656737343791&amp;source=48&amp;ref=content_filter&amp;_rdr" target="_blank" rel="noopener noreferrer">Facebook photo post</a></li>
-            <li><a href="https://www.facebook.com/danielle.couchman.9/posts/pcb.10155006255306286/?photo_id=10156026212487487&amp;mds=%2Fphotos%2Fviewer%2F%3Fphotoset_token%3Dpcb.10155006255306286%26photo%3D10156026212487487%26profileid%3D702015690%26source%3D48%26refid%3D18%26_ft_%3Dqid.6517626865254286959%253Amf_story_key.10155006255306286%253Atop_level_post_id.10155006255306286%253Atl_objid.10155006255306286%26__tn__%3DEH-R%26cached_data%3Dfalse%26ftid%3D&amp;mdf=1&amp;_rdr" target="_blank" rel="noopener noreferrer">Facebook post</a></li>
-            <li><a href="https://www.instagram.com/p/BfNTQfUAeRq/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            <li><a href="https://www.canalworld.net/forums/index.php?/topic/94982-london-gets-tough/" target="_blank" rel="noopener noreferrer">Canal World</a></li>
+          <ul class="people-chat-links">
+            <li><a href="https://www.facebook.com/groups/73933281285/posts/10154998282316286/" target="_blank" rel="noopener noreferrer">London Boaters Facebook thread</a></li>
+            <li><a href="https://www.reddit.com/r/london/comments/7tf4ab/cozy_1bd_flat_water_views_625pw/?captcha=1" target="_blank" rel="noopener noreferrer">Reddit thread</a></li>
+            <li><a href="https://www.facebook.com/photo.php?fbid=10155675842959024&amp;id=635484023&amp;set=gm.10155656737343791&amp;source=48&amp;ref=content_filter&amp;_rdr" target="_blank" rel="noopener noreferrer">Shit London Facebook</a></li>
+            <li><a href="https://www.facebook.com/danielle.couchman.9/posts/pcb.10155006255306286/?photo_id=10156026212487487&amp;mds=%2Fphotos%2Fviewer%2F%3Fphotoset_token%3Dpcb.10155006255306286%26photo%3D10156026212487487%26profileid%3D702015690%26source%3D48%26refid%3D18%26_ft_%3Dqid.6517626865254286959%253Amf_story_key.10155006255306286%253Atop_level_post_id.10155006255306286%253Atl_objid.10155006255306286%26__tn__%3DEH-R%26cached_data%3Dfalse%26ftid%3D&amp;mdf=1&amp;_rdr" target="_blank" rel="noopener noreferrer">London Boaters Facebook photos</a></li>
+            <li><a href="https://www.instagram.com/p/BfNTQfUAeRq/" target="_blank" rel="noopener noreferrer">Instagram post</a></li>
+            <li><a href="https://www.canalworld.net/forums/index.php?/topic/94982-london-gets-tough/" target="_blank" rel="noopener noreferrer">Canal World thread</a></li>
           </ul>
-        </section>
-
-        <div class="press-archive" id="raft-poem">
-          <div>
-            <p class="section-kicker">From the archive</p>
-            <h3>A newspaper clipping</h3>
-            <!-- <p>The clipping saved alongside the raft photographs.</p> -->
-            <p><a href="https://assets.ludicacid.com/images/raft/standardraftpoem.jpg" target="_blank" rel="noopener noreferrer">Open full-size image ↗</a></p>
-          </div>
-          <figure>
-            <a href="https://assets.ludicacid.com/images/raft/standardraftpoem.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open the newspaper clipping at full size">
-              <img src="https://assets.ludicacid.com/images/raft/standardraftpoem.jpg" alt="Evening Standard news-diary clipping, including a brief item about the raft’s removal" loading="lazy" width="1536" height="2048">
-            </a>
-            <!-- <figcaption>From the raft archive · Evening Standard.</figcaption> -->
-          </figure>
-        </div>
-
-        <section class="archive-placeholder letter-placeholder" aria-labelledby="letter-title">
-          <p class="section-kicker">Correspondence</p>
-          <h3 id="letter-title">Letter before claim</h3>
-          <!-- Add the supplied letter/document here when available. -->
-          <p>Document to come. I forget how it happened but someone sent a letter before claim to the CRT on behalf of the raft?</p>
-        </section>
       </div>
     </section>
 
@@ -191,6 +193,6 @@
   </main>
   <footer><p>“Flor de Ruina” typeface · <a href="https://velvetyne.fr/">Velvetyne Type Foundry</a></p></footer>
   <script src="../assets/js/site.js"></script>
-  <script src="../assets/js/raft.js?v=2"></script>
+  <script src="../assets/js/raft.js?v=3"></script>
 </body>
 </html>
