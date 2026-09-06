@@ -50,14 +50,18 @@ The About copy draws on the [Work Room residency announcement](https://theworkro
 Second Sight-style gallery and folding About / Press / Team sections, retaining
 Raft's Flor de Ruina font. The gallery uses the server's
 `/images/raft/raftuse/1.jpg` through `9.jpg`, then `99.jpg`, in numeric order.
+Slide 8 uses the portrait `8b.jpg` source at mobile widths and retains the
+landscape `8.jpg` source on wider screens.
 `/images/raft/standardraftpoem.jpg` is appended as a fully contained final slide
 and repeated in Press. The file currently contains a newspaper diary clipping;
 it is labelled as a clipping rather than a transcribed poem. The title overlay
 is hidden on this slide and its autoplay interval is extended to 20 seconds.
 
-About and Team are intentionally lorem ipsum. The Press section has marked
-HTML insertion points for a London Boaters screenshot carousel and the letter
-before claim. These are placeholders until the material is supplied.
+About and Team are intentionally lorem ipsum. Press includes a horizontally
+scrolling gallery of the 21 discussion screenshots in
+`/images/raft/raftscreenshots/`; it shows multiple uncropped cards on wider
+screens and one swipeable card at a time on mobile. The letter before claim
+remains a placeholder until the material is supplied.
 
 Press research, checked 6 September 2026:
 
