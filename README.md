@@ -57,8 +57,9 @@ and repeated in Press. The file currently contains a newspaper diary clipping;
 it is labelled as a clipping rather than a transcribed poem. The title overlay
 is hidden on this slide and its autoplay interval is extended to 20 seconds.
 
-About and Team are intentionally lorem ipsum. Press includes a horizontally
-scrolling gallery of the 21 discussion screenshots in
+Discourse is a separate folding section, linked in both navigation menus. It
+includes compact links to the original posts and a horizontally scrolling
+gallery of the 21 discussion screenshots in
 `/images/raft/raftscreenshots/`; it shows multiple compact, uncropped cards on
 wider screens and a smaller swipeable card with the next card visible on
 mobile. The letter before claim remains a placeholder until the material is
