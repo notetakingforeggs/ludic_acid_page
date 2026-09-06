@@ -55,9 +55,11 @@ and repeated in Press. The file currently contains a newspaper diary clipping;
 it is labelled as a clipping rather than a transcribed poem. The title overlay
 is hidden on this slide and its autoplay interval is extended to 20 seconds.
 
-About and Team are intentionally lorem ipsum. The Press section has marked
-HTML insertion points for a London Boaters screenshot carousel and the letter
-before claim. These are placeholders until the material is supplied.
+About and Team are intentionally lorem ipsum. Press includes a horizontally
+scrolling gallery of the 21 discussion screenshots in
+`/images/raft/raftscreenshots/`; it shows multiple uncropped cards on wider
+screens and one swipeable card at a time on mobile. The letter before claim
+remains a placeholder until the material is supplied.
 
 Press research, checked 6 September 2026:
 

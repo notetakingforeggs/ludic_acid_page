@@ -63,3 +63,15 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 window.addEventListener('hashchange', () => openSection(location.hash.slice(1)));
 if (location.hash) openSection(location.hash.slice(1));
+
+const discussionGallery = document.querySelector('[data-discussion-gallery]');
+if (discussionGallery) {
+  const track = discussionGallery.querySelector('[data-discussion-track]');
+  const scrollGallery = direction => {
+    const card = track.querySelector('figure');
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    track.scrollBy({ left: direction * ((card?.getBoundingClientRect().width || track.clientWidth) + gap), behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+  };
+  discussionGallery.querySelector('[data-discussion-previous]').addEventListener('click', () => scrollGallery(-1));
+  discussionGallery.querySelector('[data-discussion-next]').addEventListener('click', () => scrollGallery(1));
+}
