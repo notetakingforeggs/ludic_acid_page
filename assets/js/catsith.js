@@ -2,8 +2,7 @@ const heroVideo = document.querySelector(".hero video");
 
 if (heroVideo && window.matchMedia("(max-width: 768px)").matches) {
   heroVideo.innerHTML = `
-    <source src="https://assets.ludicacid.com/images/background-mobile.mp4" type="video/mp4">
-    <source src="https://assets.ludicacid.com/images/background-mobile.webm" type="video/webm">
+    <source src="https://assets.ludicacid.com/images/cat/background-mobile.mp4" type="video/mp4">
   `;
   heroVideo.load();
 }
