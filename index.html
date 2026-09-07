@@ -226,6 +226,8 @@
     footer { flex:0 0 auto; text-align:center; font-size:0.75rem; color:#888; padding:2rem 1rem; }
 
   </style>
+  <link rel="stylesheet" href="assets/css/mobile-menu.css">
+  <link rel="stylesheet" href="assets/css/font-credits.css">
 </head>
 
 <body>
@@ -250,8 +252,8 @@
     <!-- SLIDE-DOWN MENU -->
     <ul class="nav-links" id="nav-links" data-menu>
       <li class="projects-menu">
-        <button class="projects-toggle" type="button" data-submenu-button aria-expanded="false" aria-controls="project-submenu">Projects</button>
-        <ul class="project-submenu" id="project-submenu" data-submenu hidden>
+        <span class="projects-label">Projects</span>
+        <ul class="project-submenu" id="project-submenu">
           <li><a href="/catsith/">Cat Sith</a></li>
           <li><a href="/second-sight/">Second Sight</a></li>
           <li><a href="/raft/">Raft</a></li>
@@ -280,11 +282,15 @@
   </main>
 
   <footer>
-    Typefaces: <a href="https://www.velvetyne.fr/fonts/lithops/" target="_blank" rel="noopener" style="color: #d2b3ff;">Lithops</a> by Anne-Dauphine Borione; <a href="https://velvetyne.fr/fonts/typefesse/" target="_blank" rel="noopener" style="color: #d2b3ff;">Typefesse</a> by Océane Juvin; <a href="https://velvetyne.fr/fonts/flor-de-ruina/" target="_blank" rel="noopener" style="color: #d2b3ff;">Flor de Ruina</a> by Felipe Sanzana. Published by Velvetyne Type Foundry under the <a href="https://scripts.sil.org/OFL" target="_blank" rel="noopener" style="color: #d2b3ff;">SIL Open Font License v1.1</a>.
+    <details class="font-credits">
+      <summary>Type credits</summary>
+      <div class="font-credits-content">Typefaces: <a href="https://www.velvetyne.fr/fonts/lithops/" target="_blank" rel="noopener" style="color: #d2b3ff;">Lithops</a> by Anne-Dauphine Borione; <a href="https://velvetyne.fr/fonts/typefesse/" target="_blank" rel="noopener" style="color: #d2b3ff;">Typefesse</a> by Océane Juvin; <a href="https://velvetyne.fr/fonts/flor-de-ruina/" target="_blank" rel="noopener" style="color: #d2b3ff;">Flor de Ruina</a> by Felipe Sanzana. Published by Velvetyne Type Foundry under the <a href="https://scripts.sil.org/OFL" target="_blank" rel="noopener" style="color: #d2b3ff;">SIL Open Font License v1.1</a>.</div>
+    </details>
   </footer>
 
   <script src="assets/js/site.js"></script>
   <script src="assets/js/home.js"></script>
 
+  <script src="assets/js/font-credits.js"></script>
 </body>
 </html>
