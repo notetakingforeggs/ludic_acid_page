@@ -1,0 +1,6 @@
+.font-credits { position: relative; display: block; width: max-content; margin-inline: auto; text-align: center; font-size: .75rem; }
+.font-credits summary { display: grid; place-items: center; min-height: 44px; padding: .5rem .75rem; list-style: none; cursor: pointer; color: #c6b9c2; }
+.font-credits summary::-webkit-details-marker { display: none; }
+.font-credits summary:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.font-credits .font-credits-content { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); width: min(34rem, calc(100vw - 2rem)); padding: 1rem; border: 1px solid #ffffff30; border-radius: .5rem; background: #140b0c; color: #c6b9c2; line-height: 1.6; z-index: 10; }
+.font-credits .font-credits-content p { margin: 0; }
