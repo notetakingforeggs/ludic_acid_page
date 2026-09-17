@@ -49,8 +49,10 @@ header {
   letter-spacing: .04em;
 }
 .hero h1 { font-size: clamp(4rem, 14vw, 14rem); line-height: .9; }
-.second-sight-page .hero h1 { font-family: "Typefesse", "Lithops", sans-serif; }
-.raft-page .hero h1 {
+.second-sight-page .hero h1,
+.second-sight-page .content-section h2 { font-family: "Typefesse", "Lithops", sans-serif; }
+.raft-page .hero h1,
+.raft-page .content-section h2 {
   font-family: "Flor de Ruina", "Lithops", sans-serif;
   text-transform: lowercase;
 }
