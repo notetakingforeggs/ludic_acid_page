@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^handstands/?$ https://chat.whatsapp.com/Iib7NUg6pBb3vbsS9HEUuX [R=302,L]
